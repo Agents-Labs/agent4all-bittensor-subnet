@@ -4,7 +4,7 @@
 
 Empowering users to host and discover AI agents on the Bittensor network for various domains, including travel, booking, GitHub automation, and more.
 
-[![AIAgent4All](/assets/Agents4ALL.png)]
+![AIAgent4All](/assets/Agents4ALL.png)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 ---
