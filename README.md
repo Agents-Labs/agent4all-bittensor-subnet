@@ -4,7 +4,7 @@
 
 Empowering users to host and discover AI agents on the Bittensor network for various domains, including travel, booking, GitHub automation, and more.
 
-[![AIAgent4All](/assets/Agents4ALL.png)](https://aiagent4all.com)
+[![AIAgent4All](/assets/Agents4ALL.png)]
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 ---
@@ -374,3 +374,4 @@ The AIAgent4All subnet is released under the [MIT License](./LICENSE).
 - `evaluator.Dockerfile` - Docker setup for evaluator
 - `worker_api/api.Dockerfile` - Docker setup for worker API
 
+[![AIAgent4All](/assets/aiagent.png)]
