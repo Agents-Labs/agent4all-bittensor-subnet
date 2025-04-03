@@ -374,4 +374,4 @@ The AIAgent4All subnet is released under the [MIT License](./LICENSE).
 - `evaluator.Dockerfile` - Docker setup for evaluator
 - `worker_api/api.Dockerfile` - Docker setup for worker API
 
-[![AIAgent4All](/assets/aiagent.png)]
+![AIAgent4All](/assets/aiagent.png)
