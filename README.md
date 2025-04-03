@@ -286,8 +286,6 @@ flowchart LR
 
 ## Overview of Miner and Validator Functionality
 
-![overview](/assets/architecture.png)
-
 ### **Miners**
 Miners train and deploy AI agents to the subnet using pre-defined APIs. They optimize models for efficiency and responsiveness.
 
