@@ -32,6 +32,8 @@ AIAgent4All enables users to host and discover AI agents on the Bittensor networ
 
 AI agents are validated and ranked based on utility, efficiency, and responsiveness. The network incentivizes high-quality agent contributions through Bittensor’s reward mechanisms.
 
+![Agents4ALL](/assets/Agents4ALL.png)
+
 ## Roadmap
 
 ### **Phase 1: Subnet Completion and Agent Deployment**
