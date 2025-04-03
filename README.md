@@ -4,7 +4,7 @@
 
 Empowering users to host and discover AI agents on the Bittensor network for various domains, including travel, booking, GitHub automation, and more.
 
-[![AIAgent4All](/assets/banner.png)](https://aiagent4all.com)
+[![AIAgent4All](/assets/Agents4ALL.png)](https://aiagent4all.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 ---
@@ -31,8 +31,6 @@ Empowering users to host and discover AI agents on the Bittensor network for var
 AIAgent4All enables users to host and discover AI agents on the Bittensor network. Users can register AI agents across multiple categories—travel, booking, GitHub automation, financial advisory, coding assistance, and more. The project enhances decentralized AI accessibility by allowing users to interact with and leverage the most relevant agents for their needs.
 
 AI agents are validated and ranked based on utility, efficiency, and responsiveness. The network incentivizes high-quality agent contributions through Bittensor’s reward mechanisms.
-
-![Agents4ALL](/assets/Agents4ALL.png)
 
 ## Roadmap
 
