@@ -55,6 +55,235 @@ AI agents are validated and ranked based on utility, efficiency, and responsiven
 - **Federated Learning**: Introduce privacy-preserving learning techniques for sensitive applications.
 - **Enterprise Adoption**: Develop SDKs and APIs for businesses to integrate with AIAgent4All seamlessly.
 
+
+## AI Agents with Different Processes
+
+### Sequential Process
+
+The simplest form of task execution where tasks are performed one after another.
+
+```mermaid
+graph LR
+    Input[Input] --> A1
+    subgraph Agents
+        direction LR
+        A1[Agent 1] --> A2[Agent 2] --> A3[Agent 3]
+    end
+    A3 --> Output[Output]
+
+    classDef input fill:#8B0000,stroke:#7C90A0,color:#fff
+    classDef process fill:#189AB4,stroke:#7C90A0,color:#fff
+    classDef transparent fill:none,stroke:none
+
+    class Input,Output input
+    class A1,A2,A3 process
+    class Agents transparent
+```
+
+### Hierarchical Process
+
+Uses a manager agent to coordinate task execution and agent assignments.
+
+```mermaid
+graph TB
+    Input[Input] --> Manager
+    
+    subgraph Agents
+        Manager[Manager Agent]
+        
+        subgraph Workers
+            direction LR
+            W1[Worker 1]
+            W2[Worker 2]
+            W3[Worker 3]
+        end
+        
+        Manager --> W1
+        Manager --> W2
+        Manager --> W3
+    end
+    
+    W1 --> Manager
+    W2 --> Manager
+    W3 --> Manager
+    Manager --> Output[Output]
+
+    classDef input fill:#8B0000,stroke:#7C90A0,color:#fff
+    classDef process fill:#189AB4,stroke:#7C90A0,color:#fff
+    classDef transparent fill:none,stroke:none
+
+    class Input,Output input
+    class Manager,W1,W2,W3 process
+    class Agents,Workers transparent
+```
+
+### Workflow Process
+
+Advanced process type supporting complex task relationships and conditional execution.
+
+```mermaid
+graph LR
+    Input[Input] --> Start
+    
+    subgraph Workflow
+        direction LR
+        Start[Start] --> C1{Condition}
+        C1 --> |Yes| A1[Agent 1]
+        C1 --> |No| A2[Agent 2]
+        A1 --> Join
+        A2 --> Join
+        Join --> A3[Agent 3]
+    end
+    
+    A3 --> Output[Output]
+
+    classDef input fill:#8B0000,stroke:#7C90A0,color:#fff
+    classDef process fill:#189AB4,stroke:#7C90A0,color:#fff
+    classDef decision fill:#2E8B57,stroke:#7C90A0,color:#fff
+    classDef transparent fill:none,stroke:none
+
+    class Input,Output input
+    class Start,A1,A2,A3,Join process
+    class C1 decision
+    class Workflow transparent
+```
+
+#### Agentic Routing Workflow
+
+Create AI agents that can dynamically route tasks to specialized LLM instances.
+
+```mermaid
+flowchart LR
+    In[In] --> Router[LLM Call Router]
+    Router --> LLM1[LLM Call 1]
+    Router --> LLM2[LLM Call 2]
+    Router --> LLM3[LLM Call 3]
+    LLM1 --> Out[Out]
+    LLM2 --> Out
+    LLM3 --> Out
+    
+    style In fill:#8B0000,color:#fff
+    style Router fill:#2E8B57,color:#fff
+    style LLM1 fill:#2E8B57,color:#fff
+    style LLM2 fill:#2E8B57,color:#fff
+    style LLM3 fill:#2E8B57,color:#fff
+    style Out fill:#8B0000,color:#fff
+```
+
+#### Agentic Orchestrator Worker
+
+Create AI agents that orchestrate and distribute tasks among specialized workers.
+
+```mermaid
+flowchart LR
+    In[In] --> Router[LLM Call Router]
+    Router --> LLM1[LLM Call 1]
+    Router --> LLM2[LLM Call 2]
+    Router --> LLM3[LLM Call 3]
+    LLM1 --> Synthesizer[Synthesizer]
+    LLM2 --> Synthesizer
+    LLM3 --> Synthesizer
+    Synthesizer --> Out[Out]
+    
+    style In fill:#8B0000,color:#fff
+    style Router fill:#2E8B57,color:#fff
+    style LLM1 fill:#2E8B57,color:#fff
+    style LLM2 fill:#2E8B57,color:#fff
+    style LLM3 fill:#2E8B57,color:#fff
+    style Synthesizer fill:#2E8B57,color:#fff
+    style Out fill:#8B0000,color:#fff
+```
+
+#### Agentic Autonomous Workflow
+
+Create AI agents that can autonomously monitor, act, and adapt based on environment feedback.
+
+```mermaid
+flowchart LR
+    Human[Human] <--> LLM[LLM Call]
+    LLM -->|ACTION| Environment[Environment]
+    Environment -->|FEEDBACK| LLM
+    LLM --> Stop[Stop]
+    
+    style Human fill:#8B0000,color:#fff
+    style LLM fill:#2E8B57,color:#fff
+    style Environment fill:#8B0000,color:#fff
+    style Stop fill:#333,color:#fff
+```
+
+#### Agentic Parallelization
+
+Create AI agents that can execute tasks in parallel for improved performance.
+
+```mermaid
+flowchart LR
+    In[In] --> LLM2[LLM Call 2]
+    In --> LLM1[LLM Call 1]
+    In --> LLM3[LLM Call 3]
+    LLM1 --> Aggregator[Aggregator]
+    LLM2 --> Aggregator
+    LLM3 --> Aggregator
+    Aggregator --> Out[Out]
+    
+    style In fill:#8B0000,color:#fff
+    style LLM1 fill:#2E8B57,color:#fff
+    style LLM2 fill:#2E8B57,color:#fff
+    style LLM3 fill:#2E8B57,color:#fff
+    style Aggregator fill:#fff,color:#000
+    style Out fill:#8B0000,color:#fff
+```
+
+#### Agentic Prompt Chaining
+
+Create AI agents with sequential prompt chaining for complex workflows.
+
+```mermaid
+flowchart LR
+    In[In] --> LLM1[LLM Call 1] --> Gate{Gate}
+    Gate -->|Pass| LLM2[LLM Call 2] -->|Output 2| LLM3[LLM Call 3] --> Out[Out]
+    Gate -->|Fail| Exit[Exit]
+    
+    style In fill:#8B0000,color:#fff
+    style LLM1 fill:#2E8B57,color:#fff
+    style LLM2 fill:#2E8B57,color:#fff
+    style LLM3 fill:#2E8B57,color:#fff
+    style Out fill:#8B0000,color:#fff
+    style Exit fill:#8B0000,color:#fff
+```
+
+#### Agentic Evaluator Optimizer
+
+Create AI agents that can generate and optimize solutions through iterative feedback.
+
+```mermaid
+flowchart LR
+    In[In] --> Generator[LLM Call Generator] 
+    Generator -->|SOLUTION| Evaluator[LLM Call Evaluator] -->|ACCEPTED| Out[Out]
+    Evaluator -->|REJECTED + FEEDBACK| Generator
+    
+    style In fill:#8B0000,color:#fff
+    style Generator fill:#2E8B57,color:#fff
+    style Evaluator fill:#2E8B57,color:#fff
+    style Out fill:#8B0000,color:#fff
+```
+
+#### Repetitive Agents
+
+Create AI agents that can efficiently handle repetitive tasks through automated loops.
+
+```mermaid
+flowchart LR
+    In[Input] --> LoopAgent[("Looping Agent")]
+    LoopAgent --> Task[Task]
+    Task --> |Next iteration| LoopAgent
+    Task --> |Done| Out[Output]
+    
+    style In fill:#8B0000,color:#fff
+    style LoopAgent fill:#2E8B57,color:#fff,shape:circle
+    style Task fill:#2E8B57,color:#fff
+    style Out fill:#8B0000,color:#fff
+```
+
 ## Overview of Miner and Validator Functionality
 
 ![overview](/assets/architecture.png)
