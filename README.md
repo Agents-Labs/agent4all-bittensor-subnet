@@ -14,7 +14,7 @@ Empowering users to host and discover AI agents on the Bittensor network for var
 - [Introduction](#introduction)
 - [Roadmap](#roadmap)
 - [Overview of Miner and Validator Functionality](#overview-of-miner-and-validator-functionality)
-  - [Miner](#miner)
+  - [Miner](#miner)snappymc
   - [Validator](#validator)
 - [Running Miners and Validators](#running-miners-and-validators)
   - [Running a Miner](#running-a-miner)

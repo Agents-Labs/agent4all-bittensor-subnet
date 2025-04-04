@@ -1,173 +1,157 @@
-# The MIT License (MIT)
-# Copyright © 2023 Yuma Rao
-# TODO(developer): Set your name
-# Copyright © 2023 <your name>
+import argparse
+import hashlib
+from typing import Optional, Type
 
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-# documentation files (the “Software”), to deal in the Software without restriction, including without limitation
-# the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
-# and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-# The above copyright notice and this permission notice shall be included in all copies or substantial portions of
-# the Software.
-
-# THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
-# THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-# DEALINGS IN THE SOFTWARE.
-
-import time
-import typing
+from pydantic import BaseModel, Field, PositiveInt
 import bittensor as bt
 
-# Bittensor Miner Template:
-import template
+from common.data import ModelId
 
-# import base miner class which takes care of most of the boilerplate
-from template.base.miner import BaseMinerNeuron
+from utilities.validation_utils import regenerate_hash
 
+# Default network UID for the Bittensor network
+DEFAULT_NETUID = 334
 
-class Miner(BaseMinerNeuron):
+def get_config():
+    """Set up argument parsing for configuration options.
+
+    This function creates an argument parser to accept input parameters from
+    the command line. The configurations include repository details, 
+    chat template, network UID, online status, and model hash. The parsed
+    arguments are then returned as a configuration object.
+
+    Returns:
+        config: Parsed command line arguments as a configuration object.
     """
-    Your miner neuron class. You should use this class to define your miner's behavior. In particular, you should replace the forward function with your own logic. You may also want to override the blacklist and priority functions according to your needs.
+    parser = argparse.ArgumentParser()
 
-    This class inherits from the BaseMinerNeuron class, which in turn inherits from BaseNeuron. The BaseNeuron class takes care of routine tasks such as setting up wallet, subtensor, metagraph, logging directory, parsing config, etc. You can override any of the methods in BaseNeuron if you need to customize the behavior.
+    # Add argument for repository namespace (Hugging Face organization/repo)
+    parser.add_argument(
+        "--repo_namespace",
+        default="DippyAI",
+        type=str,
+        help="The hugging face repo id, which should include the org or user and repo name. E.g. jdoe/finetuned",
+    )
 
-    This class provides reasonable default behavior for a miner such as blacklisting unrecognized hotkeys, prioritizing requests based on stake, and forwarding requests to the forward function. If you need to define custom
+    # Add argument for the model's repository name
+    parser.add_argument(
+        "--repo_name",
+        default="your-model-here",
+        type=str,
+        help="The hugging face repo id, which should include the org or user and repo name. E.g. jdoe/finetuned",
+    )
+
+    # Add argument for the chat template to be used by the model
+    parser.add_argument(
+        "--chat_template",
+        type=str,
+        default="chatml",
+        help="The chat template for the model.",
+    )
+
+    # Add subnet UID for network identification
+    parser.add_argument(
+        "--netuid",
+        type=str,
+        default=f"{DEFAULT_NETUID}",
+        help="The subnet UID.",
+    )
+    
+    # Add argument to specify if the model should connect to the network
+    parser.add_argument(
+        "--online",
+        type=bool,
+        default=False,
+        help="Toggle to make the commit call to the bittensor network",
+    )
+    
+    # Add argument for the model hash of the submission
+    parser.add_argument(
+        "--model_hash",
+        type=str,
+        default="d1",
+        help="Model hash of the submission",
+    )
+    
+    # Include necessary arguments for wallet and logging from the Bittensor library
+    bt.wallet.add_args(parser)
+    bt.subtensor.add_args(parser)
+    bt.logging.add_args(parser)
+
+    # Parse the arguments and create a configuration namespace
+    config = bt.config(parser)
+    return config
+
+def register():
+    """Handles the registration of the model with the Bittensor network.
+
+    This function retrieves the configuration, sets up the wallet and subtensor,
+    generates a unique hash for the model, and logs the details. If configured to 
+    be online, it commits the model's information to the Bittensor network.
+
+    The function logs important information at each step to aid in debugging 
+    and provide insights into the registration process.
     """
+    config = get_config()  # Retrieve configuration from command line arguments
+    bt.logging(config=config)  # Set up logging with the retrieved configuration
 
-    def __init__(self, config=None):
-        super(Miner, self).__init__(config=config)
+    # Initialize wallet and subtensor components
+    wallet = bt.wallet(config=config)
+    subtensor = bt.subtensor(config=config)
 
-        # TODO(developer): Anything specific to your use case you can do here
+    # Retrieve the hotkey address from the wallet
+    hotkey = wallet.hotkey.ss58_address
+    # Get model configuration details
+    namespace = config.repo_namespace
+    repo_name = config.repo_name
+    chat_template = config.chat_template
 
-    async def forward(
-        self, synapse: template.protocol.Dummy
-    ) -> template.protocol.Dummy:
-        """
-        Processes the incoming 'Dummy' synapse by performing a predefined operation on the input data.
-        This method should be replaced with actual logic relevant to the miner's purpose.
+    # Generate a unique entry hash for the model
+    entry_hash = str(regenerate_hash(namespace, repo_name, chat_template, hotkey))
 
-        Args:
-            synapse (template.protocol.Dummy): The synapse object containing the 'dummy_input' data.
+    # Create a model ID encapsulating model details
+    model_id = ModelId(
+        namespace=namespace,
+        name=repo_name,
+        chat_template=chat_template,
+        competition_id=config.competition_id,
+        hotkey=hotkey,
+        hash=entry_hash,
+    )
+    
+    # Compress the model ID into a string for submission
+    model_commit_str = model_id.to_compressed_str()
 
-        Returns:
-            template.protocol.Dummy: The synapse object with the 'dummy_output' field set to twice the 'dummy_input' value.
+    # Log important registration information
+    bt.logging.info("Registering with the following data")
+    bt.logging.info(f"Coldkey: {wallet.coldkey.ss58_address}")
+    bt.logging.info(f"Hotkey: {hotkey}")
+    bt.logging.info(f"repo_namespace: {namespace}")
+    bt.logging.info(f"repo_name: {repo_name}")
+    bt.logging.info(f"chat_template: {chat_template}")
+    bt.logging.info(f"entry_hash: {entry_hash}")
+    bt.logging.info(f"Full Model Details: {model_id}")
+    bt.logging.info(f"Subtensor Network: {subtensor.network}")
+    bt.logging.info(f"model_hash: {config.model_hash}")
+    bt.logging.info(f"String to be committed: {model_commit_str}")
 
-        The 'forward' function is a placeholder and should be overridden with logic that is appropriate for
-        the miner's intended operation. This method demonstrates a basic transformation of input data.
-        """
-        # TODO(developer): Replace with actual implementation logic.
-        synapse.dummy_output = synapse.dummy_input * 2
-        return synapse
+    # Attempt to convert the netuid from the config to an integer, using default if it fails
+    try:
+        netuid = int(config.netuid)
+    except ValueError:
+        netuid = DEFAULT_NETUID  # Fallback to default netuid if conversion fails
+    
+    # Ensure netuid is defined; default value used if provided value is zero
+    netuid = netuid or DEFAULT_NETUID  
 
-    async def blacklist(
-        self, synapse: template.protocol.Dummy
-    ) -> typing.Tuple[bool, str]:
-        """
-        Determines whether an incoming request should be blacklisted and thus ignored. Your implementation should
-        define the logic for blacklisting requests based on your needs and desired security parameters.
+    # If online mode is enabled, attempt to commit to the network
+    if config.online:
+        try:
+            subtensor.commit(wallet, netuid, model_commit_str)
+            bt.logging.info(f"Successfully committed {model_commit_str} under {hotkey} on netuid {netuid}")
+        except Exception as e:
+            print(e)  # Print exception if the commit fails
 
-        Blacklist runs before the synapse data has been deserialized (i.e. before synapse.data is available).
-        The synapse is instead contracted via the headers of the request. It is important to blacklist
-        requests before they are deserialized to avoid wasting resources on requests that will be ignored.
-
-        Args:
-            synapse (template.protocol.Dummy): A synapse object constructed from the headers of the incoming request.
-
-        Returns:
-            Tuple[bool, str]: A tuple containing a boolean indicating whether the synapse's hotkey is blacklisted,
-                            and a string providing the reason for the decision.
-
-        This function is a security measure to prevent resource wastage on undesired requests. It should be enhanced
-        to include checks against the metagraph for entity registration, validator status, and sufficient stake
-        before deserialization of synapse data to minimize processing overhead.
-
-        Example blacklist logic:
-        - Reject if the hotkey is not a registered entity within the metagraph.
-        - Consider blacklisting entities that are not validators or have insufficient stake.
-
-        In practice it would be wise to blacklist requests from entities that are not validators, or do not have
-        enough stake. This can be checked via metagraph.S and metagraph.validator_permit. You can always attain
-        the uid of the sender via a metagraph.hotkeys.index( synapse.dendrite.hotkey ) call.
-
-        Otherwise, allow the request to be processed further.
-        """
-
-        if synapse.dendrite is None or synapse.dendrite.hotkey is None:
-            bt.logging.warning(
-                "Received a request without a dendrite or hotkey."
-            )
-            return True, "Missing dendrite or hotkey"
-
-        # TODO(developer): Define how miners should blacklist requests.
-        uid = self.metagraph.hotkeys.index(synapse.dendrite.hotkey)
-        if (
-            not self.config.blacklist.allow_non_registered
-            and synapse.dendrite.hotkey not in self.metagraph.hotkeys
-        ):
-            # Ignore requests from un-registered entities.
-            bt.logging.trace(
-                f"Blacklisting un-registered hotkey {synapse.dendrite.hotkey}"
-            )
-            return True, "Unrecognized hotkey"
-
-        if self.config.blacklist.force_validator_permit:
-            # If the config is set to force validator permit, then we should only allow requests from validators.
-            if not self.metagraph.validator_permit[uid]:
-                bt.logging.warning(
-                    f"Blacklisting a request from non-validator hotkey {synapse.dendrite.hotkey}"
-                )
-                return True, "Non-validator hotkey"
-
-        bt.logging.trace(
-            f"Not Blacklisting recognized hotkey {synapse.dendrite.hotkey}"
-        )
-        return False, "Hotkey recognized!"
-
-    async def priority(self, synapse: template.protocol.Dummy) -> float:
-        """
-        The priority function determines the order in which requests are handled. More valuable or higher-priority
-        requests are processed before others. You should design your own priority mechanism with care.
-
-        This implementation assigns priority to incoming requests based on the calling entity's stake in the metagraph.
-
-        Args:
-            synapse (template.protocol.Dummy): The synapse object that contains metadata about the incoming request.
-
-        Returns:
-            float: A priority score derived from the stake of the calling entity.
-
-        Miners may receive messages from multiple entities at once. This function determines which request should be
-        processed first. Higher values indicate that the request should be processed first. Lower values indicate
-        that the request should be processed later.
-
-        Example priority logic:
-        - A higher stake results in a higher priority value.
-        """
-        if synapse.dendrite is None or synapse.dendrite.hotkey is None:
-            bt.logging.warning(
-                "Received a request without a dendrite or hotkey."
-            )
-            return 0.0
-
-        # TODO(developer): Define how miners should prioritize requests.
-        caller_uid = self.metagraph.hotkeys.index(
-            synapse.dendrite.hotkey
-        )  # Get the caller index.
-        priority = float(
-            self.metagraph.S[caller_uid]
-        )  # Return the stake as the priority.
-        bt.logging.trace(
-            f"Prioritizing {synapse.dendrite.hotkey} with value: {priority}"
-        )
-        return priority
-
-
-# This is the main function, which runs the miner.
+# Entry point for script execution
 if __name__ == "__main__":
-    with Miner() as miner:
-        while True:
-            bt.logging.info(f"Miner running... {time.time()}")
-            time.sleep(5)
+    register()
