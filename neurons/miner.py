@@ -1,157 +1,218 @@
-import argparse
-import hashlib
-from typing import Optional, Type
+from dotenv import load_dotenv
 
-from pydantic import BaseModel, Field, PositiveInt
-import bittensor as bt
+import os
+import httpx
+import uvicorn
+import requests
 
-from common.data import ModelId
+from fiber.chain import chain_utils, post_ip_to_chain, interface
+from fiber.chain.metagraph import Metagraph
+from fiber.miner.server import factory_app
+from fiber.encrypted.miner.dependencies import (
+    verify_request,
+)
+from fiber.encrypted.miner.security.encryption import (
+    decrypt_general_payload,
+)
+from fiber.encrypted.miner.endpoints.handshake import (
+    get_public_key,
+    exchange_symmetric_key,
+)
 
-from utilities.validation_utils import regenerate_hash
+from fiber.networking.models import NodeWithFernet as Node
+from fiber.logging_utils import get_logger
 
-# Default network UID for the Bittensor network
-DEFAULT_NETUID = 334
+from functools import partial
+from typing import Optional
+from fastapi import FastAPI, Depends
+from interfaces.types import RegistrationCallback
 
-def get_config():
-    """Set up argument parsing for configuration options.
+logger = get_logger(__name__)
 
-    This function creates an argument parser to accept input parameters from
-    the command line. The configurations include repository details, 
-    chat template, network UID, online status, and model hash. The parsed
-    arguments are then returned as a configuration object.
 
-    Returns:
-        config: Parsed command line arguments as a configuration object.
-    """
-    parser = argparse.ArgumentParser()
+class AgentMiner:
+    def __init__(self):
+        """Initialize miner"""
+        load_dotenv()
 
-    # Add argument for repository namespace (Hugging Face organization/repo)
-    parser.add_argument(
-        "--repo_namespace",
-        default="DippyAI",
-        type=str,
-        help="The hugging face repo id, which should include the org or user and repo name. E.g. jdoe/finetuned",
-    )
+        self.wallet_name = os.getenv("WALLET_NAME", "miner")
+        self.hotkey_name = os.getenv("HOTKEY_NAME", "default")
+        self.port = int(os.getenv("MINER_PORT", 8082))
+        self.external_ip = self.get_external_ip()
 
-    # Add argument for the model's repository name
-    parser.add_argument(
-        "--repo_name",
-        default="your-model-here",
-        type=str,
-        help="The hugging face repo id, which should include the org or user and repo name. E.g. jdoe/finetuned",
-    )
+        self.keypair = chain_utils.load_hotkey_keypair(
+            self.wallet_name, self.hotkey_name
+        )
 
-    # Add argument for the chat template to be used by the model
-    parser.add_argument(
-        "--chat_template",
-        type=str,
-        default="chatml",
-        help="The chat template for the model.",
-    )
+        self.netuid = int(os.getenv("NETUID", "59"))
+        self.httpx_client: Optional[httpx.AsyncClient] = None
 
-    # Add subnet UID for network identification
-    parser.add_argument(
-        "--netuid",
-        type=str,
-        default=f"{DEFAULT_NETUID}",
-        help="The subnet UID.",
-    )
-    
-    # Add argument to specify if the model should connect to the network
-    parser.add_argument(
-        "--online",
-        type=bool,
-        default=False,
-        help="Toggle to make the commit call to the bittensor network",
-    )
-    
-    # Add argument for the model hash of the submission
-    parser.add_argument(
-        "--model_hash",
-        type=str,
-        default="d1",
-        help="Model hash of the submission",
-    )
-    
-    # Include necessary arguments for wallet and logging from the Bittensor library
-    bt.wallet.add_args(parser)
-    bt.subtensor.add_args(parser)
-    bt.logging.add_args(parser)
+        self.subtensor_network = os.getenv("SUBTENSOR_NETWORK", "finney")
+        self.subtensor_address = os.getenv(
+            "SUBTENSOR_ADDRESS", "wss://entrypoint-finney.opentensor.ai:443"
+        )
 
-    # Parse the arguments and create a configuration namespace
-    config = bt.config(parser)
-    return config
+        self.server: Optional[factory_app] = None
+        self.app: Optional[FastAPI] = None
 
-def register():
-    """Handles the registration of the model with the Bittensor network.
+        self.substrate = interface.get_substrate(
+            subtensor_network=self.subtensor_network,
+            subtensor_address=self.subtensor_address,
+        )
+        self.metagraph = Metagraph(netuid=self.netuid, substrate=self.substrate)
+        self.metagraph.sync_nodes()
 
-    This function retrieves the configuration, sets up the wallet and subtensor,
-    generates a unique hash for the model, and logs the details. If configured to 
-    be online, it commits the model's information to the Bittensor network.
+        self.post_ip_to_chain()
 
-    The function logs important information at each step to aid in debugging 
-    and provide insights into the registration process.
-    """
-    config = get_config()  # Retrieve configuration from command line arguments
-    bt.logging(config=config)  # Set up logging with the retrieved configuration
+    async def start(self) -> None:
+        """Start the miner service"""
 
-    # Initialize wallet and subtensor components
-    wallet = bt.wallet(config=config)
-    subtensor = bt.subtensor(config=config)
-
-    # Retrieve the hotkey address from the wallet
-    hotkey = wallet.hotkey.ss58_address
-    # Get model configuration details
-    namespace = config.repo_namespace
-    repo_name = config.repo_name
-    chat_template = config.chat_template
-
-    # Generate a unique entry hash for the model
-    entry_hash = str(regenerate_hash(namespace, repo_name, chat_template, hotkey))
-
-    # Create a model ID encapsulating model details
-    model_id = ModelId(
-        namespace=namespace,
-        name=repo_name,
-        chat_template=chat_template,
-        competition_id=config.competition_id,
-        hotkey=hotkey,
-        hash=entry_hash,
-    )
-    
-    # Compress the model ID into a string for submission
-    model_commit_str = model_id.to_compressed_str()
-
-    # Log important registration information
-    bt.logging.info("Registering with the following data")
-    bt.logging.info(f"Coldkey: {wallet.coldkey.ss58_address}")
-    bt.logging.info(f"Hotkey: {hotkey}")
-    bt.logging.info(f"repo_namespace: {namespace}")
-    bt.logging.info(f"repo_name: {repo_name}")
-    bt.logging.info(f"chat_template: {chat_template}")
-    bt.logging.info(f"entry_hash: {entry_hash}")
-    bt.logging.info(f"Full Model Details: {model_id}")
-    bt.logging.info(f"Subtensor Network: {subtensor.network}")
-    bt.logging.info(f"model_hash: {config.model_hash}")
-    bt.logging.info(f"String to be committed: {model_commit_str}")
-
-    # Attempt to convert the netuid from the config to an integer, using default if it fails
-    try:
-        netuid = int(config.netuid)
-    except ValueError:
-        netuid = DEFAULT_NETUID  # Fallback to default netuid if conversion fails
-    
-    # Ensure netuid is defined; default value used if provided value is zero
-    netuid = netuid or DEFAULT_NETUID  
-
-    # If online mode is enabled, attempt to commit to the network
-    if config.online:
         try:
-            subtensor.commit(wallet, netuid, model_commit_str)
-            bt.logging.info(f"Successfully committed {model_commit_str} under {hotkey} on netuid {netuid}")
-        except Exception as e:
-            print(e)  # Print exception if the commit fails
+            self.httpx_client = httpx.AsyncClient()
+            self.app = factory_app(debug=False)
+            self.register_routes()
 
-# Entry point for script execution
-if __name__ == "__main__":
-    register()
+            config = uvicorn.Config(
+                self.app, host="0.0.0.0", port=self.port, lifespan="on"
+            )
+            server = uvicorn.Server(config)
+            await server.serve()
+
+        except Exception as e:
+            logger.error(f"Failed to start miner: {str(e)}")
+            raise
+
+    def get_external_ip(self) -> str:
+        env = os.getenv("ENV", "prod").lower()
+        if env == "dev":
+            # post this to chain to mark as local
+            return "0.0.0.1"
+
+        try:
+            response = requests.get("https://api.ipify.org?format=json")
+            response.raise_for_status()
+            return response.json()["ip"]
+        except requests.RequestException as e:
+            logger.error(f"Failed to get external IP: {e}")
+            return "0.0.0.0"
+
+    def post_ip_to_chain(self) -> None:
+        node = self.node()
+        if node:
+            if node.ip != self.external_ip or node.port != self.port:
+                logger.info(
+                    f"Posting IP / Port to Chain: Old IP: {node.ip}, Old Port: {node.port}, New IP: {self.external_ip}, New Port: {self.port}"
+                )
+                try:
+                    coldkey_keypair_pub = chain_utils.load_coldkeypub_keypair(
+                        wallet_name=self.wallet_name
+                    )
+                    post_ip_to_chain.post_node_ip_to_chain(
+                        substrate=self.substrate,
+                        keypair=self.keypair,
+                        netuid=self.netuid,
+                        external_ip=self.external_ip,
+                        external_port=self.port,
+                        coldkey_ss58_address=coldkey_keypair_pub.ss58_address,
+                    )
+                    # library will log success message
+                except Exception as e:
+                    logger.error(f"Failed to post IP to chain: {e}")
+                    raise Exception("Failed to post IP / Port to chain")
+            else:
+                logger.info(
+                    f"IP / Port already posted to chain: IP: {node.ip}, Port: {node.port}"
+                )
+        else:
+            raise Exception(
+                f"Hotkey not found in metagraph.  Ensure {self.keypair.ss58_address} is registered!"
+            )
+
+    def node(self) -> Optional[Node]:
+        try:
+            nodes = self.metagraph.nodes
+            node = nodes[self.keypair.ss58_address]
+            return node
+        except Exception as e:
+            logger.error(f"Failed to get node from metagraph: {e}")
+            return None
+
+    def get_verification_tweet_id(self) -> Optional[str]:
+        """Get Verification Tweet ID For Agent Registration"""
+        verification_tweet_id = os.getenv("TWEET_VERIFICATION_ID", None)
+        return verification_tweet_id
+
+    async def stop(self) -> None:
+        """Cleanup and shutdown"""
+        if self.server:
+            await self.server.stop()
+
+    async def registration_callback(
+        self,
+        payload: RegistrationCallback = Depends(
+            partial(decrypt_general_payload, RegistrationCallback),
+        ),
+    ) -> dict:
+        """Registration Callback"""
+        try:
+            logger.info(f"Message From Validator: {payload}")
+            return {"status": "Callback received"}
+        except Exception as e:
+            logger.error(f"Error in registration callback: {str(e)}")
+            return {"status": "Error in registration callback"}
+
+    def healthcheck(self):
+        try:
+            info = {
+                "ss58_address": str(self.keypair.ss58_address),
+                "uid": str(self.metagraph.nodes[self.keypair.ss58_address].node_id),
+                "ip": str(self.metagraph.nodes[self.keypair.ss58_address].ip),
+                "port": str(self.metagraph.nodes[self.keypair.ss58_address].port),
+                "netuid": str(self.netuid),
+                "subtensor_network": str(self.subtensor_network),
+                "subtensor_address": str(self.subtensor_address),
+            }
+            return info
+        except Exception as e:
+            logger.error(f"Failed to get miner info: {str(e)}")
+            return None
+
+    def register_routes(self) -> None:
+
+        self.app.add_api_route(
+            "/healthcheck",
+            self.healthcheck,
+            methods=["GET"],
+            tags=["healthcheck"],
+        )
+
+        self.app.add_api_route(
+            "/public-encryption-key",
+            get_public_key,
+            methods=["GET"],
+            tags=["encryption"],
+        )
+
+        self.app.add_api_route(
+            "/exchange-symmetric-key",
+            exchange_symmetric_key,
+            methods=["POST"],
+            tags=["encryption"],
+        )
+
+        self.app.add_api_route(
+            "/get_verification_tweet_id",
+            self.get_verification_tweet_id,
+            methods=["GET"],
+            tags=["registration"],
+        )
+
+        self.app.add_api_route(
+            "/registration_callback",
+            self.registration_callback,
+            methods=["POST"],
+            tags=["registration"],
+            dependencies=[
+                Depends(verify_request),
+            ],
+        )
