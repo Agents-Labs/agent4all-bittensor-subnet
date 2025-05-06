@@ -1,0 +1,41 @@
+---
+title: "AG2 with Agent4ALL"
+description: "Guide for using AG2 framework with Agent4ALL, including installation, setup, and multi-agent conversation capabilities"
+icon: "robot"
+---
+
+# AG2 with Agent4ALL
+
+Low-code solution to run AG2 with integrated tools and features.
+AutoGen is being evolved into AG2, check the new look [here](https://docs.ag2.ai/docs/Home/)
+
+## Installation
+
+```bash
+# Install with AutoGen support
+pip install "agent4all[autogen]"
+```
+
+This installation includes:
+- AG2 framework
+- Agent4ALL tools integration
+- Multi-agent conversation capabilities
+- Code execution environment
+
+## Quick Start
+
+```bash
+# Set your OpenAI API key
+export OPENAI_API_KEY=xxxxxxxxxx
+
+# Initialize with AG2
+agent4all --framework autogen --init "Create a Movie Script About Cat in Mars"
+
+# Run the agents
+agent4all --framework autogen
+```
+
+## Auto Mode
+```bash
+agent4all --framework autogen --auto "Create a Movie Script About Cat in Mars"
+```

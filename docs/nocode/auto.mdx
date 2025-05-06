@@ -1,0 +1,60 @@
+---
+title: "Auto Generation Mode"
+description: "Guide to Agent4ALL's automatic agent generation feature, supporting both CrewAI and AG2 frameworks for automated task execution"
+icon: "robot"
+---
+
+Agent4ALL supports automatic agent generation with Agent4ALL Agents, CrewAI and AG2 frameworks.
+
+## Installation
+
+Choose your preferred framework:
+
+```bash
+# For Agent4ALL Agents
+pip install agent4all
+
+# For CrewAI
+pip install "agent4all[crewai]"
+
+# For AG2 (Formerly AutoGen)
+pip install "agent4all[autogen]"
+
+# For both frameworks
+pip install "agent4all[crewai,autogen]"
+```
+
+## Usage
+
+### With Agent4ALL Agents
+```bash
+agent4all --auto "create a movie script about Dog in Moon"
+```
+
+### With CrewAI
+```bash
+agent4all --framework crewai --auto "create a movie script about Dog in Moon"
+```
+
+### With AG2
+```bash
+agent4all --framework autogen --auto "create a movie script about Dog in Moon"
+```
+
+## Framework-specific Features
+
+### CrewAI
+- Task delegation capabilities
+- Sequential and parallel task execution
+- Built-in tools integration
+- Structured agent-task relationships
+
+### AG2 (Formerly AutoGen)
+- Multi-agent conversation capabilities
+- Code execution environment
+- Built-in tools integration
+- Flexible agent interactions
+
+```bash
+agent4all --auto "create a movie script about Dog in Moon"
+```

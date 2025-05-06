@@ -1,0 +1,38 @@
+---
+title: "Development Setup"
+sidebarTitle: "Development"
+description: "Set up your development environment for Agent4ALL JavaScript framework"
+icon: "code"
+---
+
+## Development Setup
+
+<Steps>
+  <Step title="Clone Repository">
+    ```bash
+    git clone https://github.com/MervinPraison/Agent4ALL.git
+    cd src/agent4all-ts
+    ```
+  </Step>
+
+  <Step title="Install Dependencies">
+    ```bash
+    npm install
+    ```
+  </Step>
+
+  <Step title="Build Package">
+    ```bash
+    npm run build
+    ```
+  </Step>
+</Steps>
+
+## Package Structure
+
+```
+src/
+├── agent/         # Agent-related interfaces and implementations
+├── task/          # Task management and execution
+├── utils/         # Utility functions and helpers
+└── types/         # TypeScript type definitions

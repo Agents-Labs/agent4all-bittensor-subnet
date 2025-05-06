@@ -1,50 +1,72 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Virtual Environment
-venv/
-ENV/
-env/
-
-# IDEs and editors
-.idea/
-.vscode/
-*.swp
-*.swo
-*~
-
-# OS specific
-.DS_Store
-Thumbs.db
-
-# Project specific
+workspace.code-workspace
+.vscode
+crewai
+.cache
+__pycache__
+chroma.sqlite3
+test
+dist
 .env
-backup.env.*
-nodes.json
-*.encrypted
-data/*
-/.bittensor
-btcli/
-bittensor/
-prompt.md
-currentwork.md
-userstories.md
+assets
+.idea
+.DS_Store
+.pytest_cache
+agent4all.egg-info
+flagged
+test.yaml
+db
+praisonai_prompt.txt
+watch.sh
+docs.sh
+other
+output
+
+.files
+threads.db
+threads.db-journal
+
+.chainlit
+!agent4all/ui/config/.chainlit
+
+site
+# Ignore Sphinx build directory
+docs/_build/
+docs/source/
+docs/build/
+
+# Ignore Sphinx cache
+docs/_build/doctrees/
+docs/_build/doctrees/*
+docs/_build/doctrees/.doctrees
+
+# Ignore Sphinx logs and local build files
+docs/_build/.buildinfo
+docs/_build/.buildinfo/*
+docs/_build/.buildinfo/.buildinfo
+
+agent4all/doc
+
+# agentops
+trained_agents_data.pkl
+agentops.log
+
+# crewAI
+crewAI
+
+# virtualenv
+.venv
+
+# Credentials
+credentials.json
+
+# node_modules
+node_modules
+
+outputs
+agents/praisonaiagents/build
+agents/praisonaiagents/dist
+agents/praisonaiagents/praisonaiagents.egg-info
+.codegpt
+.praison
+# Local Netlify folder
+.netlify
