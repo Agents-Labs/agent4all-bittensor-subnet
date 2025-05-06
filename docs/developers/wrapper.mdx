@@ -1,0 +1,85 @@
+---
+title: "Agent4ALL Package Integration"
+description: "Guide for integrating the Agent4ALL package into your Python projects, including YAML configuration and different execution modes"
+icon: "box"
+---
+
+# Include agent4all package in your project
+
+## Option 1: Using RAW YAML
+
+```python
+from agent4all import Agent4ALL
+
+# Example agent_yaml content
+agent_yaml = """
+framework: "crewai"
+topic: "Space Exploration"
+
+roles:
+  astronomer:
+    role: "Space Researcher"
+    goal: "Discover new insights about {topic}"
+    backstory: "You are a curious and dedicated astronomer with a passion for unraveling the mysteries of the cosmos."
+    tasks:
+      investigate_exoplanets:
+        description: "Research and compile information about exoplanets discovered in the last decade."
+        expected_output: "A summarized report on exoplanet discoveries, including their size, potential habitability, and distance from Earth."
+"""
+
+# Create a Agent4ALL instance with the agent_yaml content
+agent4all = Agent4ALL(agent_yaml=agent_yaml)
+
+# Run Agent4ALL
+result = agent4all.run()
+
+# Print the result
+print(result)
+```
+
+## Option 2: Using separate agents.yaml file
+
+
+Note: Please create agents.yaml file before hand. 
+
+```python
+from agent4all import Agent4ALL
+
+def basic(): # Basic Mode
+    agent4all = Agent4ALL(agent_file="agents.yaml")
+    agent4all.run()
+
+if __name__ == "__main__":
+    basic()
+```
+
+## Other options
+
+```python
+from agent4all import Agent4ALL
+
+def basic(): # Basic Mode
+    agent4all = Agent4ALL(agent_file="agents.yaml")
+    agent4all.run()
+    
+def advanced(): # Advanced Mode with options
+    agent4all = Agent4ALL(
+        agent_file="agents.yaml",
+        framework="autogen", # use AG2 framework (Formerly AutoGen)
+    )
+    agent4all.run()
+    
+def auto(): # Full Automatic Mode
+    agent4all = Agent4ALL(
+        auto="Create a movie script about car in mars",
+        framework="autogen" # use AG2 framework
+    )
+    print(agent4all.framework)
+    agent4all.run()
+
+if __name__ == "__main__":
+    basic()
+    advanced()
+    auto()
+```
+

@@ -1,0 +1,40 @@
+---
+title: "CrewAI with Agent4ALL"
+description: "Guide for using CrewAI framework with Agent4ALL, including installation, setup, and execution of agent-based tasks"
+icon: "users"
+---
+
+# CrewAI with Agent4ALL
+
+Low-code solution to run CrewAI with integrated tools and features.
+
+## Installation
+
+```bash
+# Install with CrewAI support
+pip install "agent4all[crewai]"
+```
+
+This installation includes:
+- CrewAI framework
+- Agent4ALL tools integration
+- Task delegation capabilities
+- Sequential and parallel task execution
+
+## Quick Start
+
+```bash
+# Set your OpenAI API key
+export OPENAI_API_KEY=xxxxxxxxxx
+
+# Initialize with CrewAI
+agent4all --framework crewai --init "Create a Movie Script About Cat in Mars"
+
+# Run the agents
+agent4all --framework crewai
+```
+
+## Auto Mode
+```bash
+agent4all --framework crewai --auto "Create a Movie Script About Cat in Mars"
+```

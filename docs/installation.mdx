@@ -1,0 +1,153 @@
+---
+title: Installation
+description: Set up Agent4ALL in your development environment
+icon: download
+---
+
+<RequestExample>
+```bash Code
+pip install praisonaiagents
+```
+```bash No Code
+pip install agent4all
+```
+```bash JavaScript
+npm install agent4all
+```
+```bash TypeScript
+npm install agent4all
+```
+</RequestExample>
+
+<Note>
+  **Requirements**
+  
+  - Python 3.10 or higher
+  - pip package manager
+  - Virtual environment (recommended)
+</Note>
+
+# Installing Agent4ALL
+
+Follow these steps to set up Agent4ALL in your development environment.
+<Tabs>
+  <Tab title="Code">
+
+    <Steps>
+      <Step title="Create Virtual Environment (Optional)">
+        First, create and activate a virtual environment:
+        <CodeGroup>
+        ```bash Mac/Linux
+        python -m venv agent4all-env
+        source agent4all-env/bin/activate
+        ```
+
+        ```bash Windows
+        python -m venv agent4all-env
+        .\agent4all-env\Scripts\activate
+        ```
+        </CodeGroup>
+      </Step>
+
+      <Step title="Install Agent4ALL Agents">
+        Install the core Agent4ALL Package:
+        ```bash Terminal
+        pip install praisonaiagents
+        ```
+      </Step>
+
+      <Step title="Configure Environment">
+        Set your OpenAI API key as an environment variable in your terminal:
+  ```bash Terminal
+  export OPENAI_API_KEY=your_openai_key
+  ```
+      </Step>
+
+    </Steps>
+  </Tab>
+  <Tab title="No Code">
+
+    <Steps>
+        <Step title="Create Virtual Environment (Optional)">
+        First, create and activate a virtual environment:
+        <CodeGroup>
+        ```bash Mac/Linux
+        python -m venv agent4all-env
+        source agent4all-env/bin/activate
+        ```
+
+        ```bash Windows
+        python -m venv agent4all-env
+        .\agent4all-env\Scripts\activate
+        ```
+        </CodeGroup>
+      </Step>
+        <Step title="Install Agent4ALL">
+            Install the Agent4ALL package:
+            ```bash
+            pip install agent4all
+            ```
+        </Step>
+        <Step title="Set API Key">
+            Set your OpenAI API key as an environment variable in your terminal:
+            ```bash
+            export OPENAI_API_KEY=your_openai_key
+            ```
+        </Step>
+    </Steps>
+  </Tab>
+  <Tab title="JavaScript">
+    <Steps>
+        <Step title="Install Agent4ALL">
+            Install the Agent4ALL package:
+            ```bash
+            npm install agent4all
+            ```
+        </Step>
+        <Step title="Set API Key">
+            Set your OpenAI API key as an environment variable in your terminal:
+            ```bash
+            export OPENAI_API_KEY=your_openai_key
+            ```
+        </Step>
+    </Steps>
+  </Tab>
+  <Tab title="TypeScript">
+    <Steps>
+        <Step title="Install Agent4ALL">
+            Install the Agent4ALL package:
+            ```bash
+            npm install agent4all
+            ```
+        </Step>
+        <Step title="Set API Key">
+            Set your OpenAI API key as an environment variable in your terminal:
+            ```bash
+            export OPENAI_API_KEY=your_openai_key
+            ```
+        </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+Generate your OpenAI API key from [OpenAI](https://platform.openai.com/api-keys)
+You can also use other LLM providers like Anthropic, Google, etc. Please refer to the [Models](/models) for more information.
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card
+    title="Quick Start Guide"
+    icon="bolt"
+    href="/code/quickstart"
+  >
+    Build your first AI agent
+  </Card>
+  <Card
+    title="API Reference"
+    icon="code"
+    href="/api/praisonaiagents/index"
+  >
+    Explore the API documentation
+  </Card>
+</CardGroup> 

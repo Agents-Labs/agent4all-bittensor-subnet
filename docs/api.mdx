@@ -1,0 +1,79 @@
+---
+title: "API Reference"
+description: "Complete API reference for Agent4ALL, including core modules, installation options, and framework-specific features"
+icon: "code"
+---
+
+## Core Modules
+
+### agent4all
+The main package containing core functionality.
+
+```python
+from agent4all import Agent4ALL
+```
+
+### agent4all.auto
+Automated agent generation functionality.
+
+```python
+from agent4all.auto import AutoGenerator
+```
+
+### agent4all.agents_generator
+Framework-specific agent generation and orchestration:
+- CrewAI support (requires `agent4all[crewai]`)
+- AG2 (Formerly AutoGen) support (requires `agent4all[autogen]`)
+
+```python
+from agent4all.agents_generator import AgentsGenerator
+```
+
+### agent4all.cli
+Command-line interface with framework-specific handling.
+
+```python
+from agent4all.cli import Agent4ALL
+```
+
+### agent4all.deploy
+Deployment utilities.
+
+```python
+from agent4all.deploy import CloudDeployer
+```
+
+## Installation Options
+
+```bash
+# Basic installation
+pip install agent4all
+
+# Framework-specific installations
+pip install "agent4all[crewai]"    # Install with CrewAI support
+pip install "agent4all[autogen]"   # Install with AG2 support
+pip install "agent4all[crewai,autogen]"  # Install both frameworks
+
+# Additional features
+pip install "agent4all[ui]"        # Install UI support
+pip install "agent4all[chat]"      # Install Chat interface
+pip install "agent4all[code]"      # Install Code interface
+pip install "agent4all[realtime]"  # Install Realtime voice interaction
+pip install "agent4all[call]"      # Install Call feature
+```
+
+## Framework-specific Features
+
+### CrewAI
+When installing with `pip install "agent4all[crewai]"`, you get:
+- CrewAI framework support
+- Agent4ALL tools integration
+- Task delegation capabilities
+- Sequential and parallel task execution
+
+### AG2 (Formerly AutoGen)
+When installing with `pip install "agent4all[autogen]"`, you get:
+- AG2 framework support
+- Agent4ALL tools integration
+- Multi-agent conversation capabilities
+- Code execution environment

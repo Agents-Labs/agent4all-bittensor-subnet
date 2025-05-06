@@ -1,0 +1,45 @@
+---
+title: 'API Reference'
+description: 'Agent4ALL API documentation with framework-specific details'
+icon: "book-open"
+---
+
+# API Reference
+
+This section provides detailed information about the Agent4ALL API and its framework-specific implementations.
+
+## Core Modules
+
+- [agent4all](../api/agent4all/index) - Core package functionality
+- [agent4all.auto](../api/agent4all/auto) - Automated agent generation
+- [agent4all.agents_generator](../api/agent4all/agents_generator) - Framework-specific agent generation
+- [agent4all.cli](../api/agent4all/cli) - Command-line interface
+- [agent4all.deploy](../api/agent4all/deploy) - Deployment utilities
+
+## Framework Support
+
+### CrewAI Integration
+Requires installation with:
+```bash
+pip install "agent4all[crewai]"
+```
+
+Features:
+- Task delegation
+- Sequential/parallel execution
+- Built-in tools
+- Structured workflows
+
+### AG2 (Formerly AutoGen) Integration
+Requires installation with:
+```bash
+pip install "agent4all[autogen]"
+```
+
+Features:
+- Multi-agent conversations
+- Code execution
+- Built-in tools
+- Flexible interactions
+
+For detailed API documentation of each module, please refer to the generated files in the `api` folder.
