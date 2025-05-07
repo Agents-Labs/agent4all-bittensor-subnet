@@ -1,4 +1,4 @@
-import { Agent, Agent4ALLAgents } from '../../../src/agent/simple';
+import { Agent, PraisonAIAgents } from '../../../src/agent/simple';
 
 // Create research agent
 const researchAgent = new Agent({ 
@@ -16,8 +16,8 @@ const summarizeAgent = new Agent({
     pretty: true
 });
 
-// Create Agent4ALLAgents instance
-const agents = new Agent4ALLAgents({ 
+// Create PraisonAIAgents instance
+const agents = new PraisonAIAgents({ 
     agents: [researchAgent, summarizeAgent],
     tasks: ["Research current state and future of AI with emojis", "Create executive summary with emojis"],
     process: 'sequential',  // Run agents one after another

@@ -1,4 +1,4 @@
-import { Agent, Agent4ALLAgents } from '../../../src/agent/simple';
+import { Agent, PraisonAIAgents } from '../../../src/agent/simple';
 
 async function getWeather(location: string) {
   console.log(`Getting weather for ${location}...`);
@@ -23,7 +23,7 @@ const timeAgent = new Agent({
   tools: [getTime]
 });
 
-const agents = new Agent4ALLAgents({
+const agents = new PraisonAIAgents({
   agents: [weatherAgent, timeAgent],
   tasks: [
     "Get the weather of London and express it in 5 lines with emojis",

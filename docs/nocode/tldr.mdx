@@ -1,56 +1,56 @@
 ---
 title: "TL;DR"
-description: "Quick start guide for Agent4ALL with CrewAI, AG2 (Formerly AutoGen), and UI setup instructions"
+description: "Quick start guide for PraisonAI with CrewAI, AG2 (Formerly AutoGen), and UI setup instructions"
 icon: "bolt"
 ---
 
-## Quick Start with Agent4ALL Agents
+## Quick Start with PraisonAI Agents
 
 ```bash
 # Install with CrewAI support
-pip install agent4all
+pip install praisonai
 
 # Set your API key
 export OPENAI_API_KEY="Enter your API key"
 
 # Initialize and run
-agent4all --init "create a movie script about dog in moon"
-agent4all
+praisonai --init "create a movie script about dog in moon"
+praisonai
 ```
 
 ## Quick Start with CrewAI
 
 ```bash
 # Install with CrewAI support
-pip install "agent4all[crewai]"
+pip install "praisonai[crewai]"
 
 # Set your API key
 export OPENAI_API_KEY="Enter your API key"
 
 # Initialize and run
-agent4all --framework crewai --init "create a movie script about dog in moon"
-agent4all --framework crewai
+praisonai --framework crewai --init "create a movie script about dog in moon"
+praisonai --framework crewai
 ```
 
 ## Quick Start with AG2
 
 ```bash
 # Install with AG2 support
-pip install "agent4all[autogen]"
+pip install "praisonai[autogen]"
 
 # Set your API key
 export OPENAI_API_KEY="Enter your API key"
 
 # Initialize and run
-agent4all --framework autogen --init "create a movie script about dog in moon"
-agent4all --framework autogen
+praisonai --framework autogen --init "create a movie script about dog in moon"
+praisonai --framework autogen
 ```
 
 ## User Interface
 
 ```bash
 # Install UI support
-pip install "agent4all[ui]"
+pip install "praisonai[ui]"
 
 # Set up environment
 export OPENAI_API_KEY="Enter your API key"
@@ -58,5 +58,5 @@ chainlit create-secret
 export CHAINLIT_AUTH_SECRET=xxxxxxxx
 
 # Run UI
-agent4all ui
+praisonai ui
 ```

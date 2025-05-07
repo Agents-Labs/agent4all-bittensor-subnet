@@ -1,4 +1,4 @@
-import { Agent, Agent4ALLAgents } from 'agent4all';
+import { Agent, PraisonAIAgents } from 'praisonai';
 
 // Create recipe agent
 const recipeAgent = new Agent({
@@ -33,8 +33,8 @@ Format your response in markdown.`,
   verbose: true
 });
 
-// Create Agent4ALLAgents instance with tasks
-const agents = new Agent4ALLAgents({
+// Create PraisonAIAgents instance with tasks
+const agents = new PraisonAIAgents({
   agents: [recipeAgent, blogAgent],
   tasks: [
     "Create 5 healthy and delicious recipes",

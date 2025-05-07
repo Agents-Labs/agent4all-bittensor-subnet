@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import logging
 import os
 import json
@@ -59,7 +59,7 @@ knowledge_task = Task(
 )
 
 # Create and start the agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[knowledge_agent],
     tasks=[knowledge_task],
     process="sequential",

@@ -67,7 +67,7 @@ The Hackathon Judge Streamlit App provides a user-friendly web interface for eva
 ```python
 import streamlit as st
 import os
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from pydantic import BaseModel
 from typing import List, Dict
 import tempfile
@@ -144,7 +144,7 @@ def evaluate_project(video_path: str) -> ProjectEvaluation:
     )
 
     # Initialize and run evaluation
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[hackathon_judge],
         tasks=[evaluation_task],
         process="sequential",
@@ -314,8 +314,8 @@ The Streamlit app provides an intuitive interface with the following sections:
   <Card title="Streamlit Docs" icon="book" href="https://docs.streamlit.io">
     Learn more about Streamlit features
   </Card>
-  <Card title="Agent4ALL Docs" icon="bolt" href="/introduction">
-    Explore Agent4ALL capabilities
+  <Card title="PraisonAI Docs" icon="bolt" href="/introduction">
+    Explore PraisonAI capabilities
   </Card>
   <Card title="Examples" icon="code" href="/examples">
     View more example applications

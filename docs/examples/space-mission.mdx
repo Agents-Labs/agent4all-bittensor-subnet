@@ -50,7 +50,7 @@ Space Mission Planning is a complex process that involves analyzing mission para
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -66,7 +66,7 @@ Space Mission Planning is a complex process that involves analyzing mission para
     <Step title="Create a file">
         Create a new file `app.py` with the basic setup:
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import time
 from typing import Dict, List
 import asyncio
@@ -270,7 +270,7 @@ simulation_task = Task(
 )
 
 # Create workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[mission_analyzer, resource_calculator, contingency_planner,
             resource_optimizer, scenario_simulator],
     tasks=[mission_task, resource_task, contingency_task,
@@ -305,9 +305,9 @@ if __name__ == "__main__":
 
 <CardGroup>
   <Card title="Introduction" icon="book" href="/introduction">
-    Learn more about Agent4ALL and its core concepts
+    Learn more about PraisonAI and its core concepts
   </Card>
   <Card title="Quick Start" icon="bolt" href="/quickstart">
-    Get started with the basics of Agent4ALL
+    Get started with the basics of PraisonAI
   </Card>
 </CardGroup>

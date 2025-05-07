@@ -25,7 +25,7 @@ Learn how to implement callbacks to monitor and log AI agent interactions, error
   <Tab title="Code">
     <Steps>
         <Step title="Install Package">
-            First, install the Agent4ALL Agents package:
+            First, install the PraisonAI Agents package:
             ```bash
             pip install praisonaiagents
             ```
@@ -45,7 +45,7 @@ Learn how to implement callbacks to monitor and log AI agent interactions, error
                 register_display_callback,
                 Agent, 
                 Task, 
-                Agent4ALLAgents
+                PraisonAIAgents
             )
 
             def simple_callback(message=None, response=None, **kwargs):
@@ -82,7 +82,7 @@ Learn how to implement callbacks to monitor and log AI agent interactions, error
             )
 
             # Run the agent
-            agents = Agent4ALLAgents(
+            agents = PraisonAIAgents(
                 agents=[agent],
                 tasks=[task]
             )
@@ -101,9 +101,9 @@ Learn how to implement callbacks to monitor and log AI agent interactions, error
   <Tab title="No Code">
     <Steps>
         <Step title="Install Package">
-            Install the Agent4ALL package:
+            Install the PraisonAI package:
             ```bash
-            pip install agent4all
+            pip install praisonai
             ```
         </Step>
         <Step title="Set API Key">
@@ -115,7 +115,7 @@ Learn how to implement callbacks to monitor and log AI agent interactions, error
         <Step title="Create a file">
             Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: demonstrate basic callbacks
 roles:
@@ -139,7 +139,7 @@ callbacks:
         <Step title="Start Agents">
             Type this in your terminal to run your agents:
 ```bash
-agent4all agents.yaml
+praisonai agents.yaml
 ```
         </Step>
     </Steps>
@@ -241,7 +241,7 @@ agent4all agents.yaml
   </Tab>
   <Tab title="No Code">
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: demonstrate logging callbacks
 roles:
@@ -294,7 +294,7 @@ callbacks:
   </Tab>
   <Tab title="No Code">
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: demonstrate multiple callback types
 roles:
@@ -331,7 +331,7 @@ Here's a full implementation showing all callback types and proper logging:
 <Tabs>
   <Tab title="Code">
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents, register_display_callback
+    from praisonaiagents import Agent, Task, PraisonAIAgents, register_display_callback
     import logging
     from datetime import datetime
 
@@ -389,7 +389,7 @@ Here's a full implementation showing all callback types and proper logging:
         expected_output="Demonstration complete"
     )
 
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[agent],
         tasks=[task],
         verbose=True
@@ -400,7 +400,7 @@ Here's a full implementation showing all callback types and proper logging:
   </Tab>
   <Tab title="No Code">
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: demonstrate complete callback system
 roles:
@@ -446,7 +446,7 @@ callbacks:
 <Tabs>
   <Tab title="Code">
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents, error_logs, register_display_callback
+    from praisonaiagents import Agent, Task, PraisonAIAgents, error_logs, register_display_callback
     from duckduckgo_search import DDGS
     from rich.console import Console
     import json
@@ -630,7 +630,7 @@ callbacks:
         )
 
         # Create and run agents manager
-        agents = Agent4ALLAgents(
+        agents = PraisonAIAgents(
             agents=[researcher, writer],
             tasks=[task1, task2, task3, task4],
             verbose=True,
@@ -646,7 +646,7 @@ callbacks:
   </Tab>
   <Tab title="No Code">
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: demonstrate advanced callback features
 roles:
@@ -726,7 +726,7 @@ Async callbacks allow you to handle events asynchronously, which is particularly
   </Tab>
   <Tab title="No Code">
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: demonstrate basic async callbacks
 roles:
@@ -758,7 +758,7 @@ callbacks:
   <Tab title="Code">
     ```python
     import asyncio
-    from praisonaiagents import Agent, Task, Agent4ALLAgents, register_display_callback
+    from praisonaiagents import Agent, Task, PraisonAIAgents, register_display_callback
     import logging
     from datetime import datetime
 
@@ -826,7 +826,7 @@ callbacks:
         )
 
         # Create and run agents with async support
-        agents = Agent4ALLAgents(
+        agents = PraisonAIAgents(
             agents=[agent],
             tasks=[task],
             verbose=True
@@ -840,7 +840,7 @@ callbacks:
   </Tab>
   <Tab title="No Code">
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: demonstrate complete async system
 roles:
@@ -880,7 +880,7 @@ callbacks:
 
 ## Async Display Functions
 
-Agent4ALL Agents provides several async versions of display functions, prefixed with 'a'. Here's the complete list:
+PraisonAI Agents provides several async versions of display functions, prefixed with 'a'. Here's the complete list:
 
 <CardGroup cols={2}>
   <Card title="adisplay_instruction" icon="list-check">

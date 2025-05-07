@@ -1,4 +1,4 @@
-import { Agent, Task, Agent4ALLAgents } from '../../src/agent';
+import { Agent, Task, PraisonAIAgents } from '../../src/agent';
 
 async function main() {
     // Create agents first
@@ -56,7 +56,7 @@ Format your response in markdown.`
     });
 
     // Run the tasks
-    const agent4all = new Agent4ALLAgents({
+    const praisonAI = new PraisonAIAgents({
         agents: [dietAgent, blogAgent],
         tasks: [recipeTask, blogTask],
         verbose: true,
@@ -65,7 +65,7 @@ Format your response in markdown.`
 
     try {
         console.log('Starting task-based agent example...');
-        const results = await agent4all.start();
+        const results = await praisonAI.start();
         console.log('\nFinal Results:');
         console.log('Recipe Task Results:', results[0]);
         console.log('\nBlog Task Results:', results[1]);

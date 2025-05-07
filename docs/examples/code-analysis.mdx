@@ -50,7 +50,7 @@ Code Analysis is a systematic process of evaluating source code to assess its qu
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents gitingest
         ```
@@ -66,7 +66,7 @@ Code Analysis is a systematic process of evaluating source code to assess its qu
     <Step title="Create a file">
         Create a new file `code_analysis.py` with the following code:
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from pydantic import BaseModel
 from typing import List, Dict
 from gitingest import ingest
@@ -151,7 +151,7 @@ def analyze_code(code_source: str) -> CodeAnalysisReport:
     """
     
     # Initialize and run analysis
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[code_analyzer],
         tasks=[code_analysis_task]
     )
@@ -192,10 +192,10 @@ The code analysis generates a comprehensive report with the following components
 
 <CardGroup>
   <Card title="Introduction" icon="book" href="/introduction">
-    Learn more about Agent4ALL and its core concepts
+    Learn more about PraisonAI and its core concepts
   </Card>
   <Card title="Quick Start" icon="bolt" href="/quickstart">
-    Get started with the basics of Agent4ALL
+    Get started with the basics of PraisonAI
   </Card>
   <Card title="API Reference" icon="code" href="/api-reference">
     Explore the complete API documentation

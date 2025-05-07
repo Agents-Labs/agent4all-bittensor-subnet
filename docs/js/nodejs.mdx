@@ -5,7 +5,7 @@ description: "A production-ready Multi AI Agents framework for Node.js"
 icon: "node-js"
 ---
 
-Agent4ALL is a production-ready Multi AI Agents framework for Node.js, designed to create AI Agents to automate and solve problems ranging from simple tasks to complex challenges. It provides a low-code solution to streamline the building and management of multi-agent LLM systems, emphasising simplicity, customisation, and effective human-agent collaboration.
+PraisonAI is a production-ready Multi AI Agents framework for Node.js, designed to create AI Agents to automate and solve problems ranging from simple tasks to complex challenges. It provides a low-code solution to streamline the building and management of multi-agent LLM systems, emphasising simplicity, customisation, and effective human-agent collaboration.
 
 ```mermaid
 graph LR
@@ -52,10 +52,10 @@ graph LR
       <Step title="Install Package">
         <CodeGroup>
         ```bash npm
-        npm install agent4all
+        npm install praisonai
         ```
         ```bash yarn
-        yarn add agent4all
+        yarn add praisonai
         ```
         </CodeGroup>
       </Step>
@@ -71,18 +71,18 @@ graph LR
 
 <CodeGroup>
 ```javascript Single Agent
-const { Agent } = require('agent4all');
+const { Agent } = require('praisonai');
 const agent = new Agent({ instructions: 'You are a helpful AI assistant' });
 agent.start('Write a movie script about a robot in Mars');
 ```
 
 ```javascript Multi Agents
-const { Agent, Agent4ALLAgents } = require('agent4all');
+const { Agent, PraisonAIAgents } = require('praisonai');
 
 const researchAgent = new Agent({ instructions: 'Research about AI' });
 const summariseAgent = new Agent({ instructions: 'Summarise research agent\'s findings' });
 
-const agents = new Agent4ALLAgents({ agents: [researchAgent, summariseAgent] });
+const agents = new PraisonAIAgents({ agents: [researchAgent, summariseAgent] });
 agents.start();
 ```
 </CodeGroup>
@@ -103,7 +103,7 @@ agents.start();
     Create and run a single agent to perform a specific task:
 
 ```typescript
-import { Agent } from 'agent4all';
+import { Agent } from 'praisonai';
 
 // Single agent example - Science Explainer
 const agent = new Agent({ 
@@ -129,7 +129,7 @@ agent.start("Why is the sky blue?")
     Create and run multiple agents working together:
 
 ```typescript
-import { Agent, Agent4ALLAgents } from 'agent4all';
+import { Agent, PraisonAIAgents } from 'praisonai';
 
 // Create story agent
 const storyAgent = new Agent({
@@ -146,7 +146,7 @@ const summaryAgent = new Agent({
 });
 
 // Create and start agents
-const agents = new Agent4ALLAgents({
+const agents = new PraisonAIAgents({
   agents: [storyAgent, summaryAgent],
   tasks: [
     "Write a short story about a cat",
@@ -168,7 +168,7 @@ agents.start()
     Create agents with specific tasks and dependencies:
 
 ```typescript
-import { Agent, Agent4ALLAgents } from 'agent4all';
+import { Agent, PraisonAIAgents } from 'praisonai';
 
 // Create recipe agent
 const recipeAgent = new Agent({
@@ -203,8 +203,8 @@ Format your response in markdown.`,
   verbose: true
 });
 
-// Create Agent4ALLAgents instance with tasks
-const agents = new Agent4ALLAgents({
+// Create PraisonAIAgents instance with tasks
+const agents = new PraisonAIAgents({
   agents: [recipeAgent, blogAgent],
   tasks: [
     "Create 5 healthy and delicious recipes",

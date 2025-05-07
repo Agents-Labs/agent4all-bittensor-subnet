@@ -1,4 +1,4 @@
-import { Agent } from 'agent4all';
+import { Agent } from 'praisonai';
 
 /**
  * Example of a simple agent with multiple tool calling capability

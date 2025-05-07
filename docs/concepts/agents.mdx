@@ -1,11 +1,11 @@
 ---
 title: "Agents"
-description: "Understanding Agents in Agent4ALL"
+description: "Understanding Agents in PraisonAI"
 icon: "user"
 ---
 
 # Understanding Agents
-Agents are the core building blocks of Agent4ALL. Each agent is an autonomous AI entity with specific roles, goals, and capabilities.
+Agents are the core building blocks of PraisonAI. Each agent is an autonomous AI entity with specific roles, goals, and capabilities.
 
 ```mermaid
 graph LR
@@ -94,7 +94,7 @@ graph LR
 
 <Steps>
 
-  <Step title="Install Agent4ALL">
+  <Step title="Install PraisonAI">
     Install the core package:
     ```bash Terminal
     pip install praisonaiagents
@@ -120,12 +120,12 @@ agent.start("Write a movie script about a robot in Mars")
 ```
 
 ```python Multi Agents
-from praisonaiagents import Agent, Agent4ALLAgents
+from praisonaiagents import Agent, PraisonAIAgents
 
 research_agent = Agent(instructions="Research about AI")
 summarise_agent = Agent(instructions="Summarise research agent's findings")
 
-agents = Agent4ALLAgents(agents=[research_agent, summarise_agent])
+agents = PraisonAIAgents(agents=[research_agent, summarise_agent])
 agents.start()
 ```
 </CodeGroup>
@@ -304,7 +304,7 @@ Agents now support asynchronous operations through the following methods:
 
 ```python
 import asyncio
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 
 async def main():
     # Create an async agent
@@ -326,7 +326,7 @@ async def main():
     )
 
     # Create and start agents with async support
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[async_agent],
         tasks=[async_task],
         verbose=True

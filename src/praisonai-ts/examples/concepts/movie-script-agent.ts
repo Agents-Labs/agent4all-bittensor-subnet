@@ -1,4 +1,4 @@
-import { Agent, Agent4ALLAgents } from 'agent4all';
+import { Agent, PraisonAIAgents } from 'praisonai';
 
 async function main() {
     // Create a script writing agent
@@ -20,8 +20,8 @@ Format the output in proper screenplay format.`,
         markdown: true
     });
 
-    // Create Agent4ALL instance with our agent
-    const agent4all = new Agent4ALLAgents({
+    // Create PraisonAI instance with our agent
+    const praisonAI = new PraisonAIAgents({
         agents: [scriptAgent],
         tasks: ["Write a movie script about a robot stranded on Mars"],
         verbose: true
@@ -29,7 +29,7 @@ Format the output in proper screenplay format.`,
 
     try {
         console.log('Starting script writing agent...');
-        const results = await agent4all.start();
+        const results = await praisonAI.start();
         console.log('\nMovie Script:');
         console.log(results[0]); // First result contains our script
     } catch (error) {

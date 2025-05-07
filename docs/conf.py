@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Agent4ALL'
+project = 'PraisonAI'
 copyright = '2024, Mervin Praison'
 author = 'Mervin Praison'
 release = '7'

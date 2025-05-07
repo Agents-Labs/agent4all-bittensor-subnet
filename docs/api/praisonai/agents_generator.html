@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.1">
-<title>agent4all.agents_generator API documentation</title>
+<title>praisonai.agents_generator API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
@@ -22,7 +22,7 @@ hljs.highlightAll();
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>agent4all.agents_generator</code></h1>
+<h1 class="title">Module <code>praisonai.agents_generator</code></h1>
 </header>
 <section id="section-intro">
 </section>
@@ -33,13 +33,13 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="agent4all.agents_generator.disable_crewai_telemetry"><code class="name flex">
+<dt id="praisonai.agents_generator.disable_crewai_telemetry"><code class="name flex">
 <span>def <span class="ident">disable_crewai_telemetry</span></span>(<span>)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.agents_generator.noop"><code class="name flex">
+<dt id="praisonai.agents_generator.noop"><code class="name flex">
 <span>def <span class="ident">noop</span></span>(<span>*args, **kwargs)</span>
 </code></dt>
 <dd>
@@ -50,7 +50,7 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="agent4all.agents_generator.AgentsGenerator"><code class="flex name class">
+<dt id="praisonai.agents_generator.AgentsGenerator"><code class="flex name class">
 <span>class <span class="ident">AgentsGenerator</span></span>
 <span>(</span><span>agent_file, framework, config_list, log_level=None, agent_callback=None, task_callback=None, agent_yaml=None, tools=None)</span>
 </code></dt>
@@ -343,19 +343,19 @@ tools (dict, optional): A dictionary containing the tools to be used for the age
                 
                 llm_model = details.get(&#39;llm&#39;)  # Get the llm configuration
                 if llm_model:
-                    llm = Agent4ALLModel(
+                    llm = PraisonAIModel(
                         model=llm_model.get(&#34;model&#34;, os.environ.get(&#34;MODEL_NAME&#34;, &#34;openai/gpt-4o&#34;)),
                     ).get_model()
                 else:
-                    llm = Agent4ALLModel().get_model()
+                    llm = PraisonAIModel().get_model()
 
                 function_calling_llm_model = details.get(&#39;function_calling_llm&#39;)
                 if function_calling_llm_model:
-                    function_calling_llm = Agent4ALLModel(
+                    function_calling_llm = PraisonAIModel(
                         model=function_calling_llm_model.get(&#34;model&#34;, os.environ.get(&#34;MODEL_NAME&#34;, &#34;openai/gpt-4o&#34;)),
                     ).get_model()
                 else:
-                    function_calling_llm = Agent4ALLModel().get_model()
+                    function_calling_llm = PraisonAIModel().get_model()
                 
                 agent = Agent(
                     role=role_filled, 
@@ -432,7 +432,7 @@ tools (dict, optional): A dictionary containing the tools to be used for the age
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="agent4all.agents_generator.AgentsGenerator.generate_crew_and_kickoff"><code class="name flex">
+<dt id="praisonai.agents_generator.AgentsGenerator.generate_crew_and_kickoff"><code class="name flex">
 <span>def <span class="ident">generate_crew_and_kickoff</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -453,7 +453,7 @@ config_list (list): A list of configurations for the agents.</p>
 </dl>
 <p>This function first loads the agent configuration from the specified file. It then initializes the tools required for the agents based on the specified framework. If the specified framework is "autogen", it loads the LLM configuration dynamically and creates an AssistantAgent for each role in the configuration. It then adds tools to the agents if specified in the configuration. Finally, it prepares tasks for the agents based on the configuration and initiates the tasks using the crew of agents. If the specified framework is not "autogen", it creates a crew of agents and initiates tasks based on the configuration.</p></div>
 </dd>
-<dt id="agent4all.agents_generator.AgentsGenerator.is_function_or_decorated"><code class="name flex">
+<dt id="praisonai.agents_generator.AgentsGenerator.is_function_or_decorated"><code class="name flex">
 <span>def <span class="ident">is_function_or_decorated</span></span>(<span>self, obj)</span>
 </code></dt>
 <dd>
@@ -466,7 +466,7 @@ config_list (list): A list of configurations for the agents.</p>
 <dd>True if the object is a function or has a <strong>call</strong> method, False otherwise.</dd>
 </dl></div>
 </dd>
-<dt id="agent4all.agents_generator.AgentsGenerator.load_tools_from_module"><code class="name flex">
+<dt id="praisonai.agents_generator.AgentsGenerator.load_tools_from_module"><code class="name flex">
 <span>def <span class="ident">load_tools_from_module</span></span>(<span>self, module_path)</span>
 </code></dt>
 <dd>
@@ -484,7 +484,7 @@ config_list (list): A list of configurations for the agents.</p>
 <dd>If the specified module path does not exist.</dd>
 </dl></div>
 </dd>
-<dt id="agent4all.agents_generator.AgentsGenerator.load_tools_from_module_class"><code class="name flex">
+<dt id="praisonai.agents_generator.AgentsGenerator.load_tools_from_module_class"><code class="name flex">
 <span>def <span class="ident">load_tools_from_module_class</span></span>(<span>self, module_path)</span>
 </code></dt>
 <dd>
@@ -502,7 +502,7 @@ config_list (list): A list of configurations for the agents.</p>
 <dd>If the specified module path does not exist.</dd>
 </dl></div>
 </dd>
-<dt id="agent4all.agents_generator.AgentsGenerator.load_tools_from_package"><code class="name flex">
+<dt id="praisonai.agents_generator.AgentsGenerator.load_tools_from_package"><code class="name flex">
 <span>def <span class="ident">load_tools_from_package</span></span>(<span>self, package_path)</span>
 </code></dt>
 <dd>
@@ -533,25 +533,25 @@ config_list (list): A list of configurations for the agents.</p>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="agent4all" href="index.html">agent4all</a></code></li>
+<li><code><a title="praisonai" href="index.html">praisonai</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="agent4all.agents_generator.disable_crewai_telemetry" href="#agent4all.agents_generator.disable_crewai_telemetry">disable_crewai_telemetry</a></code></li>
-<li><code><a title="agent4all.agents_generator.noop" href="#agent4all.agents_generator.noop">noop</a></code></li>
+<li><code><a title="praisonai.agents_generator.disable_crewai_telemetry" href="#praisonai.agents_generator.disable_crewai_telemetry">disable_crewai_telemetry</a></code></li>
+<li><code><a title="praisonai.agents_generator.noop" href="#praisonai.agents_generator.noop">noop</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="agent4all.agents_generator.AgentsGenerator" href="#agent4all.agents_generator.AgentsGenerator">AgentsGenerator</a></code></h4>
+<h4><code><a title="praisonai.agents_generator.AgentsGenerator" href="#praisonai.agents_generator.AgentsGenerator">AgentsGenerator</a></code></h4>
 <ul class="">
-<li><code><a title="agent4all.agents_generator.AgentsGenerator.generate_crew_and_kickoff" href="#agent4all.agents_generator.AgentsGenerator.generate_crew_and_kickoff">generate_crew_and_kickoff</a></code></li>
-<li><code><a title="agent4all.agents_generator.AgentsGenerator.is_function_or_decorated" href="#agent4all.agents_generator.AgentsGenerator.is_function_or_decorated">is_function_or_decorated</a></code></li>
-<li><code><a title="agent4all.agents_generator.AgentsGenerator.load_tools_from_module" href="#agent4all.agents_generator.AgentsGenerator.load_tools_from_module">load_tools_from_module</a></code></li>
-<li><code><a title="agent4all.agents_generator.AgentsGenerator.load_tools_from_module_class" href="#agent4all.agents_generator.AgentsGenerator.load_tools_from_module_class">load_tools_from_module_class</a></code></li>
-<li><code><a title="agent4all.agents_generator.AgentsGenerator.load_tools_from_package" href="#agent4all.agents_generator.AgentsGenerator.load_tools_from_package">load_tools_from_package</a></code></li>
+<li><code><a title="praisonai.agents_generator.AgentsGenerator.generate_crew_and_kickoff" href="#praisonai.agents_generator.AgentsGenerator.generate_crew_and_kickoff">generate_crew_and_kickoff</a></code></li>
+<li><code><a title="praisonai.agents_generator.AgentsGenerator.is_function_or_decorated" href="#praisonai.agents_generator.AgentsGenerator.is_function_or_decorated">is_function_or_decorated</a></code></li>
+<li><code><a title="praisonai.agents_generator.AgentsGenerator.load_tools_from_module" href="#praisonai.agents_generator.AgentsGenerator.load_tools_from_module">load_tools_from_module</a></code></li>
+<li><code><a title="praisonai.agents_generator.AgentsGenerator.load_tools_from_module_class" href="#praisonai.agents_generator.AgentsGenerator.load_tools_from_module_class">load_tools_from_module_class</a></code></li>
+<li><code><a title="praisonai.agents_generator.AgentsGenerator.load_tools_from_package" href="#praisonai.agents_generator.AgentsGenerator.load_tools_from_package">load_tools_from_package</a></code></li>
 </ul>
 </li>
 </ul>

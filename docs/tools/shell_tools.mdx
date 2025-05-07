@@ -7,7 +7,7 @@ icon: "terminal"
 <Note>
   **Prerequisites**
   - Python 3.10 or higher
-  - Agent4ALL Agents package installed
+  - PraisonAI Agents package installed
   - Basic understanding of shell commands
 </Note>
 
@@ -26,7 +26,7 @@ Use Shell Tools to execute shell commands with AI agents.
   <Step title="Import Components">
     Import the necessary components:
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import execute_command, list_processes, kill_process, get_system_info
     ```
   </Step>
@@ -60,7 +60,7 @@ Use Shell Tools to execute shell commands with AI agents.
   <Step title="Run Agent">
     Initialize and run the agent:
     ```python
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[shell_agent],
         tasks=[shell_task],
         process="sequential"
@@ -111,7 +111,7 @@ Use Shell Tools to execute shell commands with AI agents.
 </CardGroup>
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from praisonaiagents.tools import execute_command, list_processes, kill_process, get_system_info
 
 # Create shell agent
@@ -133,7 +133,7 @@ shell_task = Task(
 )
 
 # Run agent
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[shell_agent],
     tasks=[shell_task],
     process="sequential"
@@ -176,7 +176,7 @@ monitor_task = Task(
 )
 
 # Run agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[command_agent, monitor_agent],
     tasks=[command_task, monitor_task],
     process="sequential"
@@ -482,7 +482,7 @@ monitor_task = Task(
 )
 
 # Run workflow
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[commander, monitor],
     tasks=[command_task, monitor_task]
 )

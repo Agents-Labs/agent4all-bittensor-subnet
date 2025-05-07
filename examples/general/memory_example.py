@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import logging
 import os
 
@@ -25,7 +25,7 @@ def main():
     # else:
     #     logger.info("Creating new memory database")
     
-    # Create task config (without memory config since it's moved to Agent4ALLAgents)
+    # Create task config (without memory config since it's moved to PraisonAIAgents)
     task_config = {}
 
     # Create agents with different roles
@@ -100,8 +100,8 @@ def main():
         agent=retriever
     )
 
-    # Initialize Agent4ALLAgents with memory configuration
-    agents = Agent4ALLAgents(
+    # Initialize PraisonAIAgents with memory configuration
+    agents = PraisonAIAgents(
         agents=[researcher, retriever],
         tasks=[store_task, verify_task, query_task, query_both_task],
         verbose=True,  # Use same verbose level as memory
@@ -114,7 +114,7 @@ def main():
         }
     )
 
-    # agents = Agent4ALLAgents(
+    # agents = PraisonAIAgents(
     #     agents=[researcher, retriever],
     #     tasks=[store_task, verify_task, query_task, query_both_task],
     #     verbose=True,  # Use same verbose level as memory

@@ -50,7 +50,7 @@ Hackathon Project Evaluation is an automated process for assessing hackathon pro
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents opencv-python moviepy
         ```
@@ -66,7 +66,7 @@ Hackathon Project Evaluation is an automated process for assessing hackathon pro
     <Step title="Create a file">
         Create a new file `hackathon_judge.py` with the following code:
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from pydantic import BaseModel
 from typing import List, Dict
 import os
@@ -132,7 +132,7 @@ def evaluate_project(video_path: str) -> ProjectEvaluation:
     )
 
     # Initialize and run evaluation
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[hackathon_judge],
         tasks=[evaluation_task],
         process="sequential",
@@ -254,10 +254,10 @@ The hackathon project evaluation generates a comprehensive report with the follo
 
 <CardGroup>
   <Card title="Introduction" icon="book" href="/introduction">
-    Learn more about Agent4ALL and its core concepts
+    Learn more about PraisonAI and its core concepts
   </Card>
   <Card title="Quick Start" icon="bolt" href="/quickstart">
-    Get started with the basics of Agent4ALL
+    Get started with the basics of PraisonAI
   </Card>
   <Card title="API Reference" icon="code" href="/api-reference">
     Explore the complete API documentation

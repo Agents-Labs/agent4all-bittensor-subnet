@@ -20,7 +20,7 @@ We'll create a content creation system with three specialized agents:
 First, let's import the necessary modules and set up our environment:
 
 ```python
-from praisonaiagents import Agent, Agent4ALLAgents
+from praisonaiagents import Agent, PraisonAIAgents
 
 # Make sure your API key is set in your environment:
 # export OPENAI_API_KEY=your_openai_key
@@ -80,7 +80,7 @@ Now, let's combine these agents into a multi-agent system:
 
 ```python
 # Create a multi-agent system
-content_team = Agent4ALLAgents(
+content_team = PraisonAIAgents(
     agents=[research_agent, writing_agent, editing_agent]
 )
 ```

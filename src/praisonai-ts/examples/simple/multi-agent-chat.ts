@@ -1,4 +1,4 @@
-import { Agent, Agent4ALLAgents } from 'agent4all';
+import { Agent, PraisonAIAgents } from 'praisonai';
 
 // Create research agent
 const researchAgent = new Agent({
@@ -30,8 +30,8 @@ Here is the research to summarize:
   verbose: true
 });
 
-// Create Agent4ALLAgents instance
-const agents = new Agent4ALLAgents({
+// Create PraisonAIAgents instance
+const agents = new PraisonAIAgents({
   agents: [researchAgent, summarizeAgent],
   tasks: ["Research current state and future of AI", "Create executive summary"],
   verbose: true

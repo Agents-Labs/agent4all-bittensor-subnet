@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import time
 from typing import Dict, List
 
@@ -86,7 +86,7 @@ strategy_task = Task(
 )
 
 # Create workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[monitor_agent, impact_analyzer, strategy_generator],
     tasks=[monitoring_task, impact_task, strategy_task],
     process="workflow",

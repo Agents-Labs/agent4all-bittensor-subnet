@@ -36,7 +36,7 @@ async def main():
         await wrapper.connect_to_server(
             command="python",
             args=[
-                "/Users/praison/agent4all-package/src/agent4all-agents/mcp_test_server.py",
+                "/Users/praison/praisonai-package/src/praisonai-agents/mcp_test_server.py",
             ]
         )
         

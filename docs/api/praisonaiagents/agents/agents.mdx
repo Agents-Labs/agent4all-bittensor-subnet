@@ -23,7 +23,7 @@ A Pydantic model for handling loop items.
 - `items: List[Any]` - List of items to loop through
 - `model_config` - Model configuration
 
-### Agent4ALLAgents
+### PraisonAIAgents
 The main class for managing agents and tasks execution.
 
 #### Parameters
@@ -61,10 +61,10 @@ The main class for managing agents and tasks execution.
 - `arun_all_tasks(self)` - Async version of run_all_tasks
 
 #### Async Support
-The Agent4ALLAgents class provides comprehensive async support through the following methods:
+The PraisonAIAgents class provides comprehensive async support through the following methods:
 
 ```python
-class Agent4ALLAgents:
+class PraisonAIAgents:
     async def astart(self):
         """Async version of start method"""
         await self.arun_all_tasks()
@@ -90,7 +90,7 @@ Example usage:
 ```python
 async def main():
     # Initialize agents and tasks
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[async_agent1, async_agent2],
         tasks=[async_task1, async_task2],
         process="workflow"

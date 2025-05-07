@@ -1,11 +1,11 @@
-# Agent4ALL Tool Registration Examples
+# PraisonAI Tool Registration Examples
 
-This document demonstrates the three different ways to register tool functions in Agent4ALL.
+This document demonstrates the three different ways to register tool functions in PraisonAI.
 
 ## Method 1: Using the `tools` array with function objects directly
 
 ```typescript
-import { Agent } from 'agent4all';
+import { Agent } from 'praisonai';
 
 // Define the functions directly
 async function getWeather(location: string) {
@@ -34,7 +34,7 @@ agent.start("What's the weather and time in Paris, France?");
 ## Method 2: Using the `toolFunctions` object with name-function pairs
 
 ```typescript
-import { Agent } from 'agent4all';
+import { Agent } from 'praisonai';
 
 // Define the functions directly
 async function getWeather(location: string) {
@@ -66,7 +66,7 @@ agent.start("What's the weather and time in Paris, France?");
 ## Method 3: Using the `tools` array with pre-defined tool definitions
 
 ```typescript
-import { Agent } from 'agent4all';
+import { Agent } from 'praisonai';
 
 // Define the functions
 async function getWeather(location: string) {
@@ -81,7 +81,7 @@ async function getTime(location: string) {
 }
 
 // Register functions globally
-import { registerFunction } from 'agent4all';
+import { registerFunction } from 'praisonai';
 registerFunction('get_weather', getWeather);
 registerFunction('get_time', getTime);
 
@@ -139,7 +139,7 @@ agent.start("What's the weather and time in Paris, France?");
 You can also combine these approaches as needed:
 
 ```typescript
-import { Agent } from 'agent4all';
+import { Agent } from 'praisonai';
 
 // Define the functions
 async function getWeather(location: string) {
@@ -173,7 +173,7 @@ const calculatorTool = {
 };
 
 // Register the calculator function globally
-import { registerFunction } from 'agent4all';
+import { registerFunction } from 'praisonai';
 registerFunction('calculate', async (expression: string) => {
   console.log(`Calculating ${expression}...`);
   // Simple eval for demonstration purposes only

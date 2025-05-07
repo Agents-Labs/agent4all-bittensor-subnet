@@ -1,6 +1,6 @@
 ---
-title: "Agent4ALL Code"
-description: "Guide to Agent4ALL's code interface for interacting with your codebase using AI, including file management, model configuration, and advanced features"
+title: "PraisonAI Code"
+description: "Guide to PraisonAI's code interface for interacting with your codebase using AI, including file management, model configuration, and advanced features"
 icon: "code"
 ---
 
@@ -14,7 +14,7 @@ icon: "code"
   ></iframe>
 </div>
 
-Agent4ALL Code helps you to interact with your whole codebase using the power of AI.
+PraisonAI Code helps you to interact with your whole codebase using the power of AI.
 
 ## Different User Interfaces:
 
@@ -26,7 +26,7 @@ Agent4ALL Code helps you to interact with your whole codebase using the power of
 
 ## Table of Contents
 
-- [Install Agent4ALL Code](#install-agent4all-code)
+- [Install PraisonAI Code](#install-praisonai-code)
 - [Other Models](#other-models)
 - [To Use Gemini 1.5](#to-use-gemini-15)
 - [Ignore Files](#ignore-files)
@@ -37,11 +37,11 @@ Agent4ALL Code helps you to interact with your whole codebase using the power of
 - [Include Files](#include-files-praisoninclude)
 - [Set Max Tokens](#set-max-tokens)
 
-## Install Agent4ALL Code
+## Install PraisonAI Code
 
 1. 
 ```bash
-pip install "agent4all[code]"
+pip install "praisonai[code]"
 ```
 
 2. 
@@ -51,7 +51,7 @@ export OPENAI_API_KEY=xxxxxxxx
 
 3. 
 ```bash
-agent4all code
+praisonai code
 ```
 
 4. Username and Password will be asked for the first time. `admin` is the default username and password.
@@ -67,7 +67,7 @@ agent4all code
 ## To Use Gemini 1.5
 
 * ```export GEMINI_API_KEY=xxxxxxxxx```
-* ```agent4all code```
+* ```praisonai code```
 * Set Model name to be ```gemini/gemini-1.5-flash``` in the settings
 
 ## Ignore Files
@@ -178,7 +178,7 @@ or
 
 ### Internet Search
 
-Agent4ALL Code now includes internet search capabilities using Crawl4AI and Tavily. This feature allows you to retrieve up-to-date information and code snippets during your coding sessions, enhancing your ability to find relevant programming information and examples.
+PraisonAI Code now includes internet search capabilities using Crawl4AI and Tavily. This feature allows you to retrieve up-to-date information and code snippets during your coding sessions, enhancing your ability to find relevant programming information and examples.
 
 To use this feature:
 1. Ask a question or request information about a specific coding topic
@@ -187,14 +187,14 @@ To use this feature:
 
 ### Vision Language Model (VLM) Support
 
-While primarily designed for code interactions, Agent4ALL Code also supports Vision Language Model capabilities. This feature can be particularly useful when dealing with visual aspects of programming, such as UI design, data visualization, or understanding code structure through diagrams.
+While primarily designed for code interactions, PraisonAI Code also supports Vision Language Model capabilities. This feature can be particularly useful when dealing with visual aspects of programming, such as UI design, data visualization, or understanding code structure through diagrams.
 
 To use this feature:
 1. Upload an image related to your coding query (e.g., a screenshot of a UI, a flowchart, or a code snippet image)
 2. Ask questions or request analysis based on the uploaded image
 3. The VLM will process the image and provide insights or answers based on its visual content, helping you understand or implement the visual concepts in your code
 
-These new features significantly expand the capabilities of Agent4ALL Code, allowing for more comprehensive and up-to-date coding assistance.
+These new features significantly expand the capabilities of PraisonAI Code, allowing for more comprehensive and up-to-date coding assistance.
 
 ## Local Docker Development with Live Reload
 
@@ -208,7 +208,7 @@ To facilitate local development with live reload, you can use Docker. Follow the
 
     COPY . .
 
-    RUN pip install flask agent4all==2.0.18 watchdog
+    RUN pip install flask praisonai==2.0.18 watchdog
 
     EXPOSE 5555
 

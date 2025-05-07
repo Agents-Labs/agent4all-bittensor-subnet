@@ -1,13 +1,13 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Agent4ALL Documentation",
+  "name": "PraisonAI Documentation",
   "logo": {
-    "light": "/images/agent4all-logo-large-dark.png",
-    "dark": "/images/agent4all-logo-large-light.png",
+    "light": "/images/praisonai-logo-large-dark.png",
+    "dark": "/images/praisonai-logo-large-light.png",
     "href": "/"
   },
   "layout": "sidenav",
-  "favicon": "/images/agent4all-android-chrome-192x192.png",
+  "favicon": "/images/praisonai-android-chrome-192x192.png",
   "sidebar": {
     "items": "border"
   },
@@ -34,12 +34,12 @@
   "topbarLinks": [
     {
       "name": "Community",
-      "url": "https://github.com/MervinPraison/Agent4ALL/discussions"
+      "url": "https://github.com/MervinPraison/PraisonAI/discussions"
     }
   ],
   "topbarCtaButton": {
     "type": "github",
-    "url": "https://github.com/MervinPraison/Agent4ALL"
+    "url": "https://github.com/MervinPraison/PraisonAI"
   },
   "codeBlock": {
     "mode": "auto"
@@ -411,7 +411,7 @@
     }
   ],
   "footerSocials": {
-    "github": "https://github.com/MervinPraison/Agent4ALL",
+    "github": "https://github.com/MervinPraison/PraisonAI",
     "x": "https://x.com/MervinPraison",
     "youtube": "https://youtube.com/@MervinPraison"
   },
@@ -422,11 +422,11 @@
         "links": [
           {
             "label": "GitHub",
-            "url": "https://github.com/MervinPraison/Agent4ALL"
+            "url": "https://github.com/MervinPraison/PraisonAI"
           },
           {
             "label": "Documentation",
-            "url": "https://docs.agent4all.com"
+            "url": "https://docs.praisonai.com"
           }
         ]
       },
@@ -435,7 +435,7 @@
         "links": [
           {
             "label": "Discussions",
-            "url": "https://github.com/MervinPraison/Agent4ALL/discussions"
+            "url": "https://github.com/MervinPraison/PraisonAI/discussions"
           },
           {
             "label": "Twitter",

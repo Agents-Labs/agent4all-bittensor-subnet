@@ -1,10 +1,10 @@
 ---
-title: "Reddit Agent4ALL Integration"
-description: "Guide for integrating Reddit search capabilities with Agent4ALL agents, including API setup and configuration"
+title: "Reddit PraisonAI Integration"
+description: "Guide for integrating Reddit search capabilities with PraisonAI agents, including API setup and configuration"
 icon: "reddit"
 ---
 
-# Reddit Agent4ALL Integration
+# Reddit PraisonAI Integration
 
 ```bash
 export REDDIT_USER_AGENT=[USER]
@@ -15,7 +15,7 @@ export REDDIT_CLIENT_ID=xxxxxx
 [USER] in this format script:APP:v1.0(by/u/USERNAME)
 
 ```bash
-pip install agent4all langchain_community praw
+pip install praisonai langchain_community praw
 ```
 
 ```bash
@@ -38,14 +38,14 @@ agent.start("Search Reddit for information about the latest AI advancements in s
 ### Multi Agents
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from langchain_community.tools.reddit_search.tool import RedditSearchRun
 
 agent = Agent(name="RedditSearchAgent",instructions="Search Reddit for information", tools=[RedditSearchRun],)
 
 task = Task(description="Search Reddit for information about the latest AI news in subreddit all", agent=agent)
 
-agents = Agent4ALLAgents(agents=[agent],tasks=[task])
+agents = PraisonAIAgents(agents=[agent],tasks=[task])
 
 agents.start()
 ```

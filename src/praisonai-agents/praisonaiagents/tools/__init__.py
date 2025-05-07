@@ -1,4 +1,4 @@
-"""Tools package for Agent4ALL Agents"""
+"""Tools package for PraisonAI Agents"""
 from importlib import import_module
 from typing import Any
 

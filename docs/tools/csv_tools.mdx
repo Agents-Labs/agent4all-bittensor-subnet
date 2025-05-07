@@ -7,7 +7,7 @@ icon: "file-csv"
 <Note>
   **Prerequisites**
   - Python 3.10 or higher
-  - Agent4ALL Agents package installed
+  - PraisonAI Agents package installed
   - `pandas` package installed
 </Note>
 
@@ -26,7 +26,7 @@ Use CSV Tools to read, write, and manipulate CSV files with AI agents.
   <Step title="Import Components">
     Import the necessary components:
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import read_csv, write_csv, merge_csv
     ```
   </Step>
@@ -60,7 +60,7 @@ Use CSV Tools to read, write, and manipulate CSV files with AI agents.
   <Step title="Run Agent">
     Initialize and run the agent:
     ```python
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[csv_agent],
         tasks=[csv_task],
         process="sequential"
@@ -250,7 +250,7 @@ Errors are logged and returned in a consistent format:
 ### Basic CSV Processing Agent
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from praisonaiagents.tools import read_csv, write_csv, merge_csv
 
 # Create CSV agent
@@ -272,7 +272,7 @@ csv_task = Task(
 )
 
 # Run agent
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[csv_agent],
     tasks=[csv_task],
     process="sequential"
@@ -315,7 +315,7 @@ analysis_task = Task(
 )
 
 # Run agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[processor_agent, analysis_agent],
     tasks=[processing_task, analysis_task],
     process="sequential"
@@ -378,7 +378,7 @@ analyze_task = Task(
 )
 
 # Run workflow
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[processor, analyzer],
     tasks=[process_task, analyze_task]
 )

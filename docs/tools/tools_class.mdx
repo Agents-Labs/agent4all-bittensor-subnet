@@ -24,7 +24,7 @@ A workflow demonstrating how to create and use class-based tools that can be int
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -41,7 +41,7 @@ A workflow demonstrating how to create and use class-based tools that can be int
     <Step title="Create a file">
         Create a new file `app.py` with the basic setup:
         ```python
-        from praisonaiagents import Agent, Task, Agent4ALLAgents
+        from praisonaiagents import Agent, Task, PraisonAIAgents
         import os
         import requests
         from typing import Any, Dict, List, Optional
@@ -127,7 +127,7 @@ A workflow demonstrating how to create and use class-based tools that can be int
         )
 
         # Create and start the workflow
-        agents = Agent4ALLAgents(
+        agents = PraisonAIAgents(
             agents=[agent],
             tasks=[task],
             verbose=True

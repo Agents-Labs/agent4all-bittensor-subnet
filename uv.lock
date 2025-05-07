@@ -3078,7 +3078,7 @@ wheels = [
 ]
 
 [[package]]
-name = "agent4all"
+name = "praisonai"
 version = "2.1.1"
 source = { editable = "." }
 dependencies = [
@@ -3104,7 +3104,7 @@ api = [
 ]
 autogen = [
     { name = "crewai" },
-    { name = "agent4all-tools" },
+    { name = "praisonai-tools" },
     { name = "pyautogen" },
 ]
 call = [
@@ -3145,7 +3145,7 @@ cohere = [
 ]
 crewai = [
     { name = "crewai" },
-    { name = "agent4all-tools" },
+    { name = "praisonai-tools" },
 ]
 google = [
     { name = "langchain-google-genai" },
@@ -3216,8 +3216,8 @@ requires-dist = [
     { name = "playwright", marker = "extra == 'chat'", specifier = ">=1.47.0" },
     { name = "playwright", marker = "extra == 'code'", specifier = ">=1.47.0" },
     { name = "plotly", marker = "extra == 'realtime'", specifier = ">=5.24.0" },
-    { name = "agent4all-tools", marker = "extra == 'autogen'", specifier = ">=0.0.7" },
-    { name = "agent4all-tools", marker = "extra == 'crewai'", specifier = ">=0.0.7" },
+    { name = "praisonai-tools", marker = "extra == 'autogen'", specifier = ">=0.0.7" },
+    { name = "praisonai-tools", marker = "extra == 'crewai'", specifier = ">=0.0.7" },
     { name = "praisonaiagents", specifier = ">=0.0.71" },
     { name = "pyautogen", marker = "extra == 'autogen'", specifier = ">=0.2.19" },
     { name = "pydantic", marker = "extra == 'chat'", specifier = "<=2.10.1" },
@@ -3245,7 +3245,7 @@ requires-dist = [
 ]
 
 [[package]]
-name = "agent4all-tools"
+name = "praisonai-tools"
 version = "0.0.8"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [

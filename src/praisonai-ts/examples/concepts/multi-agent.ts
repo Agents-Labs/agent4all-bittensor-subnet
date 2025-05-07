@@ -1,4 +1,4 @@
-import { Agent, Agent4ALLAgents } from 'agent4all';
+import { Agent, PraisonAIAgents } from 'praisonai';
 
 async function main() {
     // Create multiple agents with different roles
@@ -21,7 +21,7 @@ async function main() {
     });
 
     // Run the agents in sequence
-    const agent4all = new Agent4ALLAgents({
+    const praisonAI = new PraisonAIAgents({
         agents: [researchAgent, summaryAgent, recommendationAgent],
         tasks: [
             "Research and analyze current renewable energy technologies and their implementation.",
@@ -34,7 +34,7 @@ async function main() {
 
     try {
         console.log('Starting multi-agent example...');
-        const results = await agent4all.start();
+        const results = await praisonAI.start();
         console.log('\nFinal Results:');
         console.log('Research Results:', results[0]);
         console.log('\nSummary Results:', results[1]);

@@ -50,7 +50,7 @@ Tools are functions that agents can use to interact with external systems and pe
 <Tab title="Code">
 <Steps>
 
-  <Step title="Install Agent4ALL">
+  <Step title="Install PraisonAI">
 Install the core package:
 ```bash Terminal
 pip install praisonaiagents duckduckgo-search
@@ -95,7 +95,7 @@ search_agent.start("Search about AI job trends in 2025")
 ```
 
 ```python Multiple Agents
-from praisonaiagents import Agent, Agent4ALLAgents
+from praisonaiagents import Agent, PraisonAIAgents
 from duckduckgo_search import DDGS
 
 # 1. Define the tool
@@ -121,7 +121,7 @@ blog_agent = Agent(
 )
 
 # 3. Start Agents
-agents = Agent4ALLAgents(agents=[search_agent, blog_agent])
+agents = PraisonAIAgents(agents=[search_agent, blog_agent])
 agents.start()
 ```
 </CodeGroup>
@@ -138,10 +138,10 @@ python app.py
 </Tab>
 <Tab title="No Code">
 <Steps>
-<Step title="Install Agent4ALL">
+<Step title="Install PraisonAI">
 Install the core package and duckduckgo_search package:
 ```bash Terminal
-pip install agent4all duckduckgo_search
+pip install praisonai duckduckgo_search
 ```
 </Step>
 <Step title="Create Custom Tool">
@@ -173,7 +173,7 @@ def internet_search_tool(query: str) -> List[Dict]:
 
 Create a new file `agents.yaml` with the following content:
 ```yaml
-framework: agent4all
+framework: praisonai
 topic: create movie script about cat in mars
 roles:
   scriptwriter:
@@ -195,7 +195,7 @@ roles:
 
 Execute your script:
 ```bash Terminal
-agent4all agents.yaml
+praisonai agents.yaml
 ```
 </Step>
 </Steps>
@@ -243,7 +243,7 @@ Assign the tool to an agent
 <Tab title="Code">
 <Steps>
 
-  <Step title="Install Agent4ALL">
+  <Step title="Install PraisonAI">
 Install the core package:
 ```bash Terminal
 pip install praisonaiagents duckduckgo-search
@@ -261,7 +261,7 @@ pip install praisonaiagents duckduckgo-search
   <Step title="Create Agent with Tool">
     Create `app.py`
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from duckduckgo_search import DDGS
 
 # 1. Tool Implementation
@@ -295,7 +295,7 @@ collect_task = Task(
 )
 
 # 4. Start Agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[data_agent],
     tasks=[collect_task],
     process="sequential"
@@ -316,10 +316,10 @@ python app.py
 </Tab>
 <Tab title="No Code">
 <Steps>
-<Step title="Install Agent4ALL">
+<Step title="Install PraisonAI">
 Install the core package and duckduckgo_search package:
 ```bash Terminal
-pip install agent4all duckduckgo_search
+pip install praisonai duckduckgo_search
 ```
 </Step>
 <Step title="Create Custom Tool">
@@ -351,7 +351,7 @@ def internet_search_tool(query: str) -> List[Dict]:
 
 Create a new file `agents.yaml` with the following content:
 ```yaml
-framework: agent4all
+framework: praisonai
 topic: create movie script about cat in mars
 roles:
   scriptwriter:
@@ -373,14 +373,14 @@ roles:
 
 Execute your script:
 ```bash Terminal
-agent4all agents.yaml
+praisonai agents.yaml
 ```
 </Step>
 </Steps>
 </Tab>
 </Tabs>
 
-## In-build Tools in Agent4ALL
+## In-build Tools in PraisonAI
 
 <CardGroup cols={2}>
   <Card title="Search Tools" icon="magnifying-glass" href="/tools/search">
@@ -620,7 +620,7 @@ def advanced_tool(data: Dict) -> Dict:
 ## Best Practices Summary
 
 <Note>
-Following these best practices will help you create robust, efficient, and secure tools in Agent4ALL.
+Following these best practices will help you create robust, efficient, and secure tools in PraisonAI.
 </Note>
 
 <CardGroup cols={1}>

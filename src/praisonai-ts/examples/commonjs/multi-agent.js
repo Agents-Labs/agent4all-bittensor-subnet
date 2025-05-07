@@ -1,4 +1,4 @@
-const { Agent4ALLAgents, Agent } = require('agent4all');
+const { PraisonAIAgents, Agent } = require('praisonai');
 
 // Create a story agent and a summary agent
 const storyAgent = new Agent({
@@ -12,7 +12,7 @@ const summaryAgent = new Agent({
 });
 
 // Create multi-agent system
-const agents = new Agent4ALLAgents({
+const agents = new PraisonAIAgents({
   agents: [storyAgent, summaryAgent],
   tasks: [
     "Create a short story about a magical forest",

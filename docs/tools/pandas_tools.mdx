@@ -7,7 +7,7 @@ icon: "table"
 <Note>
   **Prerequisites**
   - Python 3.10 or higher
-  - Agent4ALL Agents package installed
+  - PraisonAI Agents package installed
   - `pandas` package installed
 </Note>
 
@@ -26,7 +26,7 @@ Use Pandas Tools to manipulate and analyze data with AI agents.
   <Step title="Import Components">
     Import the necessary components:
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import read_csv, read_excel, write_csv, write_excel, filter_data, get_summary, group_by, pivot_table
     ```
   </Step>
@@ -60,7 +60,7 @@ Use Pandas Tools to manipulate and analyze data with AI agents.
   <Step title="Run Agent">
     Initialize and run the agent:
     ```python
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[data_agent],
         tasks=[analysis_task],
         process="sequential"
@@ -450,7 +450,7 @@ write_csv(demographics, "demographic_analysis.csv")
 ### Basic Data Analysis Agent
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from praisonaiagents.tools import read_csv, filter_data, get_summary, group_by
 
 # Create data analysis agent
@@ -472,7 +472,7 @@ analysis_task = Task(
 )
 
 # Run agent
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[data_agent],
     tasks=[analysis_task],
     process="sequential"
@@ -515,7 +515,7 @@ analysis_task = Task(
 )   
 
 # Run agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[io_agent, analysis_agent],
     tasks=[io_task, analysis_task],
     process="sequential"
@@ -578,7 +578,7 @@ analysis_task = Task(
 )
 
 # Run workflow
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[prep_agent, analyst],
     tasks=[prep_task, analysis_task]
 )

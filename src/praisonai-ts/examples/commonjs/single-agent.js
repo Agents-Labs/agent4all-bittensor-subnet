@@ -1,4 +1,4 @@
-const { Agent } = require('agent4all');
+const { Agent } = require('praisonai');
 
 // Create a simple math tutor agent
 const agent = new Agent({ 

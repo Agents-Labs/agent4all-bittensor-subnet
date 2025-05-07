@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from datetime import datetime
 import asyncio
 
@@ -75,7 +75,7 @@ aggregate_task = Task(
 async def main():
 
     # Create workflow manager
-    workflow = Agent4ALLAgents(
+    workflow = PraisonAIAgents(
         agents=[agent1, agent2, agent3, aggregator],
         tasks=[task1, task2, task3, aggregate_task],
         process="workflow"

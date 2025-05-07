@@ -30,7 +30,7 @@ Async AI Agents allow you to run AI tasks asynchronously, improving performance 
   <Tab title="Code">
     <Steps>
       <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -47,7 +47,7 @@ Async AI Agents allow you to run AI tasks asynchronously, improving performance 
         Create a new file `app.py` with the basic setup:
         ```python
         import asyncio
-        from praisonaiagents import Agent, Task, Agent4ALLAgents
+        from praisonaiagents import Agent, Task, PraisonAIAgents
 
         # Create an agent
         agent = Agent(
@@ -67,7 +67,7 @@ Async AI Agents allow you to run AI tasks asynchronously, improving performance 
         )
 
         # Create agents manager
-        agents = Agent4ALLAgents(
+        agents = PraisonAIAgents(
             agents=[agent],
             tasks=[task],
             process="sequential"
@@ -95,9 +95,9 @@ Async AI Agents allow you to run AI tasks asynchronously, improving performance 
   <Tab title="No Code">
     <Steps>
       <Step title="Install Package">
-        Install the Agent4ALL package:
+        Install the PraisonAI package:
         ```bash
-        pip install agent4all
+        pip install praisonai
         ```
       </Step>
       <Step title="Set API Key">
@@ -109,7 +109,7 @@ Async AI Agents allow you to run AI tasks asynchronously, improving performance 
       <Step title="Create Project">
         Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: async operations
 roles:
@@ -128,7 +128,7 @@ roles:
       <Step title="Run the Program">
         Run your async AI agent:
         ```bash
-        agent4all agents.yaml
+        praisonai agents.yaml
         ```
       </Step>
     </Steps>
@@ -201,7 +201,7 @@ roles:
 import asyncio
 import time
 from typing import List, Dict
-from praisonaiagents import Agent, Task, Agent4ALLAgents, TaskOutput
+from praisonaiagents import Agent, Task, PraisonAIAgents, TaskOutput
 from duckduckgo_search import DDGS
 from pydantic import BaseModel
 
@@ -302,7 +302,7 @@ async_task = Task(
 async def run_single_task():
     """Run single async task"""
     print("\nRunning Single Async Task...")
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[async_agent],
         tasks=[async_task],
         verbose=1,
@@ -385,8 +385,8 @@ Present the summary in a clear, structured format with sections for findings, pa
         callback=async_callback
     )
     
-    # Create a single Agent4ALLAgents instance with both agents
-    agents = Agent4ALLAgents(
+    # Create a single PraisonAIAgents instance with both agents
+    agents = PraisonAIAgents(
         agents=[async_agent, summary_agent],  # Include both agents
         tasks=parallel_tasks + [summary_task],  # Include all tasks
         verbose=1,
@@ -470,7 +470,7 @@ async def process_multiple_tasks():
   </Tab>
   <Tab title="No Code">
     ```yaml
-    framework: agent4all
+    framework: praisonai
     process: sequential
     topic: async operations
     roles:

@@ -1,6 +1,6 @@
 import unittest
 import subprocess
-from agent4all.cli import Agent4ALL
+from praisonai.cli import PraisonAI
 from .advanced_example import advanced
 from .basic_example import main
 from .auto_example import auto
@@ -10,45 +10,45 @@ from .auto_example import auto
 import collections.abc
 collections.MutableMapping = collections.abc.MutableMapping
 
-class TestAgent4ALLFramework(unittest.TestCase):
+class TestPraisonAIFramework(unittest.TestCase):
     def test_main_with_agents_advanced(self):
-        agent4all = Agent4ALL(agent_file='tests/agents-advanced.yaml')
-        result = agent4all.run()
+        praisonai = PraisonAI(agent_file='tests/agents-advanced.yaml')
+        result = praisonai.run()
         self.assertIn('Task Output', result)
         
     def test_main_with_autogen_framework(self):
-        agent4all = Agent4ALL(agent_file='tests/autogen-agents.yaml')
-        result = agent4all.run()
+        praisonai = PraisonAI(agent_file='tests/autogen-agents.yaml')
+        result = praisonai.run()
         self.assertTrue('Task Output' in result or '### Output ###' in result)
 
     def test_main_with_custom_framework(self):
-        agent4all = Agent4ALL(agent_file='tests/crewai-agents.yaml')
-        result = agent4all.run()
+        praisonai = PraisonAI(agent_file='tests/crewai-agents.yaml')
+        result = praisonai.run()
         self.assertIn('Task Output', result)
 
     def test_main_with_internet_search_tool(self):
-        agent4all = Agent4ALL(agent_file='tests/search-tool-agents.yaml')
-        result = agent4all.run()
+        praisonai = PraisonAI(agent_file='tests/search-tool-agents.yaml')
+        result = praisonai.run()
         self.assertIn('Task Output', result)
 
     def test_main_with_built_in_tool(self):
-        agent4all = Agent4ALL(agent_file='tests/inbuilt-tool-agents.yaml')
-        result = agent4all.run()
+        praisonai = PraisonAI(agent_file='tests/inbuilt-tool-agents.yaml')
+        result = praisonai.run()
         self.assertIn('Task Output', result)
     
 
-class TestAgent4ALLCommandLine(unittest.TestCase):
+class TestPraisonAICommandLine(unittest.TestCase):
     def run_command(self, command):
         result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True, text=True)
         return result.stdout
 
     def test_praisonai_command(self):
-        command = "agent4all --framework autogen --auto create movie script about cat in mars"
+        command = "praisonai --framework autogen --auto create movie script about cat in mars"
         result = self.run_command(command)
         self.assertIn('TERMINATE', result)
 
     def test_praisonai_init_command(self):
-        command = "agent4all --framework autogen --init create movie script about cat in mars"
+        command = "praisonai --framework autogen --init create movie script about cat in mars"
         result = self.run_command(command)
         self.assertIn('created successfully', result)
 

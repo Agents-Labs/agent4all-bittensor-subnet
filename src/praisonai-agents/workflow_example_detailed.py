@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import random
 from typing import List, Dict, Union
 import json
@@ -224,8 +224,8 @@ process_task = Task(
     output_json=ProcessedPerson
 )
 
-# Create Agent4ALLAgents instance with workflow process
-workflow = Agent4ALLAgents(
+# Create PraisonAIAgents instance with workflow process
+workflow = PraisonAIAgents(
     agents=[data_agent, process_agent],
     tasks=[collect_task, validate_task, process_task],
     verbose=1,

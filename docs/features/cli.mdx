@@ -1,7 +1,7 @@
 ---
 title: "Command Line Interface"
 sidebarTitle: "CLI"
-description: "Use Agent4ALL directly from your terminal with simple commands"
+description: "Use PraisonAI directly from your terminal with simple commands"
 icon: "terminal"
 ---
 
@@ -19,19 +19,19 @@ flowchart LR
     style Out fill:#8B0000,color:#fff,stroke:#8B0000
 ```
 
-Agent4ALL CLI provides a simple way to interact with AI agents directly from your terminal. You can run quick commands, specify LLM options, or use YAML configuration files for more complex scenarios.
+PraisonAI CLI provides a simple way to interact with AI agents directly from your terminal. You can run quick commands, specify LLM options, or use YAML configuration files for more complex scenarios.
 
 <Frame>
-  <img src="../demo/agent4all-cli-demo.gif" alt="Agent4ALL CLI Demo" />
+  <img src="../demo/praisonai-cli-demo.gif" alt="PraisonAI CLI Demo" />
 </Frame>
 
 ## Quick Start
 
 <Steps>
   <Step title="Install Package">
-    Install the Agent4ALL package:
+    Install the PraisonAI package:
     ```bash
-    pip install agent4all
+    pip install praisonai
     ```
   </Step>
 
@@ -49,21 +49,21 @@ Agent4ALL CLI provides a simple way to interact with AI agents directly from you
   <Accordion title="Simple Command" icon="terminal" defaultOpen>
     Run a simple command directly:
     ```bash
-    agent4all "write a movie script in 3 lines"
+    praisonai "write a movie script in 3 lines"
     ```
   </Accordion>
 
   <Accordion title="With LLM Option" icon="wand-magic-sparkles" defaultOpen>
     Specify a different LLM model:
     ```bash
-    agent4all "write a movie script in 3 lines" --llm gpt-4o-mini
+    praisonai "write a movie script in 3 lines" --llm gpt-4o-mini
     ```
   </Accordion>
 
   <Accordion title="Using YAML Config" icon="file-code" defaultOpen>
     Run agents defined in a YAML file:
     ```bash
-    agent4all agents.yaml
+    praisonai agents.yaml
     ```
   </Accordion>
 </AccordionGroup>
@@ -74,15 +74,15 @@ Agent4ALL CLI provides a simple way to interact with AI agents directly from you
   <Tab title="Create Config">
     Initialize a new agents.yaml file for your project:
     ```bash
-    agent4all --init "Create a movie script about AI"
+    praisonai --init "Create a movie script about AI"
     ```
     This will create an `agents.yaml` file with predefined configuration for your task.
   </Tab>
 
   <Tab title="Auto Mode">
-    Let Agent4ALL automatically create and configure agents:
+    Let PraisonAI automatically create and configure agents:
     ```bash
-    agent4all --auto "Create a movie script about AI"
+    praisonai --auto "Create a movie script about AI"
     ```
     This mode will analyze your task and set up appropriate agents automatically.
   </Tab>

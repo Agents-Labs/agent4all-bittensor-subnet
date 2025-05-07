@@ -7,7 +7,7 @@ icon: "chart-line"
 <Note>
   **Prerequisites**
   - Python 3.10 or higher
-  - Agent4ALL Agents package installed
+  - PraisonAI Agents package installed
   - `yfinance` package installed
   - Basic understanding of financial data
 </Note>
@@ -27,7 +27,7 @@ Use YFinance Tools to retrieve and analyze financial data with AI agents.
   <Step title="Import Components">
     Import the necessary components:
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import get_stock_price, get_stock_info, get_historical_data
     ```
   </Step>
@@ -61,7 +61,7 @@ Use YFinance Tools to retrieve and analyze financial data with AI agents.
   <Step title="Run Agent">
     Initialize and run the agent:
     ```python
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[finance_agent],
         tasks=[finance_task],
         process="sequential"
@@ -116,7 +116,7 @@ Use YFinance Tools to retrieve and analyze financial data with AI agents.
 ### Basic Financial Data Agent
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from praisonaiagents.tools import get_stock_price, get_stock_info, get_historical_data
 
 # Create finance agent
@@ -138,7 +138,7 @@ finance_task = Task(
 )
 
 # Run agent
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[finance_agent],
     tasks=[finance_task],
     process="sequential"
@@ -182,7 +182,7 @@ analysis_task = Task(
 )
 
 # Run agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[data_agent, analysis_agent],
     tasks=[data_task, analysis_task],
     process="sequential"
@@ -246,7 +246,7 @@ analyze_task = Task(
 )
 
 # Run workflow
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[collector, analyst],
     tasks=[collect_task, analyze_task]
 )

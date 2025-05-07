@@ -10,7 +10,7 @@ icon: "cube"
   <Tab title="Code">
     <Steps>
         <Step title="Install Package">
-            First, install the Agent4ALL Agents package:
+            First, install the PraisonAI Agents package:
             ```bash
             pip install praisonaiagents
             ```
@@ -26,7 +26,7 @@ icon: "cube"
         <Step title="Create a file">
             Create a new file `app.py` with the basic setup:
             ```python
-            from praisonaiagents import Agent, Task, Agent4ALLAgents, Tools
+            from praisonaiagents import Agent, Task, PraisonAIAgents, Tools
             from pydantic import BaseModel
 
             # Define your data structure
@@ -53,7 +53,7 @@ icon: "cube"
             )
 
             # Create and start the agents
-            agents = Agent4ALLAgents(
+            agents = PraisonAIAgents(
                 agents=[analyst],
                 tasks=[task],
                 process="sequential",
@@ -79,9 +79,9 @@ icon: "cube"
   <Tab title="No Code">
     <Steps>
         <Step title="Install Package">
-            Install the Agent4ALL package:
+            Install the PraisonAI package:
             ```bash
-            pip install agent4all
+            pip install praisonai
             ```
         </Step>
         <Step title="Set API Key">
@@ -93,7 +93,7 @@ icon: "cube"
         <Step title="Create a file">
             Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: analyze AI developments with structured output
 roles:
@@ -118,7 +118,7 @@ roles:
         <Step title="Start Agents">
             Type this in your terminal to run your agents:
 ```bash
-agent4all agents.yaml
+praisonai agents.yaml
 ```
         </Step>
     </Steps>
@@ -165,7 +165,7 @@ agent4all agents.yaml
   <Tab title="Code">
     <Steps>
         <Step title="Install Package">
-            First, install the Agent4ALL Agents package:
+            First, install the PraisonAI Agents package:
             ```bash
             pip install praisonaiagents
             ```
@@ -181,7 +181,7 @@ agent4all agents.yaml
         <Step title="Create a file">
             Create a new file `app.py` with the basic setup:
             ```python
-            from praisonaiagents import Agent, Task, Agent4ALLAgents, Tools
+            from praisonaiagents import Agent, Task, PraisonAIAgents, Tools
             from pydantic import BaseModel
 
             # Define output structures
@@ -229,7 +229,7 @@ agent4all agents.yaml
             )
 
             # Create and start the agents
-            agents = Agent4ALLAgents(
+            agents = PraisonAIAgents(
                 agents=[researcher, analyst],
                 tasks=[research_task, analysis_task],
                 process="sequential"
@@ -251,9 +251,9 @@ agent4all agents.yaml
   <Tab title="No Code">
     <Steps>
         <Step title="Install Package">
-            Install the Agent4ALL package:
+            Install the PraisonAI package:
             ```bash
-            pip install agent4all
+            pip install praisonai
             ```
         </Step>
         <Step title="Set API Key">
@@ -265,7 +265,7 @@ agent4all agents.yaml
         <Step title="Create a file">
             Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: research and analyze quantum computing
 roles:
@@ -305,7 +305,7 @@ roles:
         <Step title="Start Agents">
             Type this in your terminal to run your agents:
 ```bash
-agent4all agents.yaml
+praisonai agents.yaml
 ```
         </Step>
     </Steps>

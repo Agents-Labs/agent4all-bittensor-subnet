@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from pydantic import BaseModel
 from typing import List, Dict
 import tempfile
@@ -77,7 +77,7 @@ def evaluate_project(video_path: str) -> ProjectEvaluation:
     )
 
     # Initialize and run evaluation
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[hackathon_judge],
         tasks=[evaluation_task],
         process="sequential",

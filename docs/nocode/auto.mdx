@@ -1,44 +1,44 @@
 ---
 title: "Auto Generation Mode"
-description: "Guide to Agent4ALL's automatic agent generation feature, supporting both CrewAI and AG2 frameworks for automated task execution"
+description: "Guide to PraisonAI's automatic agent generation feature, supporting both CrewAI and AG2 frameworks for automated task execution"
 icon: "robot"
 ---
 
-Agent4ALL supports automatic agent generation with Agent4ALL Agents, CrewAI and AG2 frameworks.
+PraisonAI supports automatic agent generation with PraisonAI Agents, CrewAI and AG2 frameworks.
 
 ## Installation
 
 Choose your preferred framework:
 
 ```bash
-# For Agent4ALL Agents
-pip install agent4all
+# For PraisonAI Agents
+pip install praisonai
 
 # For CrewAI
-pip install "agent4all[crewai]"
+pip install "praisonai[crewai]"
 
 # For AG2 (Formerly AutoGen)
-pip install "agent4all[autogen]"
+pip install "praisonai[autogen]"
 
 # For both frameworks
-pip install "agent4all[crewai,autogen]"
+pip install "praisonai[crewai,autogen]"
 ```
 
 ## Usage
 
-### With Agent4ALL Agents
+### With PraisonAI Agents
 ```bash
-agent4all --auto "create a movie script about Dog in Moon"
+praisonai --auto "create a movie script about Dog in Moon"
 ```
 
 ### With CrewAI
 ```bash
-agent4all --framework crewai --auto "create a movie script about Dog in Moon"
+praisonai --framework crewai --auto "create a movie script about Dog in Moon"
 ```
 
 ### With AG2
 ```bash
-agent4all --framework autogen --auto "create a movie script about Dog in Moon"
+praisonai --framework autogen --auto "create a movie script about Dog in Moon"
 ```
 
 ## Framework-specific Features
@@ -56,5 +56,5 @@ agent4all --framework autogen --auto "create a movie script about Dog in Moon"
 - Flexible agent interactions
 
 ```bash
-agent4all --auto "create a movie script about Dog in Moon"
+praisonai --auto "create a movie script about Dog in Moon"
 ```

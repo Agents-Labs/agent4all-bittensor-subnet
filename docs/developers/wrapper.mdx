@@ -1,15 +1,15 @@
 ---
-title: "Agent4ALL Package Integration"
-description: "Guide for integrating the Agent4ALL package into your Python projects, including YAML configuration and different execution modes"
+title: "PraisonAI Package Integration"
+description: "Guide for integrating the PraisonAI package into your Python projects, including YAML configuration and different execution modes"
 icon: "box"
 ---
 
-# Include agent4all package in your project
+# Include praisonai package in your project
 
 ## Option 1: Using RAW YAML
 
 ```python
-from agent4all import Agent4ALL
+from praisonai import PraisonAI
 
 # Example agent_yaml content
 agent_yaml = """
@@ -27,11 +27,11 @@ roles:
         expected_output: "A summarized report on exoplanet discoveries, including their size, potential habitability, and distance from Earth."
 """
 
-# Create a Agent4ALL instance with the agent_yaml content
-agent4all = Agent4ALL(agent_yaml=agent_yaml)
+# Create a PraisonAI instance with the agent_yaml content
+praisonai = PraisonAI(agent_yaml=agent_yaml)
 
-# Run Agent4ALL
-result = agent4all.run()
+# Run PraisonAI
+result = praisonai.run()
 
 # Print the result
 print(result)
@@ -43,11 +43,11 @@ print(result)
 Note: Please create agents.yaml file before hand. 
 
 ```python
-from agent4all import Agent4ALL
+from praisonai import PraisonAI
 
 def basic(): # Basic Mode
-    agent4all = Agent4ALL(agent_file="agents.yaml")
-    agent4all.run()
+    praisonai = PraisonAI(agent_file="agents.yaml")
+    praisonai.run()
 
 if __name__ == "__main__":
     basic()
@@ -56,26 +56,26 @@ if __name__ == "__main__":
 ## Other options
 
 ```python
-from agent4all import Agent4ALL
+from praisonai import PraisonAI
 
 def basic(): # Basic Mode
-    agent4all = Agent4ALL(agent_file="agents.yaml")
-    agent4all.run()
+    praisonai = PraisonAI(agent_file="agents.yaml")
+    praisonai.run()
     
 def advanced(): # Advanced Mode with options
-    agent4all = Agent4ALL(
+    praisonai = PraisonAI(
         agent_file="agents.yaml",
         framework="autogen", # use AG2 framework (Formerly AutoGen)
     )
-    agent4all.run()
+    praisonai.run()
     
 def auto(): # Full Automatic Mode
-    agent4all = Agent4ALL(
+    praisonai = PraisonAI(
         auto="Create a movie script about car in mars",
         framework="autogen" # use AG2 framework
     )
-    print(agent4all.framework)
-    agent4all.run()
+    print(praisonai.framework)
+    praisonai.run()
 
 if __name__ == "__main__":
     basic()

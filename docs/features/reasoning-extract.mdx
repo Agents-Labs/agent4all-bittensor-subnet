@@ -56,7 +56,7 @@ A workflow where a reasoning agent breaks down complex problems into steps, foll
 ## Code
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 
 reasoning_agent = Agent(
     role="Helpful Assistant", 
@@ -79,7 +79,7 @@ small_task = Task(
     agent=small_agent
 )
 
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[reasoning_agent, small_agent],
     tasks=[reasoning_task, small_task]
 )

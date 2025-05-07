@@ -1,4 +1,4 @@
-import { Agent, Agent4ALLAgents } from '../../../src/agent/simple';
+import { Agent, PraisonAIAgents } from '../../../src/agent/simple';
 
 async function getWeather(location: string) {
   console.log(`Getting weather for ${location}...`);
@@ -27,8 +27,8 @@ const blogAgent = new Agent({
   tools: [getTime]
 });
 
-// Create Agent4ALLAgents instance with tasks
-const agents = new Agent4ALLAgents({
+// Create PraisonAIAgents instance with tasks
+const agents = new PraisonAIAgents({
   agents: [recipeAgent, blogAgent],
   tasks: [
     "Get the weather and express it in 5 lines with emojis",

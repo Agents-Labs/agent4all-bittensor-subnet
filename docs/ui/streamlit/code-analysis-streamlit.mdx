@@ -66,7 +66,7 @@ The Code Analysis Streamlit App provides a user-friendly web interface for analy
         Create a new file `code_analysis_app.py` with the following code:
 ```python
 import streamlit as st
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from pydantic import BaseModel
 from typing import List, Dict, Any
 from gitingest import ingest
@@ -154,7 +154,7 @@ def analyze_code(code_source: str) -> CodeAnalysisReport:
     """
     
     # Initialize and run analysis
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[code_analyzer],
         tasks=[code_analysis_task]
     )
@@ -324,8 +324,8 @@ The Streamlit app provides an intuitive interface with the following sections:
   <Card title="Streamlit Docs" icon="book" href="https://docs.streamlit.io">
     Learn more about Streamlit features
   </Card>
-  <Card title="Agent4ALL Docs" icon="bolt" href="/introduction">
-    Explore Agent4ALL capabilities
+  <Card title="PraisonAI Docs" icon="bolt" href="/introduction">
+    Explore PraisonAI capabilities
   </Card>
   <Card title="Examples" icon="code" href="/examples">
     View more example applications

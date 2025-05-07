@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import time
 from typing import Dict, List
 
@@ -132,7 +132,7 @@ quality_task = Task(
 )
 
 # Create workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[content_generator, translator, cultural_checker, 
             content_adapter, quality_assessor],
     tasks=[generation_task, translation_task, cultural_task, 

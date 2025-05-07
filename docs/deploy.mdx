@@ -1,6 +1,6 @@
 ---
 title: "Deploy"
-description: "Guide for deploying Agent4ALL to cloud platforms, with detailed instructions for Google Cloud deployment"
+description: "Guide for deploying PraisonAI to cloud platforms, with detailed instructions for Google Cloud deployment"
 icon: "cloud"
 ---
 
@@ -17,16 +17,16 @@ export OPENAI_API_KEY="Enter your API key"
 export OPENAI_API_BASE="https://api.openai.com/v1"
 
 yes | gcloud auth configure-docker us-central1-docker.pkg.dev 
-gcloud artifacts repositories create agent4all-repository --repository-format=docker --location=us-central1
+gcloud artifacts repositories create praisonai-repository --repository-format=docker --location=us-central1
 
 PROJECT_ID=$(gcloud config get-value project)
 TAG="latest"
-docker build --platform linux/amd64 -t gcr.io/${PROJECT_ID}/agent4all-app:${TAG} .
-docker tag gcr.io/${PROJECT_ID}/agent4all-app:${TAG} us-central1-docker.pkg.dev/${PROJECT_ID}/agent4all-repository/agent4all-app:${TAG}
-docker push us-central1-docker.pkg.dev/${PROJECT_ID}/agent4all-repository/agent4all-app:${TAG}
+docker build --platform linux/amd64 -t gcr.io/${PROJECT_ID}/praisonai-app:${TAG} .
+docker tag gcr.io/${PROJECT_ID}/praisonai-app:${TAG} us-central1-docker.pkg.dev/${PROJECT_ID}/praisonai-repository/praisonai-app:${TAG}
+docker push us-central1-docker.pkg.dev/${PROJECT_ID}/praisonai-repository/praisonai-app:${TAG}
 
-gcloud run deploy agent4all-service \
-    --image us-central1-docker.pkg.dev/${PROJECT_ID}/agent4all-repository/agent4all-app:${TAG} \
+gcloud run deploy praisonai-service \
+    --image us-central1-docker.pkg.dev/${PROJECT_ID}/praisonai-repository/praisonai-app:${TAG} \
     --platform managed \
     --region us-central1 \
     --allow-unauthenticated \

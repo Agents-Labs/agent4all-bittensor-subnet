@@ -1,16 +1,25 @@
 from flask import Flask
-from agent4all import Agent4ALL
+from praisonai import PraisonAI
 import markdown
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 
 def basic():
-    agent4all = Agent4ALL(agent_file="agents.yaml")
-    return agent4all.run()
+    praisonai = PraisonAI(agent_file="agents.yaml")
+    return praisonai.run()
 
 @app.route('/')
 def home():
-    output = basic()
+    praisonai = PraisonAI(agent_file="agents.yaml")
+    output = praisonai.run()
+    print(f'Output from basic(): {output}')  # Log the output
+
+    if output is None:
+        output = ''
+
     html_output = markdown.markdown(output)
     return f'<html><body>{html_output}</body></html>'
 

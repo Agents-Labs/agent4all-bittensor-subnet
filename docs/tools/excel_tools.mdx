@@ -7,7 +7,7 @@ icon: "file-excel"
 <Note>
   **Prerequisites**
   - Python 3.10 or higher
-  - Agent4ALL Agents package installed
+  - PraisonAI Agents package installed
   - `openpyxl` package installed
   - Basic understanding of Excel files
 </Note>
@@ -27,7 +27,7 @@ Use Excel Tools to process and manipulate Excel files with AI agents.
   <Step title="Import Components">
     Import the necessary components:
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import read_excel, write_excel, merge_excel
     ```
   </Step>
@@ -61,7 +61,7 @@ Use Excel Tools to process and manipulate Excel files with AI agents.
   <Step title="Run Agent">
     Initialize and run the agent:
     ```python
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[excel_agent],
         tasks=[excel_task],
         process="sequential"
@@ -223,7 +223,7 @@ success = merge_excel(
 ### Basic Excel Processing Agent
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from praisonaiagents.tools import read_excel, write_excel, merge_excel
 
 # Create Excel agent
@@ -245,7 +245,7 @@ excel_task = Task(
 )
 
 # Run agent
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[excel_agent],
     tasks=[excel_task],
     process="sequential"
@@ -288,7 +288,7 @@ analysis_task = Task(
 )
 
 # Run agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[processor_agent, analysis_agent],
     tasks=[processing_task, analysis_task],
     process="sequential"
@@ -350,7 +350,7 @@ analyze_task = Task(
 )
 
 # Run workflow
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[processor, analyzer],
     tasks=[process_task, analyze_task]
 )

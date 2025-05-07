@@ -7,7 +7,7 @@ icon: "folder"
 <Note>
   **Prerequisites**
   - Python 3.10 or higher
-  - Agent4ALL Agents package installed
+  - PraisonAI Agents package installed
   - Basic understanding of file operations
 </Note>
 
@@ -26,7 +26,7 @@ Use File Tools to perform file system operations with AI agents.
   <Step title="Import Components">
     Import the necessary components:
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import read_file, write_file, list_files, get_file_info, copy_file, move_file, delete_file
     ```
   </Step>
@@ -60,7 +60,7 @@ Use File Tools to perform file system operations with AI agents.
   <Step title="Run Agent">
     Initialize and run the agent:
     ```python
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[file_agent],
         tasks=[file_task],
         process="sequential"
@@ -336,7 +336,7 @@ write_file("output.txt", processed)
 ### Basic File Management Agent
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from praisonaiagents.tools import read_file, write_file, list_files, get_file_info
 
 # Create file management agent
@@ -358,7 +358,7 @@ file_task = Task(
 )
 
 # Run agent
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[file_agent],
     tasks=[file_task],
     process="sequential"
@@ -403,7 +403,7 @@ management_task = Task(
 )
 
 # Run agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[io_agent, management_agent],
     tasks=[io_task, management_task],
     process="sequential"
@@ -466,7 +466,7 @@ cleanup_task = Task(
 )
 
 # Run workflow
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[organizer, cleaner],
     tasks=[organize_task, cleanup_task]
 )

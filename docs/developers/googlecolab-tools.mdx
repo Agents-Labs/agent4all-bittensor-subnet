@@ -1,6 +1,6 @@
 ---
 title: "Google Colab Tools"
-description: "Guide for implementing and using custom tools in Agent4ALL with Google Colab, including examples of internet search and data processing tools"
+description: "Guide for implementing and using custom tools in PraisonAI with Google Colab, including examples of internet search and data processing tools"
 icon: "wrench"
 ---
 
@@ -19,7 +19,7 @@ jupyter:
 ```
 
 ``` python
-!pip install -Uq agent4all duckduckgo_search
+!pip install -Uq praisonai duckduckgo_search
 ```
 
 ``` python
@@ -39,7 +39,7 @@ class InternetSearchTool(BaseTool):
 ``` python
 import os
 import yaml
-from agent4all import Agent4ALL
+from praisonai import PraisonAI
 from google.colab import userdata
 
 # Example agent_yaml content
@@ -60,14 +60,14 @@ roles:
       - "InternetSearchTool"
 """
 
-# Create a Agent4ALL instance with the agent_yaml content
-agent4all = Agent4ALL(agent_yaml=agent_yaml)
+# Create a PraisonAI instance with the agent_yaml content
+praisonai = PraisonAI(agent_yaml=agent_yaml)
 
 # Add OPENAI_API_KEY Secrets to Google Colab on the Left Hand Side 🔑 or Enter Manually Below
 os.environ["OPENAI_API_KEY"] = userdata.get('OPENAI_API_KEY') or "ENTER OPENAI_API_KEY HERE"
 
-# Run Agent4ALL
-result = agent4all.run()
+# Run PraisonAI
+result = praisonai.run()
 
 # Print the result
 print(result)

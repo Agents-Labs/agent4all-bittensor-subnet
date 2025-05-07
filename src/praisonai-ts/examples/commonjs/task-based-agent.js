@@ -1,4 +1,4 @@
-const { Agent, Task } = require('agent4all');
+const { Agent, Task } = require('praisonai');
 
 // Create a task-based agent
 const agent = new Agent({

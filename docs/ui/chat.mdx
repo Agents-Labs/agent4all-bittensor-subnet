@@ -1,6 +1,6 @@
 ---
-title: "Agent4ALL Chat"
-description: "Guide to Agent4ALL's chat interface with support for 100+ LLMs, internet search, vision models, and custom database configurations"
+title: "PraisonAI Chat"
+description: "Guide to PraisonAI's chat interface with support for 100+ LLMs, internet search, vision models, and custom database configurations"
 icon: "comments"
 ---
 
@@ -24,9 +24,9 @@ icon: "comments"
 
 ## Quick Start
 
-1. Install Agent4ALL Chat:
+1. Install PraisonAI Chat:
 ```bash
-pip install "agent4all[chat]"
+pip install "praisonai[chat]"
 ```
 
 2. Set up your OpenAI API key:
@@ -39,9 +39,9 @@ export OPENAI_API_KEY=xxxxxxxx
 export DATABASE_URL=postgresql+asyncpg://<username>:<password>@<your-db-instance-url>/<database-name>
 ```
 
-4. Launch Agent4ALL Chat:
+4. Launch PraisonAI Chat:
 ```bash
-agent4all chat
+praisonai chat
 ```
 
 5. URL : http://localhost:8084/
@@ -57,7 +57,7 @@ agent4all chat
 
 ### Internet Search
 
-Agent4ALL Chat now includes internet search capabilities using Crawl4AI and Tavily. This feature allows you to retrieve up-to-date information during your conversations, enhancing the AI's ability to provide current and relevant information.
+PraisonAI Chat now includes internet search capabilities using Crawl4AI and Tavily. This feature allows you to retrieve up-to-date information during your conversations, enhancing the AI's ability to provide current and relevant information.
 
 ### Vision Language Model (VLM) Support
 
@@ -68,11 +68,11 @@ To use this feature:
 2. Ask questions or request analysis based on the uploaded image
 3. The VLM will process the image and provide insights or answers based on its visual content
 
-These new features significantly expand the capabilities of Agent4ALL Chat, allowing for more diverse and informative interactions.
+These new features significantly expand the capabilities of PraisonAI Chat, allowing for more diverse and informative interactions.
 
 ## Custom Database
 
-Agent4ALL Chat supports custom database configurations, allowing you to use PostgreSQL or other databases instead of the default SQLite database. This is particularly useful for production environments or when you need more advanced database features.
+PraisonAI Chat supports custom database configurations, allowing you to use PostgreSQL or other databases instead of the default SQLite database. This is particularly useful for production environments or when you need more advanced database features.
 
 ### PostgreSQL Configuration
 
@@ -127,14 +127,14 @@ To use PostgreSQL as your database backend:
 
 ### Default Configuration
 
-If no `DATABASE_URL` is provided, Agent4ALL Chat will automatically use SQLite with the following default configuration:
+If no `DATABASE_URL` is provided, PraisonAI Chat will automatically use SQLite with the following default configuration:
 ```bash
 DATABASE_URL=sqlite+aiosqlite:///{HOME}/.praison/database.sqlite
 ```
 
 ### Supported Database Types
 
-Agent4ALL Chat supports various database backends through SQLAlchemy:
+PraisonAI Chat supports various database backends through SQLAlchemy:
 - PostgreSQL (recommended for production)
 - MySQL/MariaDB
 - SQLite (default)
@@ -155,7 +155,7 @@ To facilitate local development with live reload, you can use Docker. Follow the
 
     COPY . .
 
-    RUN pip install flask agent4all==2.0.18 watchdog
+    RUN pip install flask praisonai==2.0.18 watchdog
 
     EXPOSE 5555
 

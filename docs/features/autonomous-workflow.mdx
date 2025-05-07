@@ -24,7 +24,7 @@ An agent-based workflow where LLMs act autonomously within a loop, interacting w
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -40,7 +40,7 @@ An agent-based workflow where LLMs act autonomously within a loop, interacting w
     <Step title="Create a file">
         Create a new file `app.py` with the basic setup:
         ```python
-        from praisonaiagents import Agent, Task, Agent4ALLAgents
+        from praisonaiagents import Agent, Task, PraisonAIAgents
         import time
 
         def get_environment_state():
@@ -128,7 +128,7 @@ An agent-based workflow where LLMs act autonomously within a loop, interacting w
         )
 
         # Create workflow manager
-        workflow = Agent4ALLAgents(
+        workflow = PraisonAIAgents(
             agents=[llm_caller, action_agent, feedback_agent],
             tasks=[monitor_task, action_task, feedback_task],
             process="workflow",

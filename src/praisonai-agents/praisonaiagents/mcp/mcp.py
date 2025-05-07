@@ -99,10 +99,10 @@ class MCPToolRunner(threading.Thread):
 
 class MCP:
     """
-    Model Context Protocol (MCP) integration for Agent4ALL Agents.
+    Model Context Protocol (MCP) integration for PraisonAI Agents.
     
     This class provides a simple way to connect to MCP servers and use their tools
-    within Agent4ALL agents.
+    within PraisonAI agents.
     
     Example:
         ```python

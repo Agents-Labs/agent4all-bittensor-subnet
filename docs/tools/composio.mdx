@@ -1,15 +1,15 @@
 ---
-title: "Composio Agent4ALL Integration"
-description: "Guide for integrating Composio's extensive tool ecosystem with Agent4ALL agents, enabling access to GitHub, Gmail, and other external services"
+title: "Composio PraisonAI Integration"
+description: "Guide for integrating Composio's extensive tool ecosystem with PraisonAI agents, enabling access to GitHub, Gmail, and other external services"
 icon: "puzzle-piece"
 ---
 
-# Composio Agent4ALL Integration
+# Composio PraisonAI Integration
 
-[Composio](https://composio.dev/) allows AI agents and LLMs to easily integrate with 100+ tools (GitHub, Gmail, CodeExecution and more) to perform actions and subscribe to triggers. This example will show how to integrate Composio with Agent4ALL agents to let them seamlessly interact with external apps.
+[Composio](https://composio.dev/) allows AI agents and LLMs to easily integrate with 100+ tools (GitHub, Gmail, CodeExecution and more) to perform actions and subscribe to triggers. This example will show how to integrate Composio with PraisonAI agents to let them seamlessly interact with external apps.
 
 ```bash
-pip install composio-agent4all
+pip install composio-praisonai
 ```
 
 To add Composio's Serpapi tool - 
@@ -19,7 +19,7 @@ composio add serpapi
 ```
 
 ```python
-from agent4all import Agent4ALL
+from praisonai import PraisonAI
 from composio_praisonai import Action, ComposioToolSet
 
 # Initialize Composio's Toolset
@@ -47,10 +47,10 @@ roles:
         expected_output: "A full analysis report on the topic."
 """ + tool_section_str
 
-# Create Agent4ALL instance with the agent_yaml content
-praison_ai = Agent4ALL(agent_yaml=agent_yaml)
+# Create PraisonAI instance with the agent_yaml content
+praison_ai = PraisonAI(agent_yaml=agent_yaml)
 
-# Run Agent4ALL
+# Run PraisonAI
 result = praison_ai.main()
 
 # Print the result

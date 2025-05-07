@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents, error_logs
+from praisonaiagents import Agent, Task, PraisonAIAgents, error_logs
 import json, os
 from e2b_code_interpreter import Sandbox
 import subprocess
@@ -67,7 +67,7 @@ task = Task(
     agent=web_scraper_agent,
 )
 
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[web_scraper_agent],
     tasks=[task],
     process="sequential"

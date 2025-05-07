@@ -11,7 +11,7 @@ Create multiple AI agents that can work together in just a few lines of code!
   <Tab title="Code">
     <Steps>
       <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents duckduckgo_search
         ```
@@ -25,17 +25,17 @@ Create multiple AI agents that can work together in just a few lines of code!
       <Step title="Create Your Agents">
         <CodeGroup>
         ```python Single Agent
-        from praisonaiagents import Agent, Agent4ALLAgents
+        from praisonaiagents import Agent, PraisonAIAgents
         summarise_agent = Agent(instructions="Summarise Photosynthesis")
-        agents = Agent4ALLAgents(agents=[summarise_agent])
+        agents = PraisonAIAgents(agents=[summarise_agent])
         agents.start()
         ```
         ```python Multiple Agents
         # Agent with Internet Search Tool
-        from praisonaiagents import Agent, Agent4ALLAgents
+        from praisonaiagents import Agent, PraisonAIAgents
         research_agent = Agent(instructions="Research about AI 2024", tools=[Tools.internet_search])
         summarise_agent = Agent(instructions="Summarise research agent's findings")
-        agents = Agent4ALLAgents(agents=[research_agent, summarise_agent])
+        agents = PraisonAIAgents(agents=[research_agent, summarise_agent])
         agents.start()
         ```
         </CodeGroup>
@@ -51,7 +51,7 @@ Create multiple AI agents that can work together in just a few lines of code!
   <Tab title="No Code">
     <Steps>
       <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents duckduckgo_search
         ```

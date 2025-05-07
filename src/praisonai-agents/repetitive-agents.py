@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 
 agent = Agent(
     instructions="You are a loop agent that creating a loop of tasks.",
@@ -13,7 +13,7 @@ task = Task(
     input_file="tasks.csv"
 )
 
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[agent],
     tasks=[task],
     process="workflow",

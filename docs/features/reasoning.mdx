@@ -28,7 +28,7 @@ Learn how to create AI agents with advanced reasoning capabilities for complex p
   <Tab title="Code">
     <Steps>
         <Step title="Install Package">
-            First, install the Agent4ALL Agents package:
+            First, install the PraisonAI Agents package:
             ```bash
             pip install praisonaiagents
             ```
@@ -44,7 +44,7 @@ Learn how to create AI agents with advanced reasoning capabilities for complex p
         <Step title="Create a file">
             Create a new file `app.py` with the basic setup:
             ```python
-            from praisonaiagents import Agent, Task, Agent4ALLAgents, Tools
+            from praisonaiagents import Agent, Task, PraisonAIAgents, Tools
 
             # Create reasoning agent
             reasoner = Agent(
@@ -63,7 +63,7 @@ Learn how to create AI agents with advanced reasoning capabilities for complex p
             )
 
             # Create and start the agents
-            agents = Agent4ALLAgents(
+            agents = PraisonAIAgents(
                 agents=[reasoner],
                 tasks=[task],
                 process="sequential",
@@ -87,9 +87,9 @@ Learn how to create AI agents with advanced reasoning capabilities for complex p
   <Tab title="No Code">
     <Steps>
         <Step title="Install Package">
-            Install the Agent4ALL package:
+            Install the PraisonAI package:
             ```bash
-            pip install agent4all
+            pip install praisonai
             ```
         </Step>
         <Step title="Set API Key">
@@ -101,7 +101,7 @@ Learn how to create AI agents with advanced reasoning capabilities for complex p
         <Step title="Create a file">
             Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: solve complex business problem
 roles:
@@ -120,7 +120,7 @@ roles:
         <Step title="Start Agents">
             Type this in your terminal to run your agents:
 ```bash
-agent4all agents.yaml
+praisonai agents.yaml
 ```
         </Step>
     </Steps>
@@ -177,7 +177,7 @@ agent4all agents.yaml
   <Tab title="Code">
     <Steps>
         <Step title="Install Package">
-            First, install the Agent4ALL Agents package:
+            First, install the PraisonAI Agents package:
             ```bash
             pip install praisonaiagents
             ```
@@ -193,7 +193,7 @@ agent4all agents.yaml
         <Step title="Create a file">
             Create a new file `app.py` with the basic setup:
             ```python
-            from praisonaiagents import Agent, Task, Agent4ALLAgents, Tools
+            from praisonaiagents import Agent, Task, PraisonAIAgents, Tools
 
             # Create first agent for analysis
             analyst = Agent(
@@ -227,7 +227,7 @@ agent4all agents.yaml
             )
 
             # Create and start the agents
-            agents = Agent4ALLAgents(
+            agents = PraisonAIAgents(
                 agents=[analyst, solver],
                 tasks=[analysis_task, solution_task],
                 process="sequential"
@@ -249,9 +249,9 @@ agent4all agents.yaml
   <Tab title="No Code">
     <Steps>
         <Step title="Install Package">
-            Install the Agent4ALL package:
+            Install the PraisonAI package:
             ```bash
-            pip install agent4all
+            pip install praisonai
             ```
         </Step>
         <Step title="Set API Key">
@@ -263,7 +263,7 @@ agent4all agents.yaml
         <Step title="Create a file">
             Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: solve market challenges
 roles:
@@ -291,7 +291,7 @@ roles:
         <Step title="Start Agents">
             Type this in your terminal to run your agents:
 ```bash
-agent4all agents.yaml
+praisonai agents.yaml
 ```
         </Step>
     </Steps>

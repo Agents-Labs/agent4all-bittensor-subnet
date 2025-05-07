@@ -7,7 +7,7 @@ icon: "calculator"
 <Note>
   **Prerequisites**
   - Python 3.10 or higher
-  - Agent4ALL Agents package installed
+  - PraisonAI Agents package installed
   - `sympy` and `pint` packages installed
 </Note>
 
@@ -26,7 +26,7 @@ Use Calculator Tools to perform mathematical calculations with AI agents.
   <Step title="Import Components">
     Import the necessary components:
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import (
         evaluate, solve_equation, convert_units,
         calculate_statistics, calculate_financial
@@ -66,7 +66,7 @@ Use Calculator Tools to perform mathematical calculations with AI agents.
   <Step title="Run Agent">
     Initialize and run the agent:
     ```python
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[calculator_agent],
         tasks=[calc_task],
         process="sequential"

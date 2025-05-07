@@ -27,7 +27,7 @@ Learn how to implement an adaptive learning system using AI agents for personali
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -43,7 +43,7 @@ Learn how to implement an adaptive learning system using AI agents for personali
     <Step title="Create a file">
         Create a new file `app.py` with the basic setup:
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import time
 from typing import Dict
 
@@ -150,7 +150,7 @@ adaptation_task = Task(
 )
 
 # Create workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[assessor, generator, evaluator, adapter],
     tasks=[assessment_task, generation_task, evaluation_task, adaptation_task],
     process="workflow",

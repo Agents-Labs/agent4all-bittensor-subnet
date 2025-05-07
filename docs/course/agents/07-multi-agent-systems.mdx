@@ -86,12 +86,12 @@ graph TD
 
 **Example Use Case**: Project management where a coordinator assigns tasks and integrates results.
 
-## Implementing Multi-Agent Systems in Agent4ALL
+## Implementing Multi-Agent Systems in PraisonAI
 
 Here's a simple example of creating a multi-agent system:
 
 ```python
-from praisonaiagents import Agent, Agent4ALLAgents
+from praisonaiagents import Agent, PraisonAIAgents
 
 # Create individual agents
 research_agent = Agent(
@@ -110,7 +110,7 @@ writing_agent = Agent(
 )
 
 # Create a multi-agent system
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[research_agent, analysis_agent, writing_agent]
 )
 

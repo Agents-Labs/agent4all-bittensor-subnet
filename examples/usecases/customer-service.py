@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import time
 from typing import Dict, List
 
@@ -112,7 +112,7 @@ optimization_task = Task(
 )
 
 # Create workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[classifier, handler, evaluator, optimizer],
     tasks=[classification_task, handling_task, evaluation_task, optimization_task],
     process="workflow",

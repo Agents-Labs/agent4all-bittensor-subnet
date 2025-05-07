@@ -6018,9 +6018,9 @@ sentry = ["django", "sentry-sdk"]
 test = ["anthropic", "coverage", "django", "flake8", "freezegun (==1.5.1)", "langchain-anthropic (>=0.2.0)", "langchain-community (>=0.2.0)", "langchain-openai (>=0.2.0)", "langgraph", "mock (>=2.0.0)", "openai", "parameterized (>=0.8.1)", "pydantic", "pylint", "pytest", "pytest-asyncio", "pytest-timeout"]
 
 [[package]]
-name = "agent4all-tools"
+name = "praisonai-tools"
 version = "0.0.11"
-description = "Set of tools for the Agent4ALL framework"
+description = "Set of tools for the PraisonAI framework"
 optional = true
 python-versions = "<=3.13.2,>=3.10"
 groups = ["main"]
@@ -9717,12 +9717,12 @@ type = ["pytest-mypy"]
 agentops = ["agentops"]
 anthropic = ["langchain-anthropic"]
 api = ["flask"]
-autogen = ["crewai", "agent4all-tools", "pyautogen"]
+autogen = ["crewai", "praisonai-tools", "pyautogen"]
 call = ["fastapi", "flaml", "openai", "pyngrok", "rich", "twilio", "uvicorn", "websockets"]
 chat = ["aiosqlite", "chainlit", "crawl4ai", "greenlet", "litellm", "playwright", "pydantic", "rich", "sqlalchemy", "tavily-python"]
 code = ["aiosqlite", "chainlit", "crawl4ai", "greenlet", "litellm", "playwright", "pydantic", "sqlalchemy", "tavily-python"]
 cohere = ["langchain-cohere"]
-crewai = ["crewai", "agent4all-tools"]
+crewai = ["crewai", "praisonai-tools"]
 google = ["langchain-google-genai"]
 gradio = ["gradio"]
 openai = ["langchain-openai"]

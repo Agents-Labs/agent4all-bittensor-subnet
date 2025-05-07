@@ -1,7 +1,7 @@
 ---
 title: "Praison AI"
 sidebarTitle: "Home"
-description: "Agent4ALL is a production-ready Multi-AI Agents framework with self-reflection, designed to create AI Agents to automate and solve problems ranging from simple tasks to complex challenges. By integrating Agent4ALL Agents, AG2 (Formerly AutoGen), and CrewAI into a low-code solution, it streamlines the building and management of multi-agent LLM systems, emphasising simplicity, customisation, and effective human-agent collaboration."
+description: "PraisonAI is a production-ready Multi-AI Agents framework with self-reflection, designed to create AI Agents to automate and solve problems ranging from simple tasks to complex challenges. By integrating PraisonAI Agents, AG2 (Formerly AutoGen), and CrewAI into a low-code solution, it streamlines the building and management of multi-agent LLM systems, emphasising simplicity, customisation, and effective human-agent collaboration."
 icon: "house"
 openGraph:
   url: "/"
@@ -10,15 +10,15 @@ seo:
 ---
 <div className="flex justify-start w-full max-w-xs sm:max-w-sm md:max-w-md">
   <img 
-    src="images/agent4all-logo-black.png"
-    alt="Agent4ALL Logo"
+    src="images/praisonai-logo-black.png"
+    alt="PraisonAI Logo"
     className="w-full h-auto rounded-lg shadow-md block dark:hidden"
     width="400"
     height="100"
   />
   <img 
-    src="images/agent4all-logo-light.png"
-    alt="Agent4ALL Logo"
+    src="images/praisonai-logo-light.png"
+    alt="PraisonAI Logo"
     className="w-full h-auto rounded-lg shadow-md hidden dark:block"
     width="400"
     height="100"
@@ -26,17 +26,17 @@ seo:
 </div>
 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
   <div className="hover:opacity-80 transition-opacity">
-    <img src="https://static.pepy.tech/badge/Agent4ALL" alt="Total Downloads" />
+    <img src="https://static.pepy.tech/badge/PraisonAI" alt="Total Downloads" />
   </div>
   <div className="hover:opacity-80 transition-opacity">
-    <img src="https://img.shields.io/github/stars/MervinPraison/Agent4ALL?style=social" alt="GitHub Stars" />
+    <img src="https://img.shields.io/github/stars/MervinPraison/PraisonAI?style=social" alt="GitHub Stars" />
   </div>
   <div className="hover:opacity-80 transition-opacity">
-    <img src="https://img.shields.io/github/forks/MervinPraison/Agent4ALL?style=social" alt="GitHub Forks" />
+    <img src="https://img.shields.io/github/forks/MervinPraison/PraisonAI?style=social" alt="GitHub Forks" />
   </div>
 </div>
 <a href="https://trendshift.io/repositories/9130" target="_blank">
-  <img src="https://trendshift.io/api/badge/repositories/9130" alt="MervinPraison/Agent4ALL | Trendshift" />
+  <img src="https://trendshift.io/api/badge/repositories/9130" alt="MervinPraison/PraisonAI | Trendshift" />
 </a>
 ## Key Features
 
@@ -96,12 +96,12 @@ agent.start("Write a movie script about a robot in Mars")
 ```
 
 ```python Multi Agents
-from praisonaiagents import Agent, Agent4ALLAgents
+from praisonaiagents import Agent, PraisonAIAgents
 
 research_agent = Agent(instructions="Research about AI")
 summarise_agent = Agent(instructions="Summarise research agent's findings")
 
-agents = Agent4ALLAgents(agents=[research_agent, summarise_agent])
+agents = PraisonAIAgents(agents=[research_agent, summarise_agent])
 agents.start()
 ```
 </CodeGroup>
@@ -116,7 +116,7 @@ agents.start()
   <Tab title="No Code">
     <Steps>
       <Step title="Install Package">
-        Install the No Code Agent4ALL Package:
+        Install the No Code PraisonAI Package:
         ```bash
         pip install praisonaiagents
         ```
@@ -150,7 +150,7 @@ agents.start()
 <Note>
 You can automatically create `agents.yaml` using:
 ```bash
-agent4all --init "your task description"
+praisonai --init "your task description"
 ```
 </Note>
 
@@ -159,7 +159,7 @@ agent4all --init "your task description"
       <Step title="Run Agents">
         Execute your config:
         ```bash
-        agent4all agents.yaml
+        praisonai agents.yaml
         ```
       </Step>
     </Steps>
@@ -168,7 +168,7 @@ agent4all --init "your task description"
     <Steps>
       <Step title="Install Package">
         ```bash
-        npm install agent4all
+        npm install praisonai
         ```
       </Step>
       <Step title="Set API Key">
@@ -183,18 +183,18 @@ agent4all --init "your task description"
 
 <CodeGroup>
 ```javascript Single Agent
-const { Agent } = require('agent4all');
+const { Agent } = require('praisonai');
 const agent = new Agent({ instructions: 'You are a helpful AI assistant' });
 agent.start('Write a movie script about a robot in Mars');
 ```
 
 ```javascript Multi Agents
-const { Agent, Agent4ALLAgents } = require('agent4all');
+const { Agent, PraisonAIAgents } = require('praisonai');
 
 const researchAgent = new Agent({ instructions: 'Research about AI' });
 const summariseAgent = new Agent({ instructions: 'Summarise research agent\'s findings' });
 
-const agents = new Agent4ALLAgents({ agents: [researchAgent, summariseAgent] });
+const agents = new PraisonAIAgents({ agents: [researchAgent, summariseAgent] });
 agents.start();
 ```
 </CodeGroup>
@@ -211,10 +211,10 @@ agents.start();
       <Step title="Install Package">
         <CodeGroup>
         ```bash npm
-        npm install agent4all
+        npm install praisonai
         ```
         ```bash yarn
-        yarn add agent4all
+        yarn add praisonai
         ```
         </CodeGroup>
       </Step>
@@ -230,7 +230,7 @@ agents.start();
 
 <CodeGroup>
 ```javascript Single Agent
-import { Agent } from 'agent4all';
+import { Agent } from 'praisonai';
 
 const agent = new Agent({ 
   instructions: `You are a creative writer who writes short stories with emojis.`,
@@ -241,7 +241,7 @@ agent.start("Write a story about a time traveler")
 ```
 
 ```javascript Multi Agents
-import { Agent, Agent4ALLAgents } from 'agent4all';
+import { Agent, PraisonAIAgents } from 'praisonai';
 
 const storyAgent = new Agent({
   instructions: "Generate a very short story (2-3 sentences) about artificial intelligence with emojis.",
@@ -253,7 +253,7 @@ const summaryAgent = new Agent({
   name: "SummaryAgent"
 });
 
-const agents = new Agent4ALLAgents({
+const agents = new PraisonAIAgents({
   agents: [storyAgent, summaryAgent]
 });
 
@@ -274,7 +274,7 @@ agents.start()
 
 <iframe 
   id="codeExecutionFrame"
-  src="https://code-execution-server-agent4all.replit.app/?code=import%20openai%0A%0Aclient%20%3D%20openai.OpenAI()%0Aresult%20%3D%20client.chat.completions.create(%0A%20%20%20%20model%3D%22gpt-3.5-turbo%22%2C%0A%20%20%20%20messages%3D%5B%0A%20%20%20%20%20%20%20%20%7B%22role%22%3A%20%22user%22%2C%20%22content%22%3A%20%22Hello%20World%22%7D%0A%20%20%20%20%5D%0A)%0A%0Aprint(result.choices%5B0%5D.message.content)" 
+  src="https://code-execution-server-praisonai.replit.app/?code=import%20openai%0A%0Aclient%20%3D%20openai.OpenAI()%0Aresult%20%3D%20client.chat.completions.create(%0A%20%20%20%20model%3D%22gpt-3.5-turbo%22%2C%0A%20%20%20%20messages%3D%5B%0A%20%20%20%20%20%20%20%20%7B%22role%22%3A%20%22user%22%2C%20%22content%22%3A%20%22Hello%20World%22%7D%0A%20%20%20%20%5D%0A)%0A%0Aprint(result.choices%5B0%5D.message.content)" 
   width="100%" 
   height="600px" 
   frameborder="0"
@@ -680,18 +680,18 @@ flowchart LR
 
 ## Praison AI Package Overall Features
 
-<Frame caption="Agent4ALL Features Overview">
+<Frame caption="PraisonAI Features Overview">
   <div className="w-full max-w-4xl mx-auto">
     <img 
       src="images/architecture-light.png"
-      alt="Agent4ALL Features"
+      alt="PraisonAI Features"
       className="w-full h-auto rounded-lg shadow-lg block dark:hidden"
       width="1200"
       height="800"
     />
     <img 
       src="images/architecture-dark.png"
-      alt="Agent4ALL Features"
+      alt="PraisonAI Features"
       className="w-full h-auto rounded-lg shadow-lg hidden dark:block"
       width="1200"
       height="800"
@@ -737,24 +737,24 @@ flowchart LR
 </CardGroup>
 
 <Note>
-  Welcome to Agent4ALL - Your comprehensive solution for building and managing multi-agent LLM systems with self-reflection capabilities.
+  Welcome to PraisonAI - Your comprehensive solution for building and managing multi-agent LLM systems with self-reflection capabilities.
 </Note>
 
 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
   <div className="hover:opacity-80 transition-opacity">
-    <img src="https://static.pepy.tech/badge/Agent4ALL" alt="Total Downloads" />
+    <img src="https://static.pepy.tech/badge/PraisonAI" alt="Total Downloads" />
   </div>
   <div className="hover:opacity-80 transition-opacity">
-    <img src="https://img.shields.io/github/v/release/MervinPraison/Agent4ALL" alt="Latest Stable Version" />
+    <img src="https://img.shields.io/github/v/release/MervinPraison/PraisonAI" alt="Latest Stable Version" />
   </div>
   <div className="hover:opacity-80 transition-opacity">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License" />
   </div>
   <div className="hover:opacity-80 transition-opacity">
-    <img src="https://img.shields.io/github/stars/MervinPraison/Agent4ALL?style=social" alt="GitHub Stars" />
+    <img src="https://img.shields.io/github/stars/MervinPraison/PraisonAI?style=social" alt="GitHub Stars" />
   </div>
   <div className="hover:opacity-80 transition-opacity">
-    <img src="https://img.shields.io/github/forks/MervinPraison/Agent4ALL?style=social" alt="GitHub Forks" />
+    <img src="https://img.shields.io/github/forks/MervinPraison/PraisonAI?style=social" alt="GitHub Forks" />
   </div>
 </div>
 

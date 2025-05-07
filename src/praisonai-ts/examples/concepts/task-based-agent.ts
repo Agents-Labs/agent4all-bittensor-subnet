@@ -1,4 +1,4 @@
-import { Agent, Task, Agent4ALLAgents } from 'agent4all';
+import { Agent, Task, PraisonAIAgents } from 'praisonai';
 
 async function main() {
     const isDebug = process.env.LOGLEVEL === 'debug';
@@ -65,18 +65,18 @@ Format your response in markdown.`
     if (isDebug) console.log(`[DEBUG] Tasks creation time: ${Date.now() - startTime}ms`);
 
     // Run the tasks
-    const agent4all = new Agent4ALLAgents({
+    const praisonAI = new PraisonAIAgents({
         agents: [dietAgent, blogAgent],
         tasks: [recipeTask, blogTask],
         verbose: true,
         process: 'hierarchical'
     });
 
-    if (isDebug) console.log(`[DEBUG] Agent4ALL initialization time: ${Date.now() - startTime}ms`);
+    if (isDebug) console.log(`[DEBUG] PraisonAI initialization time: ${Date.now() - startTime}ms`);
 
     try {
         if (isDebug) console.log(`[DEBUG] Starting execution at: ${Date.now() - startTime}ms`);
-        const results = await agent4all.start();
+        const results = await praisonAI.start();
         if (isDebug) {
             console.log(`[DEBUG] Total execution time: ${Date.now() - startTime}ms`);
         }

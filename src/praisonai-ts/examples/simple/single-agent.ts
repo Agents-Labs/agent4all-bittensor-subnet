@@ -1,4 +1,4 @@
-import { Agent } from 'agent4all';
+import { Agent } from 'praisonai';
 
 const agent = new Agent({ 
   instructions: `You are a creative writer who writes short stories with emojis.`,

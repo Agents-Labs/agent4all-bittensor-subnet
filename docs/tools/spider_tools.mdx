@@ -7,7 +7,7 @@ icon: "spider"
 <Note>
   **Prerequisites**
   - Python 3.10 or higher
-  - Agent4ALL Agents package installed
+  - PraisonAI Agents package installed
   - `scrapy` package installed
 </Note>
 
@@ -26,7 +26,7 @@ Use Spider Tools to crawl and scrape web content with AI agents.
   <Step title="Import Components">
     Import the necessary components:
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import scrape_page, extract_links, crawl, extract_text
     ```
   </Step>
@@ -60,7 +60,7 @@ Use Spider Tools to crawl and scrape web content with AI agents.
   <Step title="Run Agent">
     Initialize and run the agent:
     ```python
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[spider_agent],
         tasks=[scraping_task],
         process="sequential"
@@ -115,7 +115,7 @@ Use Spider Tools to crawl and scrape web content with AI agents.
 ### Basic Web Scraping Agent
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from praisonaiagents.tools import scrape_page, extract_links, crawl, extract_text
 
 # Create search agent
@@ -137,7 +137,7 @@ task = Task(
 )
 
 # Run agent
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[agent],
     tasks=[task],
     process="sequential"
@@ -181,7 +181,7 @@ analysis_task = Task(
 )
 
 # Run agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[scraper_agent, analysis_agent],
     tasks=[scraping_task, analysis_task],
     process="sequential"
@@ -245,7 +245,7 @@ process_task = Task(
 )
 
 # Run workflow
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[scraper, processor],
     tasks=[scrape_task, process_task]
 )

@@ -7,7 +7,7 @@ icon: "code"
 <Note>
   **Prerequisites**
   - Python 3.10 or higher
-  - Agent4ALL Agents package installed
+  - PraisonAI Agents package installed
   - `lxml` package installed
 </Note>
 
@@ -26,7 +26,7 @@ Use XML Tools to read, write, and manipulate XML data with AI agents.
   <Step title="Import Components">
     Import the necessary components:
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import read_xml, write_xml, transform_xml, validate_xml, xml_to_dict, dict_to_xml
     ```
   </Step>
@@ -60,7 +60,7 @@ Use XML Tools to read, write, and manipulate XML data with AI agents.
   <Step title="Run Agent">
     Initialize and run the agent:
     ```python
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[xml_agent],
         tasks=[xml_task],
         process="sequential"
@@ -115,7 +115,7 @@ Use XML Tools to read, write, and manipulate XML data with AI agents.
 ### Basic XML Processing Agent
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from praisonaiagents.tools import read_xml, write_xml, transform_xml, validate_xml, xml_to_dict, dict_to_xml
 
 # Create XML agent
@@ -137,7 +137,7 @@ xml_task = Task(
 )
 
 # Run agent
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[xml_agent],
     tasks=[xml_task],
     process="sequential"
@@ -181,7 +181,7 @@ validation_task = Task(
 )
 
 # Run agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[processor_agent, validator_agent],
     tasks=[processing_task, validation_task],
     process="sequential"
@@ -245,7 +245,7 @@ validate_task = Task(
 )
 
 # Run workflow
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[processor, validator],
     tasks=[process_task, validate_task]
 )

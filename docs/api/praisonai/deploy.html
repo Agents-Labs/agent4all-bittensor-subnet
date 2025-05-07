@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.1">
-<title>agent4all.deploy API documentation</title>
+<title>praisonai.deploy API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
@@ -22,7 +22,7 @@ hljs.highlightAll();
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>agent4all.deploy</code></h1>
+<h1 class="title">Module <code>praisonai.deploy</code></h1>
 </header>
 <section id="section-intro">
 </section>
@@ -35,7 +35,7 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="agent4all.deploy.CloudDeployer"><code class="flex name class">
+<dt id="praisonai.deploy.CloudDeployer"><code class="flex name class">
 <span>class <span class="ident">CloudDeployer</span></span>
 </code></dt>
 <dd>
@@ -103,14 +103,14 @@ Loads environment variables from .env file or system and sets them.</p>
         The Dockerfile is used to build a Docker image for the application.
         The content of the Dockerfile includes instructions to use the Python 3.11-slim base image,
         set the working directory to /app, copy the current directory contents into the container,
-        install the required Python packages (flask, agent4all, gunicorn, and markdown),
+        install the required Python packages (flask, praisonai, gunicorn, and markdown),
         expose port 8080, and run the application using Gunicorn.
         &#34;&#34;&#34;
         with open(&#34;Dockerfile&#34;, &#34;w&#34;) as file:
             file.write(&#34;FROM python:3.11-slim\n&#34;)
             file.write(&#34;WORKDIR /app\n&#34;)
             file.write(&#34;COPY . .\n&#34;)
-            file.write(&#34;RUN pip install flask agent4all==2.1.1 gunicorn markdown\n&#34;)
+            file.write(&#34;RUN pip install flask praisonai==2.1.1 gunicorn markdown\n&#34;)
             file.write(&#34;EXPOSE 8080\n&#34;)
             file.write(&#39;CMD [&#34;gunicorn&#34;, &#34;-b&#34;, &#34;0.0.0.0:8080&#34;, &#34;api:app&#34;]\n&#39;)
             
@@ -124,16 +124,16 @@ Loads environment variables from .env file or system and sets them.</p>
         Returns:
             None
 
-        This method creates an API file named &#34;api.py&#34; in the current directory. The file contains a basic Flask application that uses the Agent4ALL library to run a simple agent and returns the output as an HTML page. The application listens on the root path (&#34;/&#34;) and uses the Markdown library to format the output.
+        This method creates an API file named &#34;api.py&#34; in the current directory. The file contains a basic Flask application that uses the PraisonAI library to run a simple agent and returns the output as an HTML page. The application listens on the root path (&#34;/&#34;) and uses the Markdown library to format the output.
         &#34;&#34;&#34;
         with open(&#34;api.py&#34;, &#34;w&#34;) as file:
             file.write(&#34;from flask import Flask\n&#34;)
-            file.write(&#34;from agent4all import Agent4ALL\n&#34;)
+            file.write(&#34;from praisonai import PraisonAI\n&#34;)
             file.write(&#34;import markdown\n\n&#34;)
             file.write(&#34;app = Flask(__name__)\n\n&#34;)
             file.write(&#34;def basic():\n&#34;)
-            file.write(&#34;    agent4all = Agent4ALL(agent_file=\&#34;agents.yaml\&#34;)\n&#34;)
-            file.write(&#34;    return agent4all.run()\n\n&#34;)
+            file.write(&#34;    praisonai = PraisonAI(agent_file=\&#34;agents.yaml\&#34;)\n&#34;)
+            file.write(&#34;    return praisonai.run()\n\n&#34;)
             file.write(&#34;@app.route(&#39;/&#39;)\n&#34;)
             file.write(&#34;def home():\n&#34;)
             file.write(&#34;    output = basic()\n&#34;)
@@ -172,11 +172,11 @@ Loads environment variables from .env file or system and sets them.</p>
         &#34;&#34;&#34;Runs a sequence of shell commands for deployment, continues on error.&#34;&#34;&#34;
         commands = [
             &#34;yes | gcloud auth configure-docker us-central1-docker.pkg.dev&#34;,
-            &#34;gcloud artifacts repositories create agent4all-repository --repository-format=docker --location=us-central1&#34;,
-            &#34;docker build --platform linux/amd64 -t gcr.io/$(gcloud config get-value project)/agent4all-app:latest .&#34;,
-            &#34;docker tag gcr.io/$(gcloud config get-value project)/agent4all-app:latest us-central1-docker.pkg.dev/$(gcloud config get-value project)/agent4all-repository/agent4all-app:latest&#34;,
-            &#34;docker push us-central1-docker.pkg.dev/$(gcloud config get-value project)/agent4all-repository/agent4all-app:latest&#34;,
-            &#34;gcloud run deploy agent4all-service --image us-central1-docker.pkg.dev/$(gcloud config get-value project)/agent4all-repository/agent4all-app:latest --platform managed --region us-central1 --allow-unauthenticated --set-env-vars OPENAI_MODEL_NAME=${OPENAI_MODEL_NAME},OPENAI_API_KEY=${OPENAI_API_KEY},OPENAI_API_BASE=${OPENAI_API_BASE}&#34;
+            &#34;gcloud artifacts repositories create praisonai-repository --repository-format=docker --location=us-central1&#34;,
+            &#34;docker build --platform linux/amd64 -t gcr.io/$(gcloud config get-value project)/praisonai-app:latest .&#34;,
+            &#34;docker tag gcr.io/$(gcloud config get-value project)/praisonai-app:latest us-central1-docker.pkg.dev/$(gcloud config get-value project)/praisonai-repository/praisonai-app:latest&#34;,
+            &#34;docker push us-central1-docker.pkg.dev/$(gcloud config get-value project)/praisonai-repository/praisonai-app:latest&#34;,
+            &#34;gcloud run deploy praisonai-service --image us-central1-docker.pkg.dev/$(gcloud config get-value project)/praisonai-repository/praisonai-app:latest --platform managed --region us-central1 --allow-unauthenticated --set-env-vars OPENAI_MODEL_NAME=${OPENAI_MODEL_NAME},OPENAI_API_KEY=${OPENAI_API_KEY},OPENAI_API_BASE=${OPENAI_API_BASE}&#34;
         ]
 
         for cmd in commands:
@@ -188,7 +188,7 @@ Loads environment variables from .env file or system and sets them.</p>
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="agent4all.deploy.CloudDeployer.create_api_file"><code class="name flex">
+<dt id="praisonai.deploy.CloudDeployer.create_api_file"><code class="name flex">
 <span>def <span class="ident">create_api_file</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -197,9 +197,9 @@ Loads environment variables from .env file or system and sets them.</p>
 <p>self (CloudDeployer): An instance of the CloudDeployer class.</p>
 <h2 id="returns">Returns</h2>
 <p>None
-This method creates an API file named "api.py" in the current directory. The file contains a basic Flask application that uses the Agent4ALL library to run a simple agent and returns the output as an HTML page. The application listens on the root path ("/") and uses the Markdown library to format the output.</p></div>
+This method creates an API file named "api.py" in the current directory. The file contains a basic Flask application that uses the PraisonAI library to run a simple agent and returns the output as an HTML page. The application listens on the root path ("/") and uses the Markdown library to format the output.</p></div>
 </dd>
-<dt id="agent4all.deploy.CloudDeployer.create_dockerfile"><code class="name flex">
+<dt id="praisonai.deploy.CloudDeployer.create_dockerfile"><code class="name flex">
 <span>def <span class="ident">create_dockerfile</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -214,10 +214,10 @@ This method creates a Dockerfile in the current directory with the specified con
 The Dockerfile is used to build a Docker image for the application.
 The content of the Dockerfile includes instructions to use the Python 3.11-slim base image,
 set the working directory to /app, copy the current directory contents into the container,
-install the required Python packages (flask, agent4all, gunicorn, and markdown),
+install the required Python packages (flask, praisonai, gunicorn, and markdown),
 expose port 8080, and run the application using Gunicorn.</p></div>
 </dd>
-<dt id="agent4all.deploy.CloudDeployer.run_commands"><code class="name flex">
+<dt id="praisonai.deploy.CloudDeployer.run_commands"><code class="name flex">
 <span>def <span class="ident">run_commands</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -235,7 +235,7 @@ This method sets environment variables for the application. It uses the <code>os
 <li><code>OPENAI_API_BASE</code>: The base URL for the OpenAI API. If not specified in the .env file, it defaults to "https://api.openai.com/v1".</li>
 </ul></div>
 </dd>
-<dt id="agent4all.deploy.CloudDeployer.set_environment_variables"><code class="name flex">
+<dt id="praisonai.deploy.CloudDeployer.set_environment_variables"><code class="name flex">
 <span>def <span class="ident">set_environment_variables</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -253,18 +253,18 @@ This method sets environment variables for the application. It uses the <code>os
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="agent4all" href="index.html">agent4all</a></code></li>
+<li><code><a title="praisonai" href="index.html">praisonai</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="agent4all.deploy.CloudDeployer" href="#agent4all.deploy.CloudDeployer">CloudDeployer</a></code></h4>
+<h4><code><a title="praisonai.deploy.CloudDeployer" href="#praisonai.deploy.CloudDeployer">CloudDeployer</a></code></h4>
 <ul class="">
-<li><code><a title="agent4all.deploy.CloudDeployer.create_api_file" href="#agent4all.deploy.CloudDeployer.create_api_file">create_api_file</a></code></li>
-<li><code><a title="agent4all.deploy.CloudDeployer.create_dockerfile" href="#agent4all.deploy.CloudDeployer.create_dockerfile">create_dockerfile</a></code></li>
-<li><code><a title="agent4all.deploy.CloudDeployer.run_commands" href="#agent4all.deploy.CloudDeployer.run_commands">run_commands</a></code></li>
-<li><code><a title="agent4all.deploy.CloudDeployer.set_environment_variables" href="#agent4all.deploy.CloudDeployer.set_environment_variables">set_environment_variables</a></code></li>
+<li><code><a title="praisonai.deploy.CloudDeployer.create_api_file" href="#praisonai.deploy.CloudDeployer.create_api_file">create_api_file</a></code></li>
+<li><code><a title="praisonai.deploy.CloudDeployer.create_dockerfile" href="#praisonai.deploy.CloudDeployer.create_dockerfile">create_dockerfile</a></code></li>
+<li><code><a title="praisonai.deploy.CloudDeployer.run_commands" href="#praisonai.deploy.CloudDeployer.run_commands">run_commands</a></code></li>
+<li><code><a title="praisonai.deploy.CloudDeployer.set_environment_variables" href="#praisonai.deploy.CloudDeployer.set_environment_variables">set_environment_variables</a></code></li>
 </ul>
 </li>
 </ul>

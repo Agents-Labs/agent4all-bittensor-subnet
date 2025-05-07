@@ -332,7 +332,7 @@ export class Agent {
   }
 }
 
-export interface Agent4ALLAgentsConfig {
+export interface PraisonAIAgentsConfig {
   agents: Agent[];
   tasks?: string[];
   verbose?: boolean;
@@ -340,14 +340,14 @@ export interface Agent4ALLAgentsConfig {
   process?: 'sequential' | 'parallel';
 }
 
-export class Agent4ALLAgents {
+export class PraisonAIAgents {
   private agents: Agent[];
   private tasks: string[];
   private verbose: boolean;
   private pretty: boolean;
   private process: 'sequential' | 'parallel';
 
-  constructor(config: Agent4ALLAgentsConfig) {
+  constructor(config: PraisonAIAgentsConfig) {
     this.agents = config.agents;
     this.verbose = config.verbose ?? process.env.PRAISON_VERBOSE !== 'false';
     this.pretty = config.pretty ?? process.env.PRAISON_PRETTY === 'true';
@@ -393,7 +393,7 @@ export class Agent4ALLAgents {
   }
 
   async start(): Promise<string[]> {
-    await Logger.debug('Starting Agent4ALL Agents execution...');
+    await Logger.debug('Starting PraisonAI Agents execution...');
     await Logger.debug('Process mode:', this.process);
     await Logger.debug('Tasks:', this.tasks);
 
@@ -412,7 +412,7 @@ export class Agent4ALLAgents {
     }
 
     if (this.verbose) {
-      await Logger.info('Agent4ALL Agents execution completed.');
+      await Logger.info('PraisonAI Agents execution completed.');
       for (let i = 0; i < results.length; i++) {
         await Logger.section(`Result from Agent ${i + 1}`, results[i]);
       }

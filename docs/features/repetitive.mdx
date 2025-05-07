@@ -23,7 +23,7 @@ A workflow optimization pattern where agents handle repetitive tasks through aut
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -39,7 +39,7 @@ A workflow optimization pattern where agents handle repetitive tasks through aut
     <Step title="Create a file">
         Create a new file `repetitive_agent.py` with the basic setup:
         ```python
-        from praisonaiagents import Agent, Task, Agent4ALLAgents
+        from praisonaiagents import Agent, Task, PraisonAIAgents
 
         agent = Agent(
             instructions="You are a loop agent that creating a loop of tasks."
@@ -52,7 +52,7 @@ A workflow optimization pattern where agents handle repetitive tasks through aut
             input_file="tasks.csv"
         )
 
-        agents = Agent4ALLAgents(
+        agents = PraisonAIAgents(
             agents=[agent],
             tasks=[task],
             process="workflow",

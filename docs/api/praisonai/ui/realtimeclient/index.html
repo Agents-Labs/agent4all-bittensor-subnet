@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.1">
-<title>agent4all.ui.realtimeclient API documentation</title>
+<title>praisonai.ui.realtimeclient API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
@@ -22,7 +22,7 @@ hljs.highlightAll();
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>agent4all.ui.realtimeclient</code></h1>
+<h1 class="title">Module <code>praisonai.ui.realtimeclient</code></h1>
 </header>
 <section id="section-intro">
 </section>
@@ -33,7 +33,7 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="agent4all.ui.realtimeclient.array_buffer_to_base64"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.array_buffer_to_base64"><code class="name flex">
 <span>def <span class="ident">array_buffer_to_base64</span></span>(<span>array_buffer)</span>
 </code></dt>
 <dd>
@@ -41,7 +41,7 @@ hljs.highlightAll();
 :param array_buffer: numpy array
 :return: base64 encoded string</p></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.base64_to_array_buffer"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.base64_to_array_buffer"><code class="name flex">
 <span>def <span class="ident">base64_to_array_buffer</span></span>(<span>base64_string)</span>
 </code></dt>
 <dd>
@@ -49,7 +49,7 @@ hljs.highlightAll();
 :param base64_string: base64 encoded string
 :return: numpy array of uint8</p></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.float_to_16bit_pcm"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.float_to_16bit_pcm"><code class="name flex">
 <span>def <span class="ident">float_to_16bit_pcm</span></span>(<span>float32_array)</span>
 </code></dt>
 <dd>
@@ -57,7 +57,7 @@ hljs.highlightAll();
 :param float32_array: numpy array of float32
 :return: numpy array of int16</p></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.merge_int16_arrays"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.merge_int16_arrays"><code class="name flex">
 <span>def <span class="ident">merge_int16_arrays</span></span>(<span>left, right)</span>
 </code></dt>
 <dd>
@@ -71,7 +71,7 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="agent4all.ui.realtimeclient.RealtimeAPI"><code class="flex name class">
+<dt id="praisonai.ui.realtimeclient.RealtimeAPI"><code class="flex name class">
 <span>class <span class="ident">RealtimeAPI</span></span>
 <span>(</span><span>url=None, api_key=None)</span>
 </code></dt>
@@ -141,35 +141,35 @@ hljs.highlightAll();
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="agent4all.ui.realtimeclient.RealtimeEventHandler" href="#agent4all.ui.realtimeclient.RealtimeEventHandler">RealtimeEventHandler</a></li>
+<li><a title="praisonai.ui.realtimeclient.RealtimeEventHandler" href="#praisonai.ui.realtimeclient.RealtimeEventHandler">RealtimeEventHandler</a></li>
 </ul>
 <h3>Methods</h3>
 <dl>
-<dt id="agent4all.ui.realtimeclient.RealtimeAPI.connect"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeAPI.connect"><code class="name flex">
 <span>async def <span class="ident">connect</span></span>(<span>self, model='gpt-4o-realtime-preview-2024-10-01')</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeAPI.disconnect"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeAPI.disconnect"><code class="name flex">
 <span>async def <span class="ident">disconnect</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeAPI.is_connected"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeAPI.is_connected"><code class="name flex">
 <span>def <span class="ident">is_connected</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeAPI.log"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeAPI.log"><code class="name flex">
 <span>def <span class="ident">log</span></span>(<span>self, *args)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeAPI.send"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeAPI.send"><code class="name flex">
 <span>async def <span class="ident">send</span></span>(<span>self, event_name, data=None)</span>
 </code></dt>
 <dd>
@@ -177,7 +177,7 @@ hljs.highlightAll();
 </dd>
 </dl>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient"><code class="flex name class">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient"><code class="flex name class">
 <span>class <span class="ident">RealtimeClient</span></span>
 <span>(</span><span>url=None, api_key=None)</span>
 </code></dt>
@@ -474,107 +474,107 @@ hljs.highlightAll();
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="agent4all.ui.realtimeclient.RealtimeEventHandler" href="#agent4all.ui.realtimeclient.RealtimeEventHandler">RealtimeEventHandler</a></li>
+<li><a title="praisonai.ui.realtimeclient.RealtimeEventHandler" href="#praisonai.ui.realtimeclient.RealtimeEventHandler">RealtimeEventHandler</a></li>
 </ul>
 <h3>Methods</h3>
 <dl>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.add_tool"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.add_tool"><code class="name flex">
 <span>async def <span class="ident">add_tool</span></span>(<span>self, definition, handler)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.append_input_audio"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.append_input_audio"><code class="name flex">
 <span>async def <span class="ident">append_input_audio</span></span>(<span>self, array_buffer)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.cancel_response"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.cancel_response"><code class="name flex">
 <span>async def <span class="ident">cancel_response</span></span>(<span>self, id=None, sample_count=0)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.connect"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.connect"><code class="name flex">
 <span>async def <span class="ident">connect</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.create_conversation_item"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.create_conversation_item"><code class="name flex">
 <span>async def <span class="ident">create_conversation_item</span></span>(<span>self, item)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.create_response"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.create_response"><code class="name flex">
 <span>async def <span class="ident">create_response</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.delete_item"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.delete_item"><code class="name flex">
 <span>async def <span class="ident">delete_item</span></span>(<span>self, id)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.disconnect"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.disconnect"><code class="name flex">
 <span>async def <span class="ident">disconnect</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.get_turn_detection_type"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.get_turn_detection_type"><code class="name flex">
 <span>def <span class="ident">get_turn_detection_type</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.is_connected"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.is_connected"><code class="name flex">
 <span>def <span class="ident">is_connected</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.remove_tool"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.remove_tool"><code class="name flex">
 <span>def <span class="ident">remove_tool</span></span>(<span>self, name)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.reset"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.reset"><code class="name flex">
 <span>def <span class="ident">reset</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.send_user_message_content"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.send_user_message_content"><code class="name flex">
 <span>async def <span class="ident">send_user_message_content</span></span>(<span>self, content=[])</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.update_session"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.update_session"><code class="name flex">
 <span>async def <span class="ident">update_session</span></span>(<span>self, **kwargs)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.wait_for_next_completed_item"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.wait_for_next_completed_item"><code class="name flex">
 <span>async def <span class="ident">wait_for_next_completed_item</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.wait_for_next_item"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.wait_for_next_item"><code class="name flex">
 <span>async def <span class="ident">wait_for_next_item</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeClient.wait_for_session_created"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeClient.wait_for_session_created"><code class="name flex">
 <span>async def <span class="ident">wait_for_session_created</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -582,7 +582,7 @@ hljs.highlightAll();
 </dd>
 </dl>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeConversation"><code class="flex name class">
+<dt id="praisonai.ui.realtimeclient.RealtimeConversation"><code class="flex name class">
 <span>class <span class="ident">RealtimeConversation</span></span>
 </code></dt>
 <dd>
@@ -813,42 +813,42 @@ hljs.highlightAll();
 </details>
 <h3>Class variables</h3>
 <dl>
-<dt id="agent4all.ui.realtimeclient.RealtimeConversation.EventProcessors"><code class="name">var <span class="ident">EventProcessors</span></code></dt>
+<dt id="praisonai.ui.realtimeclient.RealtimeConversation.EventProcessors"><code class="name">var <span class="ident">EventProcessors</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeConversation.default_frequency"><code class="name">var <span class="ident">default_frequency</span></code></dt>
+<dt id="praisonai.ui.realtimeclient.RealtimeConversation.default_frequency"><code class="name">var <span class="ident">default_frequency</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 </dl>
 <h3>Methods</h3>
 <dl>
-<dt id="agent4all.ui.realtimeclient.RealtimeConversation.clear"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeConversation.clear"><code class="name flex">
 <span>def <span class="ident">clear</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeConversation.get_item"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeConversation.get_item"><code class="name flex">
 <span>def <span class="ident">get_item</span></span>(<span>self, id)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeConversation.get_items"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeConversation.get_items"><code class="name flex">
 <span>def <span class="ident">get_items</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeConversation.process_event"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeConversation.process_event"><code class="name flex">
 <span>def <span class="ident">process_event</span></span>(<span>self, event, *args)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeConversation.queue_input_audio"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeConversation.queue_input_audio"><code class="name flex">
 <span>def <span class="ident">queue_input_audio</span></span>(<span>self, input_audio)</span>
 </code></dt>
 <dd>
@@ -856,7 +856,7 @@ hljs.highlightAll();
 </dd>
 </dl>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeEventHandler"><code class="flex name class">
+<dt id="praisonai.ui.realtimeclient.RealtimeEventHandler"><code class="flex name class">
 <span>class <span class="ident">RealtimeEventHandler</span></span>
 </code></dt>
 <dd>
@@ -894,30 +894,30 @@ hljs.highlightAll();
 </details>
 <h3>Subclasses</h3>
 <ul class="hlist">
-<li><a title="agent4all.ui.realtimeclient.RealtimeAPI" href="#agent4all.ui.realtimeclient.RealtimeAPI">RealtimeAPI</a></li>
-<li><a title="agent4all.ui.realtimeclient.RealtimeClient" href="#agent4all.ui.realtimeclient.RealtimeClient">RealtimeClient</a></li>
+<li><a title="praisonai.ui.realtimeclient.RealtimeAPI" href="#praisonai.ui.realtimeclient.RealtimeAPI">RealtimeAPI</a></li>
+<li><a title="praisonai.ui.realtimeclient.RealtimeClient" href="#praisonai.ui.realtimeclient.RealtimeClient">RealtimeClient</a></li>
 </ul>
 <h3>Methods</h3>
 <dl>
-<dt id="agent4all.ui.realtimeclient.RealtimeEventHandler.clear_event_handlers"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeEventHandler.clear_event_handlers"><code class="name flex">
 <span>def <span class="ident">clear_event_handlers</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeEventHandler.dispatch"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeEventHandler.dispatch"><code class="name flex">
 <span>def <span class="ident">dispatch</span></span>(<span>self, event_name, event)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeEventHandler.on"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeEventHandler.on"><code class="name flex">
 <span>def <span class="ident">on</span></span>(<span>self, event_name, handler)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.realtimeclient.RealtimeEventHandler.wait_for_next"><code class="name flex">
+<dt id="praisonai.ui.realtimeclient.RealtimeEventHandler.wait_for_next"><code class="name flex">
 <span>async def <span class="ident">wait_for_next</span></span>(<span>self, event_name)</span>
 </code></dt>
 <dd>
@@ -935,70 +935,70 @@ hljs.highlightAll();
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="agent4all.ui" href="../index.html">agent4all.ui</a></code></li>
+<li><code><a title="praisonai.ui" href="../index.html">praisonai.ui</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="agent4all.ui.realtimeclient.array_buffer_to_base64" href="#agent4all.ui.realtimeclient.array_buffer_to_base64">array_buffer_to_base64</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.base64_to_array_buffer" href="#agent4all.ui.realtimeclient.base64_to_array_buffer">base64_to_array_buffer</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.float_to_16bit_pcm" href="#agent4all.ui.realtimeclient.float_to_16bit_pcm">float_to_16bit_pcm</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.merge_int16_arrays" href="#agent4all.ui.realtimeclient.merge_int16_arrays">merge_int16_arrays</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.array_buffer_to_base64" href="#praisonai.ui.realtimeclient.array_buffer_to_base64">array_buffer_to_base64</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.base64_to_array_buffer" href="#praisonai.ui.realtimeclient.base64_to_array_buffer">base64_to_array_buffer</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.float_to_16bit_pcm" href="#praisonai.ui.realtimeclient.float_to_16bit_pcm">float_to_16bit_pcm</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.merge_int16_arrays" href="#praisonai.ui.realtimeclient.merge_int16_arrays">merge_int16_arrays</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="agent4all.ui.realtimeclient.RealtimeAPI" href="#agent4all.ui.realtimeclient.RealtimeAPI">RealtimeAPI</a></code></h4>
+<h4><code><a title="praisonai.ui.realtimeclient.RealtimeAPI" href="#praisonai.ui.realtimeclient.RealtimeAPI">RealtimeAPI</a></code></h4>
 <ul class="">
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeAPI.connect" href="#agent4all.ui.realtimeclient.RealtimeAPI.connect">connect</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeAPI.disconnect" href="#agent4all.ui.realtimeclient.RealtimeAPI.disconnect">disconnect</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeAPI.is_connected" href="#agent4all.ui.realtimeclient.RealtimeAPI.is_connected">is_connected</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeAPI.log" href="#agent4all.ui.realtimeclient.RealtimeAPI.log">log</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeAPI.send" href="#agent4all.ui.realtimeclient.RealtimeAPI.send">send</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeAPI.connect" href="#praisonai.ui.realtimeclient.RealtimeAPI.connect">connect</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeAPI.disconnect" href="#praisonai.ui.realtimeclient.RealtimeAPI.disconnect">disconnect</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeAPI.is_connected" href="#praisonai.ui.realtimeclient.RealtimeAPI.is_connected">is_connected</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeAPI.log" href="#praisonai.ui.realtimeclient.RealtimeAPI.log">log</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeAPI.send" href="#praisonai.ui.realtimeclient.RealtimeAPI.send">send</a></code></li>
 </ul>
 </li>
 <li>
-<h4><code><a title="agent4all.ui.realtimeclient.RealtimeClient" href="#agent4all.ui.realtimeclient.RealtimeClient">RealtimeClient</a></code></h4>
+<h4><code><a title="praisonai.ui.realtimeclient.RealtimeClient" href="#praisonai.ui.realtimeclient.RealtimeClient">RealtimeClient</a></code></h4>
 <ul class="">
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.add_tool" href="#agent4all.ui.realtimeclient.RealtimeClient.add_tool">add_tool</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.append_input_audio" href="#agent4all.ui.realtimeclient.RealtimeClient.append_input_audio">append_input_audio</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.cancel_response" href="#agent4all.ui.realtimeclient.RealtimeClient.cancel_response">cancel_response</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.connect" href="#agent4all.ui.realtimeclient.RealtimeClient.connect">connect</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.create_conversation_item" href="#agent4all.ui.realtimeclient.RealtimeClient.create_conversation_item">create_conversation_item</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.create_response" href="#agent4all.ui.realtimeclient.RealtimeClient.create_response">create_response</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.delete_item" href="#agent4all.ui.realtimeclient.RealtimeClient.delete_item">delete_item</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.disconnect" href="#agent4all.ui.realtimeclient.RealtimeClient.disconnect">disconnect</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.get_turn_detection_type" href="#agent4all.ui.realtimeclient.RealtimeClient.get_turn_detection_type">get_turn_detection_type</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.is_connected" href="#agent4all.ui.realtimeclient.RealtimeClient.is_connected">is_connected</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.remove_tool" href="#agent4all.ui.realtimeclient.RealtimeClient.remove_tool">remove_tool</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.reset" href="#agent4all.ui.realtimeclient.RealtimeClient.reset">reset</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.send_user_message_content" href="#agent4all.ui.realtimeclient.RealtimeClient.send_user_message_content">send_user_message_content</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.update_session" href="#agent4all.ui.realtimeclient.RealtimeClient.update_session">update_session</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.wait_for_next_completed_item" href="#agent4all.ui.realtimeclient.RealtimeClient.wait_for_next_completed_item">wait_for_next_completed_item</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.wait_for_next_item" href="#agent4all.ui.realtimeclient.RealtimeClient.wait_for_next_item">wait_for_next_item</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeClient.wait_for_session_created" href="#agent4all.ui.realtimeclient.RealtimeClient.wait_for_session_created">wait_for_session_created</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.add_tool" href="#praisonai.ui.realtimeclient.RealtimeClient.add_tool">add_tool</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.append_input_audio" href="#praisonai.ui.realtimeclient.RealtimeClient.append_input_audio">append_input_audio</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.cancel_response" href="#praisonai.ui.realtimeclient.RealtimeClient.cancel_response">cancel_response</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.connect" href="#praisonai.ui.realtimeclient.RealtimeClient.connect">connect</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.create_conversation_item" href="#praisonai.ui.realtimeclient.RealtimeClient.create_conversation_item">create_conversation_item</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.create_response" href="#praisonai.ui.realtimeclient.RealtimeClient.create_response">create_response</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.delete_item" href="#praisonai.ui.realtimeclient.RealtimeClient.delete_item">delete_item</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.disconnect" href="#praisonai.ui.realtimeclient.RealtimeClient.disconnect">disconnect</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.get_turn_detection_type" href="#praisonai.ui.realtimeclient.RealtimeClient.get_turn_detection_type">get_turn_detection_type</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.is_connected" href="#praisonai.ui.realtimeclient.RealtimeClient.is_connected">is_connected</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.remove_tool" href="#praisonai.ui.realtimeclient.RealtimeClient.remove_tool">remove_tool</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.reset" href="#praisonai.ui.realtimeclient.RealtimeClient.reset">reset</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.send_user_message_content" href="#praisonai.ui.realtimeclient.RealtimeClient.send_user_message_content">send_user_message_content</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.update_session" href="#praisonai.ui.realtimeclient.RealtimeClient.update_session">update_session</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.wait_for_next_completed_item" href="#praisonai.ui.realtimeclient.RealtimeClient.wait_for_next_completed_item">wait_for_next_completed_item</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.wait_for_next_item" href="#praisonai.ui.realtimeclient.RealtimeClient.wait_for_next_item">wait_for_next_item</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeClient.wait_for_session_created" href="#praisonai.ui.realtimeclient.RealtimeClient.wait_for_session_created">wait_for_session_created</a></code></li>
 </ul>
 </li>
 <li>
-<h4><code><a title="agent4all.ui.realtimeclient.RealtimeConversation" href="#agent4all.ui.realtimeclient.RealtimeConversation">RealtimeConversation</a></code></h4>
+<h4><code><a title="praisonai.ui.realtimeclient.RealtimeConversation" href="#praisonai.ui.realtimeclient.RealtimeConversation">RealtimeConversation</a></code></h4>
 <ul class="two-column">
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeConversation.EventProcessors" href="#agent4all.ui.realtimeclient.RealtimeConversation.EventProcessors">EventProcessors</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeConversation.clear" href="#agent4all.ui.realtimeclient.RealtimeConversation.clear">clear</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeConversation.default_frequency" href="#agent4all.ui.realtimeclient.RealtimeConversation.default_frequency">default_frequency</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeConversation.get_item" href="#agent4all.ui.realtimeclient.RealtimeConversation.get_item">get_item</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeConversation.get_items" href="#agent4all.ui.realtimeclient.RealtimeConversation.get_items">get_items</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeConversation.process_event" href="#agent4all.ui.realtimeclient.RealtimeConversation.process_event">process_event</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeConversation.queue_input_audio" href="#agent4all.ui.realtimeclient.RealtimeConversation.queue_input_audio">queue_input_audio</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeConversation.EventProcessors" href="#praisonai.ui.realtimeclient.RealtimeConversation.EventProcessors">EventProcessors</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeConversation.clear" href="#praisonai.ui.realtimeclient.RealtimeConversation.clear">clear</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeConversation.default_frequency" href="#praisonai.ui.realtimeclient.RealtimeConversation.default_frequency">default_frequency</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeConversation.get_item" href="#praisonai.ui.realtimeclient.RealtimeConversation.get_item">get_item</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeConversation.get_items" href="#praisonai.ui.realtimeclient.RealtimeConversation.get_items">get_items</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeConversation.process_event" href="#praisonai.ui.realtimeclient.RealtimeConversation.process_event">process_event</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeConversation.queue_input_audio" href="#praisonai.ui.realtimeclient.RealtimeConversation.queue_input_audio">queue_input_audio</a></code></li>
 </ul>
 </li>
 <li>
-<h4><code><a title="agent4all.ui.realtimeclient.RealtimeEventHandler" href="#agent4all.ui.realtimeclient.RealtimeEventHandler">RealtimeEventHandler</a></code></h4>
+<h4><code><a title="praisonai.ui.realtimeclient.RealtimeEventHandler" href="#praisonai.ui.realtimeclient.RealtimeEventHandler">RealtimeEventHandler</a></code></h4>
 <ul class="">
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeEventHandler.clear_event_handlers" href="#agent4all.ui.realtimeclient.RealtimeEventHandler.clear_event_handlers">clear_event_handlers</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeEventHandler.dispatch" href="#agent4all.ui.realtimeclient.RealtimeEventHandler.dispatch">dispatch</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeEventHandler.on" href="#agent4all.ui.realtimeclient.RealtimeEventHandler.on">on</a></code></li>
-<li><code><a title="agent4all.ui.realtimeclient.RealtimeEventHandler.wait_for_next" href="#agent4all.ui.realtimeclient.RealtimeEventHandler.wait_for_next">wait_for_next</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeEventHandler.clear_event_handlers" href="#praisonai.ui.realtimeclient.RealtimeEventHandler.clear_event_handlers">clear_event_handlers</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeEventHandler.dispatch" href="#praisonai.ui.realtimeclient.RealtimeEventHandler.dispatch">dispatch</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeEventHandler.on" href="#praisonai.ui.realtimeclient.RealtimeEventHandler.on">on</a></code></li>
+<li><code><a title="praisonai.ui.realtimeclient.RealtimeEventHandler.wait_for_next" href="#praisonai.ui.realtimeclient.RealtimeEventHandler.wait_for_next">wait_for_next</a></code></li>
 </ul>
 </li>
 </ul>

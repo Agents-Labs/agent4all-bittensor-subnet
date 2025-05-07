@@ -1,12 +1,12 @@
 @media (prefers-color-scheme: dark) {
     .md-header__logo img {
-      content: url('../images/agent4all-logo-dark.png');
+      content: url('../images/praisonai-logo-dark.png');
     }
   }
   
   @media (prefers-color-scheme: light) {
     .md-header__logo img {
-      content: url('../images/agent4all-logo-light.png');
+      content: url('../images/praisonai-logo-light.png');
     }
   }
 

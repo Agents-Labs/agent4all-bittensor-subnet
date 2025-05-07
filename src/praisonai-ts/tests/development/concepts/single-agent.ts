@@ -1,4 +1,4 @@
-import { Agent, Agent4ALLAgents } from '../../src/agent';
+import { Agent, PraisonAIAgents } from '../../src/agent';
 
 async function main() {
     // Create a simple agent (no task specified)
@@ -9,7 +9,7 @@ async function main() {
     });
 
     // Run the agent
-    const agent4all = new Agent4ALLAgents({
+    const praisonAI = new PraisonAIAgents({
         agents: [agent],
         tasks: ["Explain the process of photosynthesis in detail."],
         verbose: true
@@ -17,7 +17,7 @@ async function main() {
 
     try {
         console.log('Starting single agent example...');
-        const results = await agent4all.start();
+        const results = await praisonAI.start();
         console.log('\nFinal Results:', results);
     } catch (error) {
         console.error('Error:', error);

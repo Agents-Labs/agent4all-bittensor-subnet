@@ -1,4 +1,4 @@
-"""Tools module for Agent4ALL Agents"""
+"""Tools module for PraisonAI Agents"""
 from .duckduckgo_tools import internet_search
 
 class Tools:

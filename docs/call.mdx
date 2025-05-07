@@ -1,6 +1,6 @@
 ---
-title: "Agent4ALL Call"
-description: "Guide to Agent4ALL's voice-based interaction feature enabling AI customer service through phone calls, including setup and tool integration"
+title: "PraisonAI Call"
+description: "Guide to PraisonAI's voice-based interaction feature enabling AI customer service through phone calls, including setup and tool integration"
 icon: "phone"
 ---
 
@@ -8,26 +8,26 @@ icon: "phone"
 
 ## AI Customer Service
 
-Agent4ALL Call is a feature that enables voice-based interaction with AI models through phone calls. This functionality allows users to have natural conversations with AI agents over traditional phone lines.
+PraisonAI Call is a feature that enables voice-based interaction with AI models through phone calls. This functionality allows users to have natural conversations with AI agents over traditional phone lines.
 
 ## Installation
 
 ### Step 1
 
 ```bash
-pip install "agent4all[call]"
+pip install "praisonai[call]"
 export OPENAI_API_KEY="enter your openai api key here"
 export NGROK_AUTH_TOKEN="enter your ngrok auth token here"
-agent4all call --public
+praisonai call --public
 ```
 
 ### Step 2
 
-Buy a number at [Agent4ALL Dashboard](https://dashboard.praison.ai/)
+Buy a number at [PraisonAI Dashboard](https://dashboard.praison.ai/)
 
 ### Step 3
 
-Enter the Public URL in the Agent4ALL Dashboard phone number field
+Enter the Public URL in the PraisonAI Dashboard phone number field
 
 ## Features
 
@@ -35,7 +35,7 @@ Enter the Public URL in the Agent4ALL Dashboard phone number field
 - Natural language processing for voice interactions
 - Support for multiple phone carriers and providers
 - Call recording and transcription capabilities
-- Integration with other Agent4ALL features
+- Integration with other PraisonAI features
 
 ## Adding Tools
 
@@ -87,7 +87,7 @@ pip install yfinance
 4. ```bash
 export OPENAI_API_KEY="enter your openai api key here"
 export NGROK_AUTH_TOKEN="enter your ngrok auth token here"
-agent4all call --public
+praisonai call --public
 ```
 
 ## Manage Google Calendar Events
@@ -115,12 +115,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Agent4ALL with the 'call' extra and ensure it's the latest version
-RUN pip install --no-cache-dir --upgrade "agent4all[call]"
+# Install PraisonAI with the 'call' extra and ensure it's the latest version
+RUN pip install --no-cache-dir --upgrade "praisonai[call]"
 
 # Expose the port the app runs on
 EXPOSE 8090
 
 # Run the application
-CMD ["agent4all", "call"]
+CMD ["praisonai", "call"]
 ```
