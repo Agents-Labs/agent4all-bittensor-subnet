@@ -1,4 +1,4 @@
-import { Agent } from 'agent4all';
+import { Agent } from 'praisonai';
 
 async function getWeather(location: string) {
   console.log(`Getting weather for ${location}...`);

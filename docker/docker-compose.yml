@@ -13,7 +13,7 @@ services:
       CHAINLIT_HOST: "0.0.0.0"
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       CHAINLIT_AUTH_SECRET: ${CHAINLIT_AUTH_SECRET}
-    command: agent4all ui --host 0.0.0.0
+    command: praisonai ui --host 0.0.0.0
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8082"]
       interval: 10s

@@ -30,7 +30,7 @@ Learn how to implement a multilingual content generation system using AI agents 
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -46,7 +46,7 @@ Learn how to implement a multilingual content generation system using AI agents 
     <Step title="Create a file">
         Create a new file `app.py` with the basic setup:
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import time
 from typing import Dict, List
 
@@ -180,7 +180,7 @@ quality_task = Task(
 )
 
 # Create workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[content_generator, translator, cultural_checker, 
             content_adapter, quality_assessor],
     tasks=[generation_task, translation_task, cultural_task, 

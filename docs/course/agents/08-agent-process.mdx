@@ -78,12 +78,12 @@ graph TD
 
 **Best for**: Tasks requiring different approaches based on circumstances
 
-## Implementing Process in Agent4ALL
+## Implementing Process in PraisonAI
 
-Here's a simple example of creating a process in Agent4ALL:
+Here's a simple example of creating a process in PraisonAI:
 
 ```python
-from praisonaiagents import Agent, Process, Agent4ALLAgents
+from praisonaiagents import Agent, Process, PraisonAIAgents
 
 # Create agents
 research_agent = Agent(
@@ -102,7 +102,7 @@ editing_agent = Agent(
 )
 
 # Create the multi-agent system with the process
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[research_agent, writing_agent, editing_agent],
     process="hierarchical"
 )
@@ -137,7 +137,7 @@ Start with simple processes and gradually add complexity as you become more comf
 It's important to track how your processes are running:
 
 ```python
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[research_agent, writing_agent, editing_agent],
     process=content_process,
     verbose=True  # Enables detailed logging

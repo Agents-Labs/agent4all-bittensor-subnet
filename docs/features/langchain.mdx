@@ -1,7 +1,7 @@
 ---
 title: "LangChain Agents"
 sidebarTitle: "LangChain Agents"
-description: "Learn how to use LangChain tools and utilities with Agent4ALL agents."
+description: "Learn how to use LangChain tools and utilities with PraisonAI agents."
 icon: "link-simple"
 ---
 
@@ -28,7 +28,7 @@ icon: "link-simple"
             Create a new file `app.py` with the basic setup:
 <CodeGroup>
   ```python Single Tool
-  from praisonaiagents import Agent, Task, Agent4ALLAgents
+  from praisonaiagents import Agent, Task, PraisonAIAgents
   from langchain_community.utilities import WikipediaAPIWrapper
 
   # Create an agent with Wikipedia tool
@@ -50,7 +50,7 @@ icon: "link-simple"
   )
 
   # Create and start the workflow
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[agent],
       tasks=[task],
       verbose=True
@@ -60,7 +60,7 @@ icon: "link-simple"
   ```
 
   ```python Multiple Tools
-  from praisonaiagents import Agent, Task, Agent4ALLAgents
+  from praisonaiagents import Agent, Task, PraisonAIAgents
   from langchain_community.tools import YouTubeSearchTool
   from langchain_community.utilities import WikipediaAPIWrapper
 
@@ -101,7 +101,7 @@ icon: "link-simple"
   )
 
   # Create and start the workflow
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[agent, agent2],
       tasks=[task, task2],
       verbose=True
@@ -124,9 +124,9 @@ icon: "link-simple"
     <Steps>
         <Step title="Install Package">
             (Upcoming Feature)
-            Install the Agent4ALL package:
+            Install the PraisonAI package:
             ```bash
-            pip install "agent4all"
+            pip install "praisonai"
             ```
         </Step>
         <Step title="Set API Key">
@@ -138,7 +138,7 @@ icon: "link-simple"
         <Step title="Create a file">
             Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 roles:
   researcher:
@@ -159,7 +159,7 @@ roles:
         <Step title="Start Agents">
             Type this in your terminal to run your agents:
 ```bash
-agent4all agents.yaml
+praisonai agents.yaml
 ```
         </Step>
     </Steps>
@@ -188,7 +188,7 @@ agent4all agents.yaml
 
 <CardGroup cols={2}>
   <Card title="Tool Integration" icon="plug">
-    Seamlessly use LangChain tools with Agent4ALL agents.
+    Seamlessly use LangChain tools with PraisonAI agents.
   </Card>
   <Card title="Multiple Sources" icon="database">
     Access various data sources through LangChain utilities.

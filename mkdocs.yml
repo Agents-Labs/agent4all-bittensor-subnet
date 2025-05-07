@@ -1,9 +1,9 @@
-site_name: Agent4ALL Documentation
+site_name: PraisonAI Documentation
 site_url: https://docs.praison.ai
 site_author: MervinPraison
 
-repo_name: MervinPraison/Agent4ALL
-repo_url: https://github.com/MervinPraison/Agent4ALL
+repo_name: MervinPraison/PraisonAI
+repo_url: https://github.com/MervinPraison/PraisonAI
 
 nav:
   - 🏠 Home:
@@ -70,7 +70,7 @@ nav:
 
   - 🛠️ API reference:
       - API: api.md
-      - API Code: api/agent4all/index.html
+      - API Code: api/praisonai/index.html
 
 theme:
   name: material

@@ -25,7 +25,7 @@ A workflow demonstrating how AI agents can monitor global events, analyze supply
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -41,7 +41,7 @@ A workflow demonstrating how AI agents can monitor global events, analyze supply
     <Step title="Create a file">
         Create a new file `app.py` with the basic setup:
         ```python
-        from praisonaiagents import Agent, Task, Agent4ALLAgents
+        from praisonaiagents import Agent, Task, PraisonAIAgents
         import time
         from typing import Dict, List
 
@@ -129,7 +129,7 @@ A workflow demonstrating how AI agents can monitor global events, analyze supply
         )
 
         # Create workflow
-        workflow = Agent4ALLAgents(
+        workflow = PraisonAIAgents(
             agents=[monitor_agent, impact_analyzer, strategy_generator],
             tasks=[monitoring_task, impact_task, strategy_task],
             process="workflow",

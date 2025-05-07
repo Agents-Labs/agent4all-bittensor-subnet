@@ -1,31 +1,30 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents  # Import necessary classes for agent and task management
-from langchain_community.tools import YouTubeSearchTool  # Import the YouTube search tool
-from langchain_community.utilities import WikipediaAPIWrapper  # Import the Wikipedia API wrapper
+from praisonaiagents import Agent, Task, PraisonAIAgents
+from langchain_community.tools import YouTubeSearchTool
+from langchain_community.utilities import WikipediaAPIWrapper
 
-# Create an agent that utilizes both YouTube and Wikipedia tools
+# Create an agent with both tools
 agent = Agent(
-    name="SearchAgent",  # Name of the agent
-    role="Research Assistant",  # Role description of the agent
-    goal="Search for information from multiple sources",  # The primary goal of the agent
-    backstory="I am an AI assistant that can search YouTube and Wikipedia.",  # Background information to define agent's purpose
-    tools=[YouTubeSearchTool, WikipediaAPIWrapper],  # List of tools that the agent will use
-    self_reflect=False  # Disable self-reflection capability for this agent
+    name="SearchAgent",
+    role="Research Assistant",
+    goal="Search for information from multiple sources",
+    backstory="I am an AI assistant that can search YouTube and Wikipedia.",
+    tools=[YouTubeSearchTool, WikipediaAPIWrapper],
+    self_reflect=False
 )
 
-# Create a task that utilizes the capabilities of both tools
+# Create tasks to demonstrate both tools
 task = Task(
-    name="search_task",  # Name of the task
-    description="Search for information about 'AI advancements' on both YouTube and Wikipedia",  # Instructions for the task
-    expected_output="Combined information from YouTube videos and Wikipedia articles",  # Define what the expected output should be
-    agent=agent  # Assign the previously created agent to this task
+    name="search_task",
+    description="Search for information about 'AI advancements' on both YouTube and Wikipedia",
+    expected_output="Combined information from YouTube videos and Wikipedia articles",
+    agent=agent
 )
 
-# Create a manager for coordinating agents and their respective tasks
-agents = Agent4ALLAgents(
-    agents=[agent],  # List of agents involved in the workflow
-    tasks=[task],  # List of tasks to execute
-    verbose=True  # Enable verbose output for debugging and monitoring
+# Create and start the workflow
+agents = PraisonAIAgents(
+    agents=[agent],
+    tasks=[task],
+    verbose=True
 )
 
-# Start the workflow to execute the assigned tasks with the defined agents
-agents.start() 
+agents.start()

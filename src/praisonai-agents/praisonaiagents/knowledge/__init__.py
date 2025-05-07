@@ -1,5 +1,5 @@
 """
-Agent4ALL Knowledge - Advanced knowledge management system with configurable features
+PraisonAI Knowledge - Advanced knowledge management system with configurable features
 """
 
 from praisonaiagents.knowledge.knowledge import Knowledge

@@ -13,12 +13,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install --no-cache-dir \
     praisonaiagents>=0.0.4 \
     praisonai_tools \
-    "agent4all==2.0.18" \
-    "agent4all[chat]" \
+    "praisonai==2.0.18" \
+    "praisonai[chat]" \
     "embedchain[github,youtube]"
 
 # Copy application code
 COPY . .
 
 # Default command (will be overridden by docker-compose)
-CMD ["agent4all", "chat"]
+CMD ["praisonai", "chat"]

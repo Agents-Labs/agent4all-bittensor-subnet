@@ -53,7 +53,7 @@ flowchart TB
   <Tab title="Code">
     <Steps>
         <Step title="Install Package">
-            First, install the Agent4ALL Agents package:
+            First, install the PraisonAI Agents package:
             ```bash
             pip install "praisonaiagents[memory]" duckduckgo_search 
             ```
@@ -72,7 +72,7 @@ flowchart TB
             Create a new file `app.py` with the basic setup:
 <CodeGroup>
   ```python Single Agent
-  from praisonaiagents.agents.agents import Agent, Task, Agent4ALLAgents
+  from praisonaiagents.agents.agents import Agent, Task, PraisonAIAgents
 
   # Create blog writer agent
   blog_agent = Agent(
@@ -90,7 +90,7 @@ flowchart TB
   )
 
   # Create and start the agents with memory enabled
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[blog_agent],
       tasks=[blog_task],
       memory=True
@@ -102,7 +102,7 @@ flowchart TB
   ```
 
   ```python Multiple Agents
-  from praisonaiagents.agents.agents import Agent, Task, Agent4ALLAgents
+  from praisonaiagents.agents.agents import Agent, Task, PraisonAIAgents
   from praisonaiagents.tools import duckduckgo
 
   # Create research agent with memory
@@ -137,7 +137,7 @@ flowchart TB
   )
 
   # Create and start the agents with advanced memory configuration
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[research_agent, blog_agent],
       tasks=[research_task, blog_task],
       memory=True
@@ -161,9 +161,9 @@ flowchart TB
   <Tab title="No Code">
     <Steps>
         <Step title="Install Package">
-            Install the Agent4ALL package:
+            Install the PraisonAI package:
             ```bash
-            pip install agent4all
+            pip install praisonai
             ```
         </Step>
         <Step title="Set API Key">
@@ -175,7 +175,7 @@ flowchart TB
         <Step title="Create a file">
             Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 memory: true
 roles:
@@ -205,7 +205,7 @@ roles:
         <Step title="Start Agents">
             Type this in your terminal to run your agents:
 ```bash
-agent4all agents.yaml
+praisonai agents.yaml
 ```
         </Step>
     </Steps>
@@ -252,7 +252,7 @@ agent4all agents.yaml
 <Tabs>
   <Tab title="Code">
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import duckduckgo
 
     # Create first agent for research
@@ -287,7 +287,7 @@ agent4all agents.yaml
     )
 
     # Create and start the agents with memory
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[researcher, writer],
         tasks=[research_task, report_task],
         memory=True,
@@ -300,7 +300,7 @@ agent4all agents.yaml
   </Tab>
   <Tab title="No Code">
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 memory: true
 roles:
@@ -341,7 +341,7 @@ agent = Agent(
 )
 
 # Create agents with memory options
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[agent],
     tasks=[task],
     memory=True,  # Enable memory
@@ -390,7 +390,7 @@ agents = Agent4ALLAgents(
 
 ### Memory Configuration Options
 
-The memory system in Agent4ALL supports various configuration options to customize how agents store and retrieve information:
+The memory system in PraisonAI supports various configuration options to customize how agents store and retrieve information:
 
 ```python
 memory_config = {
@@ -415,7 +415,7 @@ memory_config = {
 }
 
 # Create agents with memory configuration
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[agent],
     tasks=[task],
     memory=True,
@@ -425,7 +425,7 @@ agents = Agent4ALLAgents(
 
 ### Memory Types
 
-Agent4ALL's memory system includes several types of memory:
+PraisonAI's memory system includes several types of memory:
 
 <CardGroup cols={2}>
   <Card title="Short-term Memory" icon="bolt">
@@ -442,7 +442,7 @@ Agent4ALL's memory system includes several types of memory:
 
 ### Memory Quality Control
 
-Agent4ALL includes built-in quality control for memory storage:
+PraisonAI includes built-in quality control for memory storage:
 
 ```python
 # Example of storing with quality metrics

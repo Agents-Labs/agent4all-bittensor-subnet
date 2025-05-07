@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import time
 from typing import Dict, List
 import asyncio
@@ -188,7 +188,7 @@ simulation_task = Task(
 )
 
 # Create workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[genetic_analyzer, history_analyzer, interaction_analyzer,
             protocol_generator, effectiveness_simulator],
     tasks=[genetic_task, history_task, interaction_task,

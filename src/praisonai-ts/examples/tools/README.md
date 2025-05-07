@@ -1,6 +1,6 @@
 # Tool Examples
 
-This directory contains examples of using various tools from the Agent4ALL package.
+This directory contains examples of using various tools from the PraisonAI package.
 
 ## Available Examples
 
@@ -24,7 +24,7 @@ The downloaded PDFs will be saved in the `examples/downloads` directory.
 You can use these tools in your own code by importing them from the package:
 
 ```typescript
-import { ArxivSearchTool, ArxivDownloadTool } from 'agent4all';
+import { ArxivSearchTool, ArxivDownloadTool } from 'praisonai';
 
 // Create tool instances
 const searchTool = new ArxivSearchTool();

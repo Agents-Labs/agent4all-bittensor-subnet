@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.1">
-<title>agent4all.auto API documentation</title>
+<title>praisonai.auto API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
@@ -22,7 +22,7 @@ hljs.highlightAll();
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>agent4all.auto</code></h1>
+<h1 class="title">Module <code>praisonai.auto</code></h1>
 </header>
 <section id="section-intro">
 </section>
@@ -35,7 +35,7 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="agent4all.auto.AutoGenerator"><code class="flex name class">
+<dt id="praisonai.auto.AutoGenerator"><code class="flex name class">
 <span>class <span class="ident">AutoGenerator</span></span>
 <span>(</span><span>topic='Movie Story writing about AI', agent_file='test.yaml', framework='crewai', config_list: Optional[List[Dict]] = None)</span>
 </code></dt>
@@ -234,7 +234,7 @@ The final role you create should satisfy the provided task: &#34;&#34;&#34; + se
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="agent4all.auto.AutoGenerator.convert_and_save"><code class="name flex">
+<dt id="praisonai.auto.AutoGenerator.convert_and_save"><code class="name flex">
 <span>def <span class="ident">convert_and_save</span></span>(<span>self, json_data)</span>
 </code></dt>
 <dd>
@@ -249,7 +249,7 @@ The final role you create should satisfy the provided task: &#34;&#34;&#34; + se
 <dd>The name of the YAML file to save. Defaults to "test.yaml".</dd>
 </dl></div>
 </dd>
-<dt id="agent4all.auto.AutoGenerator.generate"><code class="name flex">
+<dt id="praisonai.auto.AutoGenerator.generate"><code class="name flex">
 <span>def <span class="ident">generate</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -271,7 +271,7 @@ The final role you create should satisfy the provided task: &#34;&#34;&#34; + se
 path = generator.generate()
 print(path)</p></div>
 </dd>
-<dt id="agent4all.auto.AutoGenerator.get_user_content"><code class="name flex">
+<dt id="praisonai.auto.AutoGenerator.get_user_content"><code class="name flex">
 <span>def <span class="ident">get_user_content</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -290,7 +290,7 @@ print(prompt)</p></div>
 </dd>
 </dl>
 </dd>
-<dt id="agent4all.auto.RoleDetails"><code class="flex name class">
+<dt id="praisonai.auto.RoleDetails"><code class="flex name class">
 <span>class <span class="ident">RoleDetails</span></span>
 <span>(</span><span>**data: Any)</span>
 </code></dt>
@@ -356,41 +356,41 @@ validated to form a valid model.</p>
 </ul>
 <h3>Class variables</h3>
 <dl>
-<dt id="agent4all.auto.RoleDetails.backstory"><code class="name">var <span class="ident">backstory</span> : str</code></dt>
+<dt id="praisonai.auto.RoleDetails.backstory"><code class="name">var <span class="ident">backstory</span> : str</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.RoleDetails.goal"><code class="name">var <span class="ident">goal</span> : str</code></dt>
+<dt id="praisonai.auto.RoleDetails.goal"><code class="name">var <span class="ident">goal</span> : str</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.RoleDetails.model_computed_fields"><code class="name">var <span class="ident">model_computed_fields</span></code></dt>
+<dt id="praisonai.auto.RoleDetails.model_computed_fields"><code class="name">var <span class="ident">model_computed_fields</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.RoleDetails.model_config"><code class="name">var <span class="ident">model_config</span></code></dt>
+<dt id="praisonai.auto.RoleDetails.model_config"><code class="name">var <span class="ident">model_config</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.RoleDetails.model_fields"><code class="name">var <span class="ident">model_fields</span></code></dt>
+<dt id="praisonai.auto.RoleDetails.model_fields"><code class="name">var <span class="ident">model_fields</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.RoleDetails.role"><code class="name">var <span class="ident">role</span> : str</code></dt>
+<dt id="praisonai.auto.RoleDetails.role"><code class="name">var <span class="ident">role</span> : str</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.RoleDetails.tasks"><code class="name">var <span class="ident">tasks</span> : Dict[str, <a title="agent4all.auto.TaskDetails" href="#agent4all.auto.TaskDetails">TaskDetails</a>]</code></dt>
+<dt id="praisonai.auto.RoleDetails.tasks"><code class="name">var <span class="ident">tasks</span> : Dict[str, <a title="praisonai.auto.TaskDetails" href="#praisonai.auto.TaskDetails">TaskDetails</a>]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.RoleDetails.tools"><code class="name">var <span class="ident">tools</span> : List[str]</code></dt>
+<dt id="praisonai.auto.RoleDetails.tools"><code class="name">var <span class="ident">tools</span> : List[str]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 </dl>
 </dd>
-<dt id="agent4all.auto.TaskDetails"><code class="flex name class">
+<dt id="praisonai.auto.TaskDetails"><code class="flex name class">
 <span>class <span class="ident">TaskDetails</span></span>
 <span>(</span><span>**data: Any)</span>
 </code></dt>
@@ -453,29 +453,29 @@ validated to form a valid model.</p>
 </ul>
 <h3>Class variables</h3>
 <dl>
-<dt id="agent4all.auto.TaskDetails.description"><code class="name">var <span class="ident">description</span> : str</code></dt>
+<dt id="praisonai.auto.TaskDetails.description"><code class="name">var <span class="ident">description</span> : str</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.TaskDetails.expected_output"><code class="name">var <span class="ident">expected_output</span> : str</code></dt>
+<dt id="praisonai.auto.TaskDetails.expected_output"><code class="name">var <span class="ident">expected_output</span> : str</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.TaskDetails.model_computed_fields"><code class="name">var <span class="ident">model_computed_fields</span></code></dt>
+<dt id="praisonai.auto.TaskDetails.model_computed_fields"><code class="name">var <span class="ident">model_computed_fields</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.TaskDetails.model_config"><code class="name">var <span class="ident">model_config</span></code></dt>
+<dt id="praisonai.auto.TaskDetails.model_config"><code class="name">var <span class="ident">model_config</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.TaskDetails.model_fields"><code class="name">var <span class="ident">model_fields</span></code></dt>
+<dt id="praisonai.auto.TaskDetails.model_fields"><code class="name">var <span class="ident">model_fields</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
 </dl>
 </dd>
-<dt id="agent4all.auto.TeamStructure"><code class="flex name class">
+<dt id="praisonai.auto.TeamStructure"><code class="flex name class">
 <span>class <span class="ident">TeamStructure</span></span>
 <span>(</span><span>**data: Any)</span>
 </code></dt>
@@ -537,19 +537,19 @@ validated to form a valid model.</p>
 </ul>
 <h3>Class variables</h3>
 <dl>
-<dt id="agent4all.auto.TeamStructure.model_computed_fields"><code class="name">var <span class="ident">model_computed_fields</span></code></dt>
+<dt id="praisonai.auto.TeamStructure.model_computed_fields"><code class="name">var <span class="ident">model_computed_fields</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.TeamStructure.model_config"><code class="name">var <span class="ident">model_config</span></code></dt>
+<dt id="praisonai.auto.TeamStructure.model_config"><code class="name">var <span class="ident">model_config</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.TeamStructure.model_fields"><code class="name">var <span class="ident">model_fields</span></code></dt>
+<dt id="praisonai.auto.TeamStructure.model_fields"><code class="name">var <span class="ident">model_fields</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.auto.TeamStructure.roles"><code class="name">var <span class="ident">roles</span> : Dict[str, <a title="agent4all.auto.RoleDetails" href="#agent4all.auto.RoleDetails">RoleDetails</a>]</code></dt>
+<dt id="praisonai.auto.TeamStructure.roles"><code class="name">var <span class="ident">roles</span> : Dict[str, <a title="praisonai.auto.RoleDetails" href="#praisonai.auto.RoleDetails">RoleDetails</a>]</code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -565,49 +565,49 @@ validated to form a valid model.</p>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="agent4all" href="index.html">agent4all</a></code></li>
+<li><code><a title="praisonai" href="index.html">praisonai</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="agent4all.auto.AutoGenerator" href="#agent4all.auto.AutoGenerator">AutoGenerator</a></code></h4>
+<h4><code><a title="praisonai.auto.AutoGenerator" href="#praisonai.auto.AutoGenerator">AutoGenerator</a></code></h4>
 <ul class="">
-<li><code><a title="agent4all.auto.AutoGenerator.convert_and_save" href="#agent4all.auto.AutoGenerator.convert_and_save">convert_and_save</a></code></li>
-<li><code><a title="agent4all.auto.AutoGenerator.generate" href="#agent4all.auto.AutoGenerator.generate">generate</a></code></li>
-<li><code><a title="agent4all.auto.AutoGenerator.get_user_content" href="#agent4all.auto.AutoGenerator.get_user_content">get_user_content</a></code></li>
+<li><code><a title="praisonai.auto.AutoGenerator.convert_and_save" href="#praisonai.auto.AutoGenerator.convert_and_save">convert_and_save</a></code></li>
+<li><code><a title="praisonai.auto.AutoGenerator.generate" href="#praisonai.auto.AutoGenerator.generate">generate</a></code></li>
+<li><code><a title="praisonai.auto.AutoGenerator.get_user_content" href="#praisonai.auto.AutoGenerator.get_user_content">get_user_content</a></code></li>
 </ul>
 </li>
 <li>
-<h4><code><a title="agent4all.auto.RoleDetails" href="#agent4all.auto.RoleDetails">RoleDetails</a></code></h4>
+<h4><code><a title="praisonai.auto.RoleDetails" href="#praisonai.auto.RoleDetails">RoleDetails</a></code></h4>
 <ul class="">
-<li><code><a title="agent4all.auto.RoleDetails.backstory" href="#agent4all.auto.RoleDetails.backstory">backstory</a></code></li>
-<li><code><a title="agent4all.auto.RoleDetails.goal" href="#agent4all.auto.RoleDetails.goal">goal</a></code></li>
-<li><code><a title="agent4all.auto.RoleDetails.model_computed_fields" href="#agent4all.auto.RoleDetails.model_computed_fields">model_computed_fields</a></code></li>
-<li><code><a title="agent4all.auto.RoleDetails.model_config" href="#agent4all.auto.RoleDetails.model_config">model_config</a></code></li>
-<li><code><a title="agent4all.auto.RoleDetails.model_fields" href="#agent4all.auto.RoleDetails.model_fields">model_fields</a></code></li>
-<li><code><a title="agent4all.auto.RoleDetails.role" href="#agent4all.auto.RoleDetails.role">role</a></code></li>
-<li><code><a title="agent4all.auto.RoleDetails.tasks" href="#agent4all.auto.RoleDetails.tasks">tasks</a></code></li>
-<li><code><a title="agent4all.auto.RoleDetails.tools" href="#agent4all.auto.RoleDetails.tools">tools</a></code></li>
+<li><code><a title="praisonai.auto.RoleDetails.backstory" href="#praisonai.auto.RoleDetails.backstory">backstory</a></code></li>
+<li><code><a title="praisonai.auto.RoleDetails.goal" href="#praisonai.auto.RoleDetails.goal">goal</a></code></li>
+<li><code><a title="praisonai.auto.RoleDetails.model_computed_fields" href="#praisonai.auto.RoleDetails.model_computed_fields">model_computed_fields</a></code></li>
+<li><code><a title="praisonai.auto.RoleDetails.model_config" href="#praisonai.auto.RoleDetails.model_config">model_config</a></code></li>
+<li><code><a title="praisonai.auto.RoleDetails.model_fields" href="#praisonai.auto.RoleDetails.model_fields">model_fields</a></code></li>
+<li><code><a title="praisonai.auto.RoleDetails.role" href="#praisonai.auto.RoleDetails.role">role</a></code></li>
+<li><code><a title="praisonai.auto.RoleDetails.tasks" href="#praisonai.auto.RoleDetails.tasks">tasks</a></code></li>
+<li><code><a title="praisonai.auto.RoleDetails.tools" href="#praisonai.auto.RoleDetails.tools">tools</a></code></li>
 </ul>
 </li>
 <li>
-<h4><code><a title="agent4all.auto.TaskDetails" href="#agent4all.auto.TaskDetails">TaskDetails</a></code></h4>
+<h4><code><a title="praisonai.auto.TaskDetails" href="#praisonai.auto.TaskDetails">TaskDetails</a></code></h4>
 <ul class="">
-<li><code><a title="agent4all.auto.TaskDetails.description" href="#agent4all.auto.TaskDetails.description">description</a></code></li>
-<li><code><a title="agent4all.auto.TaskDetails.expected_output" href="#agent4all.auto.TaskDetails.expected_output">expected_output</a></code></li>
-<li><code><a title="agent4all.auto.TaskDetails.model_computed_fields" href="#agent4all.auto.TaskDetails.model_computed_fields">model_computed_fields</a></code></li>
-<li><code><a title="agent4all.auto.TaskDetails.model_config" href="#agent4all.auto.TaskDetails.model_config">model_config</a></code></li>
-<li><code><a title="agent4all.auto.TaskDetails.model_fields" href="#agent4all.auto.TaskDetails.model_fields">model_fields</a></code></li>
+<li><code><a title="praisonai.auto.TaskDetails.description" href="#praisonai.auto.TaskDetails.description">description</a></code></li>
+<li><code><a title="praisonai.auto.TaskDetails.expected_output" href="#praisonai.auto.TaskDetails.expected_output">expected_output</a></code></li>
+<li><code><a title="praisonai.auto.TaskDetails.model_computed_fields" href="#praisonai.auto.TaskDetails.model_computed_fields">model_computed_fields</a></code></li>
+<li><code><a title="praisonai.auto.TaskDetails.model_config" href="#praisonai.auto.TaskDetails.model_config">model_config</a></code></li>
+<li><code><a title="praisonai.auto.TaskDetails.model_fields" href="#praisonai.auto.TaskDetails.model_fields">model_fields</a></code></li>
 </ul>
 </li>
 <li>
-<h4><code><a title="agent4all.auto.TeamStructure" href="#agent4all.auto.TeamStructure">TeamStructure</a></code></h4>
+<h4><code><a title="praisonai.auto.TeamStructure" href="#praisonai.auto.TeamStructure">TeamStructure</a></code></h4>
 <ul class="">
-<li><code><a title="agent4all.auto.TeamStructure.model_computed_fields" href="#agent4all.auto.TeamStructure.model_computed_fields">model_computed_fields</a></code></li>
-<li><code><a title="agent4all.auto.TeamStructure.model_config" href="#agent4all.auto.TeamStructure.model_config">model_config</a></code></li>
-<li><code><a title="agent4all.auto.TeamStructure.model_fields" href="#agent4all.auto.TeamStructure.model_fields">model_fields</a></code></li>
-<li><code><a title="agent4all.auto.TeamStructure.roles" href="#agent4all.auto.TeamStructure.roles">roles</a></code></li>
+<li><code><a title="praisonai.auto.TeamStructure.model_computed_fields" href="#praisonai.auto.TeamStructure.model_computed_fields">model_computed_fields</a></code></li>
+<li><code><a title="praisonai.auto.TeamStructure.model_config" href="#praisonai.auto.TeamStructure.model_config">model_config</a></code></li>
+<li><code><a title="praisonai.auto.TeamStructure.model_fields" href="#praisonai.auto.TeamStructure.model_fields">model_fields</a></code></li>
+<li><code><a title="praisonai.auto.TeamStructure.roles" href="#praisonai.auto.TeamStructure.roles">roles</a></code></li>
 </ul>
 </li>
 </ul>

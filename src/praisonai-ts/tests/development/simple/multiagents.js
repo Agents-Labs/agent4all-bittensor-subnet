@@ -1,4 +1,4 @@
-const { Agent, Agent4ALLAgents } = require('agent4all');
+const { Agent, PraisonAIAgents } = require('praisonai');
 
 // Create agents with clear instructions that can be used as tasks
 const researchAgent = new Agent({ 
@@ -16,7 +16,7 @@ const summarizeAgent = new Agent({
 });
 
 // Create multi-agent system - tasks will be auto-generated from instructions
-const agents = new Agent4ALLAgents({ 
+const agents = new PraisonAIAgents({ 
     agents: [researchAgent, summarizeAgent],
     process: 'sequential',  // Run agents one after another
     verbose: true,

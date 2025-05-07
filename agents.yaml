@@ -1,4 +1,4 @@
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: create movie script about cat in mars
 memory: false

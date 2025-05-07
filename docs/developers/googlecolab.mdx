@@ -1,17 +1,17 @@
 ---
 title: "Google Colab Integration"
-description: "Guide for using Agent4ALL in Google Colab environments, with example code and configurations for agent-based tasks"
+description: "Guide for using PraisonAI in Google Colab environments, with example code and configurations for agent-based tasks"
 icon: "google"
 ---
 
 <CardGroup cols={2}>
-  <Card title="Basic Agent4ALL" icon="book">
-    <a target="_blank" href="https://colab.research.google.com/github/MervinPraison/Agent4ALL/blob/main/cookbooks/agent4all-googlecolab.ipynb">
+  <Card title="Basic PraisonAI" icon="book">
+    <a target="_blank" href="https://colab.research.google.com/github/MervinPraison/PraisonAI/blob/main/cookbooks/praisonai-googlecolab.ipynb">
       <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" />
     </a>
   </Card>
-  <Card title="Agent4ALL with Tools" icon="screwdriver-wrench">
-    <a target="_blank" href="https://colab.research.google.com/github/MervinPraison/Agent4ALL/blob/main/cookbooks/agent4all-tools-googlecolab.ipynb">
+  <Card title="PraisonAI with Tools" icon="screwdriver-wrench">
+    <a target="_blank" href="https://colab.research.google.com/github/MervinPraison/PraisonAI/blob/main/cookbooks/praisonai-tools-googlecolab.ipynb">
       <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" />
     </a>
   </Card>
@@ -33,13 +33,13 @@ jupyter:
 
 
 ``` python
-!pip install -Uq agent4all
+!pip install -Uq praisonai
 ```
 
 ``` python
 import os
 import yaml
-from agent4all import Agent4ALL
+from praisonai import PraisonAI
 from google.colab import userdata
 
 # Example agent_yaml content
@@ -58,14 +58,14 @@ roles:
         expected_output: "A summarized report on exoplanet discoveries, including their size, potential habitability, and distance from Earth."
 """
 
-# Create a Agent4ALL instance with the agent_yaml content
-agent4all = Agent4ALL(agent_yaml=agent_yaml)
+# Create a PraisonAI instance with the agent_yaml content
+praisonai = PraisonAI(agent_yaml=agent_yaml)
 
 # Add OPENAI_API_KEY Secrets to Google Colab on the Left Hand Side 🔑 or Enter Manually Below
 os.environ["OPENAI_API_KEY"] = userdata.get('OPENAI_API_KEY') or "ENTER OPENAI_API_KEY HERE"
 
-# Run Agent4ALL
-result = agent4all.run()
+# Run PraisonAI
+result = praisonai.run()
 
 # Print the result
 print(result)

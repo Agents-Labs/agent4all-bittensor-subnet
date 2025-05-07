@@ -1,7 +1,7 @@
 ---
 title: "Google Gemini Agents"
 sidebarTitle: "Google Gemini"
-description: "Instructions for integrating Google's Gemini models with Agent4ALL, including API setup and configuration details"
+description: "Instructions for integrating Google's Gemini models with PraisonAI, including API setup and configuration details"
 icon: "google"
 ---
 
@@ -31,7 +31,7 @@ flowchart LR
 
 <Steps>
     <Step title="Install Package">
-        First, install Agent4ALL Agents:
+        First, install PraisonAI Agents:
         ```bash
         pip install "praisonaiagents[llm]"
         ```
@@ -69,7 +69,7 @@ agent.start("Why sky is Blue?")
 
 ### Basic Usage
 
-The simplest way to use Gemini with Agent4ALL Agents:
+The simplest way to use Gemini with PraisonAI Agents:
 
 ```python
 from praisonaiagents import Agent
@@ -89,7 +89,7 @@ agent.start("Why sky is Blue?")
 Create multiple agents working together:
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 
 agent = Agent(
     instructions="You are a helpful assistant",
@@ -103,7 +103,7 @@ task = Task(
     agent=agent,
 )
 
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
   agents=[agent],
   tasks=[task],
 )
@@ -206,6 +206,6 @@ roles:
 
 ## Additional Resources
 
-| Agent4ALL Chat | Agent4ALL Code | Agent4ALL (Multi-Agents) |
+| PraisonAI Chat | PraisonAI Code | PraisonAI (Multi-Agents) |
 | --- | --- | --- |
 | [Litellm](https://litellm.vercel.app/docs/providers) | [Litellm](https://litellm.vercel.app/docs/providers) | [Models](../models.md) |

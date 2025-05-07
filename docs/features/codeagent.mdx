@@ -28,7 +28,7 @@ icon: "code"
         <Step title="Create a file">
             Create a new file `app.py` with the basic setup:
             ```python
-            from praisonaiagents import Agent, Task, Agent4ALLAgents
+            from praisonaiagents import Agent, Task, PraisonAIAgents
             from e2b_code_interpreter import Sandbox
 
             def code_interpreter(code: str):
@@ -64,7 +64,7 @@ icon: "code"
             )
 
             # Create and start the agents
-            agents = Agent4ALLAgents(
+            agents = PraisonAIAgents(
                 agents=[code_agent],
                 tasks=[task],
                 process="sequential",
@@ -87,9 +87,9 @@ icon: "code"
   <Tab title="No Code">
     <Steps>
         <Step title="Install Package">
-            Install the Agent4ALL package:
+            Install the PraisonAI package:
             ```bash
-            pip install agent4all e2b_code_interpreter
+            pip install praisonai e2b_code_interpreter
             ```
         </Step>
         <Step title="Set API Key">
@@ -101,7 +101,7 @@ icon: "code"
         <Step title="Create a file">
             Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: write and execute Python code
 roles:
@@ -120,7 +120,7 @@ roles:
         <Step title="Start Agents">
             Type this in your terminal to run your agents:
 ```bash
-agent4all agents.yaml
+praisonai agents.yaml
 ```
         </Step>
     </Steps>
@@ -183,7 +183,7 @@ agent4all agents.yaml
         <Step title="Create a file">
             Create a new file `app.py` with the basic setup:
             ```python
-            from praisonaiagents import Agent, Task, Agent4ALLAgents
+            from praisonaiagents import Agent, Task, PraisonAIAgents
             from e2b_code_interpreter import Sandbox
 
             def code_interpreter(code: str):
@@ -234,7 +234,7 @@ agent4all agents.yaml
             )
 
             # Create and start the agents
-            agents = Agent4ALLAgents(
+            agents = PraisonAIAgents(
                 agents=[code_writer, code_executor],
                 tasks=[writing_task, execution_task],
                 process="sequential"
@@ -256,9 +256,9 @@ agent4all agents.yaml
   <Tab title="No Code">
     <Steps>
         <Step title="Install Package">
-            Install the Agent4ALL package:
+            Install the PraisonAI package:
             ```bash
-            pip install agent4all e2b_code_interpreter
+            pip install praisonai e2b_code_interpreter
             ```
         </Step>
         <Step title="Set API Key">
@@ -270,7 +270,7 @@ agent4all agents.yaml
         <Step title="Create a file">
             Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: develop and execute Python code
 roles:
@@ -298,7 +298,7 @@ roles:
         <Step title="Start Agents">
             Type this in your terminal to run your agents:
 ```bash
-agent4all agents.yaml
+praisonai agents.yaml
 ```
         </Step>
     </Steps>

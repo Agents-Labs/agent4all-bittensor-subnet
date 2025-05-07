@@ -11,7 +11,7 @@ logger = logging.getLogger("npx-mcp-wrapper")
 
 class MCP:
     """
-    Wrapper class that integrates NPX-based MCP servers with the Agent4ALL agent system.
+    Wrapper class that integrates NPX-based MCP servers with the PraisonAI agent system.
     This provides a compatible interface for the Agent class to use MCP tools.
     
     This class handles the extraction of tool definitions from MCP servers and creates:

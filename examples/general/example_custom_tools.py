@@ -1,10 +1,10 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from typing import List, Dict, Union
 from duckduckgo_search import DDGS
 from langchain_community.tools import YouTubeSearchTool
 from langchain_community.utilities import WikipediaAPIWrapper
 
-# 1. Tool Definitions
+# 1. Tool
 def internet_search_tool(query: str) -> List[Dict]:
     """
     Perform a search using DuckDuckGo.
@@ -16,19 +16,19 @@ def internet_search_tool(query: str) -> List[Dict]:
         list: A list of search result titles, URLs, and snippets.
     """
     try:
-        results = []  # Initialize the results list
-        ddgs = DDGS()  # Create an instance of DuckDuckGo search
-        for result in ddgs.text(keywords=query, max_results=10):  # Perform the search with a maximum of 10 results
+        results = []
+        ddgs = DDGS()
+        for result in ddgs.text(keywords=query, max_results=10):
             results.append({
-                "title": result.get("title", ""),  # Get the title of the search result
-                "url": result.get("href", ""),      # Get the URL of the search result
-                "snippet": result.get("body", "")    # Get the snippet (summary) of the search result
+                "title": result.get("title", ""),
+                "url": result.get("href", ""),
+                "snippet": result.get("body", "")
             })
-        return results  # Return the list of results
+        return results
 
     except Exception as e:
-        print(f"Error during DuckDuckGo search: {e}")  # Log any errors that occur
-        return []  # Return an empty list in case of error
+        print(f"Error during DuckDuckGo search: {e}")
+        return []
     
 def youtube_search_tool(query: str, inspect: bool = False, max_results: int = 2):
     """
@@ -38,32 +38,30 @@ def youtube_search_tool(query: str, inspect: bool = False, max_results: int = 2)
         query (str): The search query for YouTube.
         inspect (bool): If True, returns tool inspection info instead of search results.
         max_results (int): Maximum number of results to return (default: 2).
-        
     Returns:
         Union[List[str], dict]: List of YouTube video URLs or tool inspection info.
     """
-    yt = YouTubeSearchTool()  # Create an instance of the YouTube search tool
+    yt = YouTubeSearchTool()
     
-    if inspect:  # If inspection info is requested
-        # Compile inspection info about the tool
+    if inspect:
         inspection_info = {
             "type": type(yt),
-            "attributes": [attr for attr in dir(yt) if not attr.startswith('_')],  # Get public attributes
+            "attributes": [attr for attr in dir(yt) if not attr.startswith('_')],
             "methods": {
-                "run": getattr(yt, 'run', None),  # Get the 'run' method
-                "arun": getattr(yt, 'arun', None)  # Get the 'arun' method (if available)
+                "run": getattr(yt, 'run', None),
+                "arun": getattr(yt, 'arun', None)
             },
             "properties": {
-                "name": getattr(yt, 'name', 'youtube_search'),  # Get the name of the tool
-                "description": getattr(yt, 'description', 'Search YouTube videos'),  # Get the description
-                "return_direct": getattr(yt, 'return_direct', False)  # Get return_direct property
+                "name": getattr(yt, 'name', 'youtube_search'),
+                "description": getattr(yt, 'description', 'Search YouTube videos'),
+                "return_direct": getattr(yt, 'return_direct', False)
             }
         }
-        return inspection_info  # Return the inspection info
+        return inspection_info
     
-    # Format query including the maximum number of results
+    # Format query with max_results
     formatted_query = f"{query}, {max_results}"
-    return yt.run(formatted_query)  # Perform the YouTube search and return results
+    return yt.run(formatted_query)
 
 def wikipedia_search_tool(query: str, inspect: bool = False, max_chars: int = 4000, top_k: int = 3):
     """
@@ -74,87 +72,80 @@ def wikipedia_search_tool(query: str, inspect: bool = False, max_chars: int = 40
         inspect (bool): If True, returns tool inspection info instead of search results.
         max_chars (int): Maximum characters to return (default: 4000).
         top_k (int): Number of top results to consider (default: 3).
-        
     Returns:
         Union[str, dict]: Summary from Wikipedia or tool inspection info if inspect=True.
     """
-    # Create an instance of the Wikipedia API wrapper
     w = WikipediaAPIWrapper(
-        top_k_results=top_k,               # Set the number of top results to retrieve
-        doc_content_chars_max=max_chars,   # Set the maximum character limit for returned content
-        lang='en'                           # Specify the language for the search
+        top_k_results=top_k,
+        doc_content_chars_max=max_chars,
+        lang='en'
     )
     
-    if inspect:  # If inspection info is requested
-        # Compile inspection info about the Wikipedia API wrapper
+    if inspect:
         inspection_info = {
             "type": type(w),
-            "attributes": [attr for attr in dir(w) if not attr.startswith('_')],  # Get public attributes
+            "attributes": [attr for attr in dir(w) if not attr.startswith('_')],
             "methods": {
-                "run": getattr(w, 'run', None),  # Get the 'run' method
-                "arun": getattr(w, 'arun', None)  # Get the 'arun' method (if available)
+                "run": getattr(w, 'run', None),
+                "arun": getattr(w, 'arun', None)
             },
             "properties": {
-                "name": "wikipedia",  # Set the name
-                "description": "Search and get summaries from Wikipedia",  # Set the description
-                "top_k": w.top_k_results,  # Get the number of top results setting
-                "lang": w.lang,  # Get the language setting
-                "max_chars": w.doc_content_chars_max  # Get the maximum characters setting
+                "name": "wikipedia",
+                "description": "Search and get summaries from Wikipedia",
+                "top_k": w.top_k_results,
+                "lang": w.lang,
+                "max_chars": w.doc_content_chars_max
             }
         }
-        return inspection_info  # Return the inspection info
+        return inspection_info
     
     try:
-        result = w.run(query)  # Perform the Wikipedia search
-        return result  # Return the search result
+        result = w.run(query)
+        return result
     except Exception as e:
-        return f"Error searching Wikipedia: {str(e)}"  # Return error message if any exception occurs
+        return f"Error searching Wikipedia: {str(e)}"
 
-# 2. Agent Definition
+# 2. Agent
 data_agent = Agent(
-    name="DataCollector",  # The name of the agent
-    role="Search Specialist",  # The role of the agent
-    goal="Perform internet searches to collect relevant information.",  # The agent's goal
-    backstory="Expert in finding and organizing internet data from multiple sources.",  # Background information
-    tools=[internet_search_tool, youtube_search_tool, wikipedia_search_tool],  # Assign the tools available to the agent
-    self_reflect=False  # Whether the agent can self-reflect (used for advanced scenarios)
+    name="DataCollector",
+    role="Search Specialist",
+    goal="Perform internet searches to collect relevant information.",
+    backstory="Expert in finding and organizing internet data from multiple sources.",
+    tools=[internet_search_tool, youtube_search_tool, wikipedia_search_tool],
+    self_reflect=False
 )
 
-# 3. Tasks Definition
-# Task to collect data via internet searches
+# 3. Tasks
 collect_task = Task(
     description="Perform an internet search using the query: 'AI job trends in 2024'. Return results as a list of title, URL, and snippet.",
-    expected_output="List of search results with titles, URLs, and snippets.",  # Define the expected output of this task
-    agent=data_agent,  # Assign the agent responsible for this task
-    name="collect_data",  # Name of the task
-    is_start=True,  # Mark this as the starting task
-    next_tasks=["validate_data"]  # Define the next task after this one
+    expected_output="List of search results with titles, URLs, and snippets.",
+    agent=data_agent,
+    name="collect_data",
+    is_start=True,
+    next_tasks=["validate_data"]
 )
 
-# Task to validate the collected data
 validate_task = Task(
     description="""Validate the collected data. Check if:
     1. At least 5 results are returned.
     2. Each result contains a title and a URL.
     Return validation_result as 'valid' or 'invalid' only no other text.""",
-    expected_output="Validation result indicating if data is valid or invalid.",  # Define the expected validation result
-    agent=data_agent,  # Assign the agent responsible for this validation task
-    name="validate_data",  # Name of the task
-    task_type="decision",  # Define this task as a decision-making task
+    expected_output="Validation result indicating if data is valid or invalid.",
+    agent=data_agent,
+    name="validate_data",
+    task_type="decision",
     condition={
-        "valid": [],  # End the workflow if data is valid
-        "invalid": ["collect_data"]  # Retry data collection if data is invalid
+        "valid": [],  # End the workflow on valid data
+        "invalid": ["collect_data"]  # Retry data collection on invalid data
     },
 )
 
-# 4. Workflow Definition
-# Setting up the agents and tasks in a workflow
-agents = Agent4ALLAgents(
-    agents=[data_agent],  # List of agents defined
-    tasks=[collect_task, validate_task],  # List of tasks to be performed
-    verbose=1,  # Verbose output level for debugging and logging
-    process="workflow"  # Define the type of processing
+# 4. Workflow
+agents = PraisonAIAgents(
+    agents=[data_agent],
+    tasks=[collect_task, validate_task],
+    verbose=1,
+    process="workflow"
 )
 
-# Start the workflow with the defined agents and tasks
 agents.start()

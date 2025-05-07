@@ -1,5 +1,5 @@
-import { Agent as SimpleAgent, Agent4ALLAgents as SimpleAgent4ALLAgents, SimpleAgentConfig } from './simple';
-import { Agent as TaskAgent, Agent4ALLAgents as TaskAgent4ALLAgents, TaskAgentConfig } from './types';
+import { Agent as SimpleAgent, PraisonAIAgents as SimplePraisonAIAgents, SimpleAgentConfig } from './simple';
+import { Agent as TaskAgent, PraisonAIAgents as TaskPraisonAIAgents, TaskAgentConfig } from './types';
 import { Task } from './types';
 import type { ChatCompletionTool } from 'openai/resources/chat/completions';
 
@@ -121,16 +121,16 @@ export class Agent {
   }
 }
 
-export class Agent4ALLAgents {
-  private simpleImpl: SimpleAgent4ALLAgents | null = null;
-  private taskImpl: TaskAgent4ALLAgents | null = null;
+export class PraisonAIAgents {
+  private simpleImpl: SimplePraisonAIAgents | null = null;
+  private taskImpl: TaskPraisonAIAgents | null = null;
 
   constructor(config: any) {
     // Auto-detect mode based on tasks type
     if (Array.isArray(config.tasks)) {
       // If tasks are provided and are strings, use simple mode
       if (config.tasks.length > 0 && typeof config.tasks[0] === 'string') {
-        this.simpleImpl = new SimpleAgent4ALLAgents({
+        this.simpleImpl = new SimplePraisonAIAgents({
           agents: config.agents,
           tasks: config.tasks,
           verbose: config.verbose,
@@ -138,7 +138,7 @@ export class Agent4ALLAgents {
         });
       } else if (config.tasks.length > 0) {
         // If tasks are provided but not strings, use task mode
-        this.taskImpl = new TaskAgent4ALLAgents({
+        this.taskImpl = new TaskPraisonAIAgents({
           agents: config.agents,
           tasks: config.tasks,
           verbose: config.verbose,
@@ -150,7 +150,7 @@ export class Agent4ALLAgents {
     
     // If no tasks provided, create simple implementation with auto-generated tasks
     if (!this.simpleImpl && !this.taskImpl) {
-      this.simpleImpl = new SimpleAgent4ALLAgents({
+      this.simpleImpl = new SimplePraisonAIAgents({
         agents: config.agents,
         verbose: config.verbose,
         process: config.process

@@ -23,7 +23,7 @@ A feedback loop workflow where LLM-generated outputs are evaluated, refined, and
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -39,7 +39,7 @@ A feedback loop workflow where LLM-generated outputs are evaluated, refined, and
     <Step title="Create a file">
         Create a new file `app.py` with the basic setup:
         ```python
-        from praisonaiagents import Agent, Task, Agent4ALLAgents
+        from praisonaiagents import Agent, Task, PraisonAIAgents
 
         # Create generator and evaluator agents
         generator = Agent(
@@ -93,7 +93,7 @@ A feedback loop workflow where LLM-generated outputs are evaluated, refined, and
         )
 
         # Create workflow manager
-        workflow = Agent4ALLAgents(
+        workflow = PraisonAIAgents(
             agents=[generator, evaluator],
             tasks=[generate_task, evaluate_task],
             process="workflow",

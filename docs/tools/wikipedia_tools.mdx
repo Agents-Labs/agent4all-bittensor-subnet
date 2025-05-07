@@ -7,7 +7,7 @@ icon: "book"
 <Note>
   **Prerequisites**
   - Python 3.10 or higher
-  - Agent4ALL Agents package installed
+  - PraisonAI Agents package installed
   - `wikipedia` package installed
   - Basic understanding of Wikipedia APIs
 </Note>
@@ -27,7 +27,7 @@ Use Wikipedia Tools to retrieve and analyze Wikipedia content with AI agents.
   <Step title="Import Components">
     Import the necessary components:
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import wiki_search, wiki_summary, wiki_page, wiki_random, wiki_language
     ```
   </Step>
@@ -61,7 +61,7 @@ Use Wikipedia Tools to retrieve and analyze Wikipedia content with AI agents.
   <Step title="Run Agent">
     Initialize and run the agent:
     ```python
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[wiki_agent],
         tasks=[research_task],
         process="sequential"
@@ -116,7 +116,7 @@ Use Wikipedia Tools to retrieve and analyze Wikipedia content with AI agents.
 ### Basic Wikipedia Research Agent
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from praisonaiagents.tools import wiki_search, wiki_summary, wiki_page, wiki_random, wiki_language
 
 # Create Wikipedia agent
@@ -138,7 +138,7 @@ research_task = Task(
 )
 
 # Run agent
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[wiki_agent],
     tasks=[research_task],
     process="sequential"
@@ -183,7 +183,7 @@ analysis_task = Task(
 )
 
 # Run agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[researcher_agent, analysis_agent],
     tasks=[research_task, analysis_task],
     process="sequential"
@@ -247,7 +247,7 @@ analyze_task = Task(
 )
 
 # Run workflow
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[researcher, analyzer],
     tasks=[research_task, analyze_task]
 )

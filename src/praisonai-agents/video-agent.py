@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 
 # Create Video Analysis Agent
 video_agent = Agent(
@@ -24,8 +24,8 @@ task1 = Task(
     images=["video.mp4"]  
 )
 
-# Create Agent4ALLAgents instance
-agents = Agent4ALLAgents(
+# Create PraisonAIAgents instance
+agents = PraisonAIAgents(
     agents=[video_agent],
     tasks=[task1],
     process="sequential",

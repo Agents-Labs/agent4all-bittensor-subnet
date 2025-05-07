@@ -1,7 +1,7 @@
 ---
 title: "LangChain Agent"
 sidebarTitle: "LangChain Agent"
-description: "Learn how to use LangChain tools and utilities with Agent4ALL agents."
+description: "Learn how to use LangChain tools and utilities with PraisonAI agents."
 icon: "link-simple"
 ---
 
@@ -40,7 +40,7 @@ wiki_agent.start("Research 'Artificial Intelligence' on Wikipedia")
 ```
 
 ```python Multiple Tools
-from praisonaiagents import Agent, Agent4ALLAgents
+from praisonaiagents import Agent, PraisonAIAgents
 from langchain_community.utilities import WikipediaAPIWrapper
 from langchain_community.tools import YouTubeSearchTool
 
@@ -54,7 +54,7 @@ wiki_agent = Agent(
     tools=[WikipediaAPIWrapper]
 )
 
-agents = Agent4ALLAgents(agents=[youtube_agent, wiki_agent])
+agents = PraisonAIAgents(agents=[youtube_agent, wiki_agent])
 agents.start()
 ```
 </CodeGroup>
@@ -72,9 +72,9 @@ agents.start()
     <Steps>
         <Step title="Install Package">
             (Upcoming Feature)
-            Install the Agent4ALL package:
+            Install the PraisonAI package:
             ```bash
-            pip install "agent4all"
+            pip install "praisonai"
             ```
         </Step>
         <Step title="Set API Key">
@@ -86,7 +86,7 @@ agents.start()
         <Step title="Create a file">
             Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 roles:
   researcher:
@@ -107,7 +107,7 @@ roles:
         <Step title="Start Agents">
             Type this in your terminal to run your agents:
 ```bash
-agent4all agents.yaml
+praisonai agents.yaml
 ```
         </Step>
     </Steps>
@@ -136,7 +136,7 @@ agent4all agents.yaml
 
 <CardGroup cols={2}>
   <Card title="Tool Integration" icon="plug">
-    Seamlessly use LangChain tools with Agent4ALL agents.
+    Seamlessly use LangChain tools with PraisonAI agents.
   </Card>
   <Card title="Multiple Sources" icon="database">
     Access various data sources through LangChain utilities.
@@ -153,7 +153,7 @@ agent4all agents.yaml
 
 <Note>
   - LangChain tools with wrappers can be directly used as Tools without modification.
-  - Agent4ALL will automatically detect the tool and use it.
+  - PraisonAI will automatically detect the tool and use it.
   - Some exceptions apply where it doesn't work.
 </Note>
 
@@ -166,13 +166,13 @@ export OPENAI_API_KEY=your_api_key_here
 ```
 
 ```python
-from praisonaiagents import Agent, Agent4ALLAgents
+from praisonaiagents import Agent, PraisonAIAgents
 from langchain_community.utilities import SerpAPIWrapper
 
 data_agent = Agent(instructions="Search about AI job trends in 2025", tools=[SerpAPIWrapper])
 editor_agent = Agent(instructions="Write a blog article")
 
-agents = Agent4ALLAgents(agents=[data_agent, editor_agent])
+agents = PraisonAIAgents(agents=[data_agent, editor_agent])
 agents.start()
 ```
 
@@ -185,7 +185,7 @@ export OPENAI_API_KEY=your_api_key_here
 ```
 
 ```python
-from praisonaiagents import Agent, Agent4ALLAgents
+from praisonaiagents import Agent, PraisonAIAgents
 from langchain_community.tools import BraveSearch
 import os
 
@@ -197,7 +197,7 @@ def search_brave(query: str):
 
 data_agent = Agent(instructions="Search about AI job trends in 2025", tools=[search_brave])
 editor_agent = Agent(instructions="Write a blog article")
-agents = Agent4ALLAgents(agents=[data_agent, editor_agent])
+agents = PraisonAIAgents(agents=[data_agent, editor_agent])
 agents.start()
 ```
 
@@ -239,7 +239,7 @@ agents.start()
             Create a new file `app.py` with the basic setup:
 <CodeGroup>
   ```python Single Tool
-  from praisonaiagents import Agent, Task, Agent4ALLAgents
+  from praisonaiagents import Agent, Task, PraisonAIAgents
   from langchain_community.utilities import WikipediaAPIWrapper
 
   # Create an agent with Wikipedia tool
@@ -261,7 +261,7 @@ agents.start()
   )
 
   # Create and start the workflow
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[agent],
       tasks=[task],
       verbose=True
@@ -271,7 +271,7 @@ agents.start()
   ```
 
   ```python Multiple Tools
-  from praisonaiagents import Agent, Task, Agent4ALLAgents
+  from praisonaiagents import Agent, Task, PraisonAIAgents
   from langchain_community.tools import YouTubeSearchTool
   from langchain_community.utilities import WikipediaAPIWrapper
 
@@ -312,7 +312,7 @@ agents.start()
   )
 
   # Create and start the workflow
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[agent, agent2],
       tasks=[task, task2],
       verbose=True
@@ -335,9 +335,9 @@ agents.start()
     <Steps>
         <Step title="Install Package">
             (Upcoming Feature)
-            Install the Agent4ALL package:
+            Install the PraisonAI package:
             ```bash
-            pip install "agent4all"
+            pip install "praisonai"
             ```
         </Step>
         <Step title="Set API Key">
@@ -349,7 +349,7 @@ agents.start()
         <Step title="Create a file">
             Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 roles:
   researcher:
@@ -370,7 +370,7 @@ roles:
         <Step title="Start Agents">
             Type this in your terminal to run your agents:
 ```bash
-agent4all agents.yaml
+praisonai agents.yaml
 ```
         </Step>
     </Steps>

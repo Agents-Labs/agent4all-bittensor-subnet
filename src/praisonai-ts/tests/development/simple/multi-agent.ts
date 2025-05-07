@@ -1,4 +1,4 @@
-import { Agent, Agent4ALLAgents } from '../../../src/agent/proxy';
+import { Agent, PraisonAIAgents } from '../../../src/agent/proxy';
 
 const storyAgent = new Agent({
   instructions: "Generate a very short story (2-3 sentences) about artificial intelligence developing emotions and creativity with emojis.",
@@ -10,7 +10,7 @@ const summaryAgent = new Agent({
   name: "SummaryAgent"
 });
 
-const agents = new Agent4ALLAgents({
+const agents = new PraisonAIAgents({
   agents: [storyAgent, summaryAgent]
 });
 

@@ -7,7 +7,7 @@ icon: "book-open"
 <Note>
   **Prerequisites**
   - Python 3.10 or higher
-  - Agent4ALL Agents package installed
+  - PraisonAI Agents package installed
   - `arxiv` package installed
 </Note>
 
@@ -26,7 +26,7 @@ Use arXiv Tools to search and analyze research papers with AI agents.
   <Step title="Import Components">
     Import the necessary components:
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import search_arxiv, get_arxiv_paper, get_papers_by_author, get_papers_by_category
     ```
   </Step>
@@ -60,7 +60,7 @@ Use arXiv Tools to search and analyze research papers with AI agents.
   <Step title="Run Agent">
     Initialize and run the agent:
     ```python
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[research_agent],
         tasks=[research_task],
         process="sequential"
@@ -295,7 +295,7 @@ for category in categories:
 ### Basic Research Agent
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from praisonaiagents.tools import search_arxiv, get_arxiv_paper, get_papers_by_author, get_papers_by_category
 
 # Create research agent
@@ -317,7 +317,7 @@ research_task = Task(
 )
 
 # Run agent
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[research_agent],
     tasks=[research_task],
     process="sequential"
@@ -360,7 +360,7 @@ analysis_task = Task(
 )
 
 # Run agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[research_agent, analysis_agent],
     tasks=[research_task, analysis_task],
     process="sequential"
@@ -423,7 +423,7 @@ review_task = Task(
 )
 
 # Run workflow
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[searcher, reviewer],
     tasks=[search_task, review_task]
 )

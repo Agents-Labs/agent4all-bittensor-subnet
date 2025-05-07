@@ -1,4 +1,4 @@
-const { Agent, Agent4ALLAgents } = require('agent4all');
+const { Agent, PraisonAIAgents } = require('praisonai');
 
 // Create agents with specific roles
 const researchAgent = new Agent({
@@ -18,7 +18,7 @@ const tasks = [
 ];
 
 // Create multi-agent system
-const agents = new Agent4ALLAgents({
+const agents = new PraisonAIAgents({
   agents: [researchAgent, summarizeAgent],
   tasks: tasks,
   process: 'sequential'  // Run agents one after another

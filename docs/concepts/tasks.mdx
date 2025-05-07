@@ -1,6 +1,6 @@
 ---
 title: "Tasks"
-description: "Understanding Tasks in Agent4ALL"
+description: "Understanding Tasks in PraisonAI"
 icon: "list-check"
 ---
 
@@ -219,7 +219,7 @@ task_b = Task(
 
 <Steps>
 
-  <Step title="Install Agent4ALL">
+  <Step title="Install PraisonAI">
     Install the core package:
     ```bash Terminal
     pip install praisonaiagents
@@ -238,7 +238,7 @@ task_b = Task(
     Create `app.py`:
 <CodeGroup>
   ```python Single Agent
-  from praisonaiagents import Agent, Task, Agent4ALLAgents
+  from praisonaiagents import Agent, Task, PraisonAIAgents
 
   # Create an agent
   researcher = Agent(
@@ -259,7 +259,7 @@ task_b = Task(
   )
 
   # Run the agents
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[researcher],
       tasks=[task],
       verbose=False
@@ -269,7 +269,7 @@ task_b = Task(
   ```
 
   ```python Multiple Agents
-  from praisonaiagents import Agent, Task, Agent4ALLAgents
+  from praisonaiagents import Agent, Task, PraisonAIAgents
 
   # Create multiple agents
   researcher = Agent(
@@ -307,7 +307,7 @@ task_b = Task(
   )
 
   # Run with hierarchical process
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[researcher, writer],
       tasks=[task1, task2],
       verbose=False,
@@ -492,7 +492,7 @@ Design tasks to be atomic and focused. Each task should have a single, clear res
         )
 
         # Run with mixed execution
-        agents = Agent4ALLAgents(
+        agents = PraisonAIAgents(
             agents=[sync_agent, async_agent],
             tasks=[sync_task, async_task]
         )

@@ -7,7 +7,7 @@ icon: "code"
 <Note>
   **Prerequisites**
   - Python 3.10 or higher
-  - Agent4ALL Agents package installed
+  - PraisonAI Agents package installed
   - `pyyaml` package installed
   - Basic understanding of YAML format
 </Note>
@@ -27,7 +27,7 @@ Use YAML Tools to process and manipulate YAML files with AI agents.
   <Step title="Import Components">
     Import the necessary components:
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
     from praisonaiagents.tools import read_yaml, write_yaml, validate_yaml, merge_yaml, convert_yaml
     ```
   </Step>
@@ -61,7 +61,7 @@ Use YAML Tools to process and manipulate YAML files with AI agents.
   <Step title="Run Agent">
     Initialize and run the agent:
     ```python
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[yaml_agent],
         tasks=[yaml_task],
         process="sequential"
@@ -116,7 +116,7 @@ Use YAML Tools to process and manipulate YAML files with AI agents.
 ### Basic YAML Processing Agent
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from praisonaiagents.tools import read_yaml, write_yaml, validate_yaml, merge_yaml, convert_yaml
 
 # Create YAML agent
@@ -138,7 +138,7 @@ yaml_task = Task(
 )
 
 # Run agent
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[yaml_agent],
     tasks=[yaml_task],
     process="sequential"
@@ -182,7 +182,7 @@ validation_task = Task(
 )
 
 # Run agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[processor_agent, validator_agent],
     tasks=[processing_task, validation_task],
     process="sequential"
@@ -246,7 +246,7 @@ validate_task = Task(
 )
 
 # Run workflow
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[processor, validator],
     tasks=[process_task, validate_task]
 )

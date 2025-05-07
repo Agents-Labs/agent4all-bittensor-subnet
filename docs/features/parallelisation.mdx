@@ -29,7 +29,7 @@ A workflow that distributes tasks across multiple LLM calls simultaneously, aggr
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -45,7 +45,7 @@ A workflow that distributes tasks across multiple LLM calls simultaneously, aggr
     <Step title="Create a file">
         Create a new file `app.py` with the basic setup:
         ```python
-        from praisonaiagents import Agent, Task, Agent4ALLAgents
+        from praisonaiagents import Agent, Task, PraisonAIAgents
         from datetime import datetime
         import asyncio
 
@@ -122,7 +122,7 @@ A workflow that distributes tasks across multiple LLM calls simultaneously, aggr
         async def main():
 
             # Create workflow manager
-            workflow = Agent4ALLAgents(
+            workflow = PraisonAIAgents(
                 agents=[agent1, agent2, agent3, aggregator],
                 tasks=[task1, task2, task3, aggregate_task],
                 process="workflow"
@@ -209,7 +209,7 @@ aggregator_task = Task(
 
 # Async workflow execution
 async def run_workflow():
-    workflow = Agent4ALLAgents(
+    workflow = PraisonAIAgents(
         agents=[agent1, agent2, aggregator],
         tasks=[task1, task2, aggregator_task],
         process="workflow",

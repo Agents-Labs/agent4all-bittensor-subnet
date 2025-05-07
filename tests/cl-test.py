@@ -19,7 +19,7 @@ generation_config = {
 
 def read_system_instructions():
     try:
-        with open("/Users/praison/agent4all-package/.cursorrules", "r") as file:
+        with open("/Users/praison/praisonai-package/.cursorrules", "r") as file:
             return file.read()
     except Exception as e:
         print(f"Error reading .cursorrules file: {e}")
@@ -27,7 +27,7 @@ def read_system_instructions():
 
 def read_current_file():
     try:
-        with open("/Users/praison/agent4all-package/agent4all/test.py", "r") as file:
+        with open("/Users/praison/praisonai-package/praisonai/test.py", "r") as file:
             return file.read()
     except Exception as e:
         print(f"Error reading test.py file: {e}")
@@ -87,7 +87,7 @@ def on_stop():
 
 if __name__ == "__main__":
     # Verify system files exist
-    if not os.path.exists("/Users/praison/agent4all-package/.cursorrules"):
+    if not os.path.exists("/Users/praison/praisonai-package/.cursorrules"):
         print("Warning: .cursorrules file not found")
-    if not os.path.exists("/Users/praison/agent4all-package/agent4all/test.py"):
+    if not os.path.exists("/Users/praison/praisonai-package/praisonai/test.py"):
         print("Warning: test.py file not found")

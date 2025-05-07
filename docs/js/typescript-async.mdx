@@ -5,17 +5,17 @@ description: "A production-ready Multi AI Agents framework for TypeScript Async"
 icon: "rotate"
 ---
 
-Agent4ALL is a production-ready Multi AI Agents framework for TypeScript Async, designed to create AI Agents to automate and solve problems ranging from simple tasks to complex challenges. It provides a low-code solution to streamline the building and management of multi-agent LLM systems, emphasising simplicity, customisation, and effective human-agent collaboration.
+PraisonAI is a production-ready Multi AI Agents framework for TypeScript Async, designed to create AI Agents to automate and solve problems ranging from simple tasks to complex challenges. It provides a low-code solution to streamline the building and management of multi-agent LLM systems, emphasising simplicity, customisation, and effective human-agent collaboration.
 
 ## Installation
 
 <CodeGroup>
 ```bash npm
-npm install agent4all
+npm install praisonai
 ```
 
 ```bash yarn
-yarn add agent4all
+yarn add praisonai
 ```
 </CodeGroup>
 
@@ -26,7 +26,7 @@ yarn add agent4all
     Create and run a single agent to perform a specific task:
 
     ```typescript
-    import { Agent, Agent4ALLAgents } from 'agent4all';
+    import { Agent, PraisonAIAgents } from 'praisonai';
 
     async function main() {
         // Create a simple agent (no task specified)
@@ -37,7 +37,7 @@ yarn add agent4all
         });
 
         // Run the agent
-        const agent4all = new Agent4ALLAgents({
+        const praisonAI = new PraisonAIAgents({
             agents: [agent],
             tasks: ["Explain the process of photosynthesis in detail."],
             verbose: true
@@ -45,7 +45,7 @@ yarn add agent4all
 
         try {
             console.log('Starting single agent example...');
-            const results = await agent4all.start();
+            const results = await praisonAI.start();
             console.log('\nFinal Results:', results);
         } catch (error) {
             console.error('Error:', error);
@@ -60,7 +60,7 @@ yarn add agent4all
     Create and run multiple agents working together:
 
     ```typescript
-    import { Agent, Agent4ALLAgents } from 'agent4all';
+    import { Agent, PraisonAIAgents } from 'praisonai';
 
     async function main() {
         // Create multiple agents with different roles
@@ -83,7 +83,7 @@ yarn add agent4all
         });
 
         // Run the agents in sequence
-        const agent4all = new Agent4ALLAgents({
+        const praisonAI = new PraisonAIAgents({
             agents: [researchAgent, summaryAgent, recommendationAgent],
             tasks: [
                 "Research and analyze current renewable energy technologies and their implementation.",
@@ -95,7 +95,7 @@ yarn add agent4all
 
         try {
             console.log('Starting multi-agent example...');
-            const results = await agent4all.start();
+            const results = await praisonAI.start();
             console.log('\nFinal Results:', results);
         } catch (error) {
             console.error('Error:', error);
@@ -110,7 +110,7 @@ yarn add agent4all
     Create agents with specific tasks and dependencies:
 
     ```typescript
-    import { Agent, Task, Agent4ALLAgents } from 'agent4all';
+    import { Agent, Task, PraisonAIAgents } from 'praisonai';
 
     async function main() {
         // Create agents first
@@ -158,14 +158,14 @@ yarn add agent4all
         });
 
         // Run the tasks
-        const agent4all = new Agent4ALLAgents({
+        const praisonAI = new PraisonAIAgents({
             tasks: [createRecipesTask, writeBlogTask],
             verbose: true
         });
 
         try {
             console.log('Starting task-based example...');
-            const results = await agent4all.start();
+            const results = await praisonAI.start();
             console.log('\nFinal Results:', results);
         } catch (error) {
             console.error('Error:', error);

@@ -13,7 +13,7 @@ sections=(
   "Create Custom Tools:create_custom_tools.md"
   "Test:test.md"
   "Agents Playbook:agents_playbook.md"
-  "Include agent4all package in your project:include_package.md"
+  "Include praisonai package in your project:include_package.md"
   "Deploy:deploy.md"
   "Other Models:other_models.md"
   "Contributing:contributing.md"

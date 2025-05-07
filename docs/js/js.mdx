@@ -5,7 +5,7 @@ description: "A production-ready Multi AI Agents framework for JavaScript"
 icon: "js"
 ---
 
-Agent4ALL is a production-ready Multi AI Agents framework for JavaScript, designed to create AI Agents to automate and solve problems ranging from simple tasks to complex challenges. It provides a low-code solution to streamline the building and management of multi-agent LLM systems, emphasising simplicity, customisation, and effective human-agent collaboration.
+PraisonAI is a production-ready Multi AI Agents framework for JavaScript, designed to create AI Agents to automate and solve problems ranging from simple tasks to complex challenges. It provides a low-code solution to streamline the building and management of multi-agent LLM systems, emphasising simplicity, customisation, and effective human-agent collaboration.
 
 ```mermaid
 graph LR
@@ -52,10 +52,10 @@ graph LR
       <Step title="Install Package">
         <CodeGroup>
         ```bash npm
-        npm install agent4all
+        npm install praisonai
         ```
         ```bash yarn
-        yarn add agent4all
+        yarn add praisonai
         ```
         </CodeGroup>
       </Step>
@@ -71,18 +71,18 @@ graph LR
 
 <CodeGroup>
 ```javascript Single Agent
-const { Agent } = require('agent4all');
+const { Agent } = require('praisonai');
 const agent = new Agent({ instructions: 'You are a helpful AI assistant' });
 agent.start('Write a movie script about a robot in Mars');
 ```
 
 ```javascript Multi Agents
-const { Agent, Agent4ALLAgents } = require('agent4all');
+const { Agent, PraisonAIAgents } = require('praisonai');
 
 const researchAgent = new Agent({ instructions: 'Research about AI' });
 const summariseAgent = new Agent({ instructions: 'Summarise research agent\'s findings' });
 
-const agents = new Agent4ALLAgents({ agents: [researchAgent, summariseAgent] });
+const agents = new PraisonAIAgents({ agents: [researchAgent, summariseAgent] });
 agents.start();
 ```
 </CodeGroup>
@@ -102,7 +102,7 @@ agents.start();
     Create and run a single agent to perform a specific task:
 
 ```javascript
-const { Agent } = require('agent4all');
+const { Agent } = require('praisonai');
 
 // Create a simple science explainer agent
 const agent = new Agent({
@@ -126,7 +126,7 @@ agent.start("Why is the sky blue?")
     Create and run multiple agents working together:
 
 ```javascript
-const { Agent4ALLAgents, Agent } = require('agent4all');
+const { PraisonAIAgents, Agent } = require('praisonai');
 
 // Create a story agent and a summary agent
 const storyAgent = new Agent({
@@ -140,7 +140,7 @@ const summaryAgent = new Agent({
 });
 
 // Create multi-agent system
-const agents = new Agent4ALLAgents({
+const agents = new PraisonAIAgents({
   agents: [storyAgent, summaryAgent],
   tasks: [
     "Create a short story about a magical forest",
@@ -164,7 +164,7 @@ agents.start()
     Create agents with specific tasks and dependencies:
 
 ```javascript
-const { Agent, Task } = require('agent4all');
+const { Agent, Task } = require('praisonai');
 
 // Create a task-based agent
 const agent = new Agent({

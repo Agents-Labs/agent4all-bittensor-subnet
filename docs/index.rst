@@ -1,9 +1,9 @@
-.. Agent4ALL documentation master file, created by
+.. PraisonAI documentation master file, created by
    sphinx-quickstart on Mon Jun 10 12:11:57 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Agent4ALL's documentation!
+Welcome to PraisonAI's documentation!
 =====================================
 
 .. toctree::

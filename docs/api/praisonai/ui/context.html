@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.1">
-<title>agent4all.ui.context API documentation</title>
+<title>praisonai.ui.context API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
@@ -22,7 +22,7 @@ hljs.highlightAll();
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>agent4all.ui.context</code></h1>
+<h1 class="title">Module <code>praisonai.ui.context</code></h1>
 </header>
 <section id="section-intro">
 </section>
@@ -33,7 +33,7 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt id="agent4all.ui.context.main"><code class="name flex">
+<dt id="praisonai.ui.context.main"><code class="name flex">
 <span>def <span class="ident">main</span></span>(<span>)</span>
 </code></dt>
 <dd>
@@ -44,7 +44,7 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="agent4all.ui.context.ContextGatherer"><code class="flex name class">
+<dt id="praisonai.ui.context.ContextGatherer"><code class="flex name class">
 <span>class <span class="ident">ContextGatherer</span></span>
 <span>(</span><span>directory='.', output_file='context.txt', relevant_extensions=None, max_file_size=1000000, max_tokens=900000)</span>
 </code></dt>
@@ -308,26 +308,26 @@ hljs.highlightAll();
 </details>
 <h3>Methods</h3>
 <dl>
-<dt id="agent4all.ui.context.ContextGatherer.count_tokens"><code class="name flex">
+<dt id="praisonai.ui.context.ContextGatherer.count_tokens"><code class="name flex">
 <span>def <span class="ident">count_tokens</span></span>(<span>self, text)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Count tokens using a simple whitespace-based tokenizer.</p></div>
 </dd>
-<dt id="agent4all.ui.context.ContextGatherer.gather_context"><code class="name flex">
+<dt id="praisonai.ui.context.ContextGatherer.gather_context"><code class="name flex">
 <span>def <span class="ident">gather_context</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Gather context from relevant files, respecting ignore patterns
 and include options from .praisoninclude and .praisoncontext.</p></div>
 </dd>
-<dt id="agent4all.ui.context.ContextGatherer.get_context_tree"><code class="name flex">
+<dt id="praisonai.ui.context.ContextGatherer.get_context_tree"><code class="name flex">
 <span>def <span class="ident">get_context_tree</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Generate a formatted tree structure of included files and folders.</p></div>
 </dd>
-<dt id="agent4all.ui.context.ContextGatherer.get_ignore_patterns"><code class="name flex">
+<dt id="praisonai.ui.context.ContextGatherer.get_ignore_patterns"><code class="name flex">
 <span>def <span class="ident">get_ignore_patterns</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -339,7 +339,7 @@ the following order:
 4. .gitignore
 5. Default patterns</p></div>
 </dd>
-<dt id="agent4all.ui.context.ContextGatherer.get_include_paths"><code class="name flex">
+<dt id="praisonai.ui.context.ContextGatherer.get_include_paths"><code class="name flex">
 <span>def <span class="ident">get_include_paths</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -348,32 +348,32 @@ the following order:
 2. .praisoncontext (if .praisoninclude doesn't exist, this is used
 to include all other relevant files, excluding ignore patterns)</p></div>
 </dd>
-<dt id="agent4all.ui.context.ContextGatherer.is_relevant_file"><code class="name flex">
+<dt id="praisonai.ui.context.ContextGatherer.is_relevant_file"><code class="name flex">
 <span>def <span class="ident">is_relevant_file</span></span>(<span>self, file_path)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Determine if a file is relevant for the context.</p></div>
 </dd>
-<dt id="agent4all.ui.context.ContextGatherer.run"><code class="name flex">
+<dt id="praisonai.ui.context.ContextGatherer.run"><code class="name flex">
 <span>def <span class="ident">run</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Execute the context gathering, truncation, and reporting.</p></div>
 </dd>
-<dt id="agent4all.ui.context.ContextGatherer.save_context"><code class="name flex">
+<dt id="praisonai.ui.context.ContextGatherer.save_context"><code class="name flex">
 <span>def <span class="ident">save_context</span></span>(<span>self, context)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Save the gathered context to a file.</p></div>
 </dd>
-<dt id="agent4all.ui.context.ContextGatherer.should_ignore"><code class="name flex">
+<dt id="praisonai.ui.context.ContextGatherer.should_ignore"><code class="name flex">
 <span>def <span class="ident">should_ignore</span></span>(<span>self, file_path)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Check if a file or directory should be ignored based on patterns.
 Handles both file names and directory names for more comprehensive filtering.</p></div>
 </dd>
-<dt id="agent4all.ui.context.ContextGatherer.truncate_context"><code class="name flex">
+<dt id="praisonai.ui.context.ContextGatherer.truncate_context"><code class="name flex">
 <span>def <span class="ident">truncate_context</span></span>(<span>self, context)</span>
 </code></dt>
 <dd>
@@ -391,29 +391,29 @@ Handles both file names and directory names for more comprehensive filtering.</p
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="agent4all.ui" href="index.html">agent4all.ui</a></code></li>
+<li><code><a title="praisonai.ui" href="index.html">praisonai.ui</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
-<li><code><a title="agent4all.ui.context.main" href="#agent4all.ui.context.main">main</a></code></li>
+<li><code><a title="praisonai.ui.context.main" href="#praisonai.ui.context.main">main</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="agent4all.ui.context.ContextGatherer" href="#agent4all.ui.context.ContextGatherer">ContextGatherer</a></code></h4>
+<h4><code><a title="praisonai.ui.context.ContextGatherer" href="#praisonai.ui.context.ContextGatherer">ContextGatherer</a></code></h4>
 <ul class="two-column">
-<li><code><a title="agent4all.ui.context.ContextGatherer.count_tokens" href="#agent4all.ui.context.ContextGatherer.count_tokens">count_tokens</a></code></li>
-<li><code><a title="agent4all.ui.context.ContextGatherer.gather_context" href="#agent4all.ui.context.ContextGatherer.gather_context">gather_context</a></code></li>
-<li><code><a title="agent4all.ui.context.ContextGatherer.get_context_tree" href="#agent4all.ui.context.ContextGatherer.get_context_tree">get_context_tree</a></code></li>
-<li><code><a title="agent4all.ui.context.ContextGatherer.get_ignore_patterns" href="#agent4all.ui.context.ContextGatherer.get_ignore_patterns">get_ignore_patterns</a></code></li>
-<li><code><a title="agent4all.ui.context.ContextGatherer.get_include_paths" href="#agent4all.ui.context.ContextGatherer.get_include_paths">get_include_paths</a></code></li>
-<li><code><a title="agent4all.ui.context.ContextGatherer.is_relevant_file" href="#agent4all.ui.context.ContextGatherer.is_relevant_file">is_relevant_file</a></code></li>
-<li><code><a title="agent4all.ui.context.ContextGatherer.run" href="#agent4all.ui.context.ContextGatherer.run">run</a></code></li>
-<li><code><a title="agent4all.ui.context.ContextGatherer.save_context" href="#agent4all.ui.context.ContextGatherer.save_context">save_context</a></code></li>
-<li><code><a title="agent4all.ui.context.ContextGatherer.should_ignore" href="#agent4all.ui.context.ContextGatherer.should_ignore">should_ignore</a></code></li>
-<li><code><a title="agent4all.ui.context.ContextGatherer.truncate_context" href="#agent4all.ui.context.ContextGatherer.truncate_context">truncate_context</a></code></li>
+<li><code><a title="praisonai.ui.context.ContextGatherer.count_tokens" href="#praisonai.ui.context.ContextGatherer.count_tokens">count_tokens</a></code></li>
+<li><code><a title="praisonai.ui.context.ContextGatherer.gather_context" href="#praisonai.ui.context.ContextGatherer.gather_context">gather_context</a></code></li>
+<li><code><a title="praisonai.ui.context.ContextGatherer.get_context_tree" href="#praisonai.ui.context.ContextGatherer.get_context_tree">get_context_tree</a></code></li>
+<li><code><a title="praisonai.ui.context.ContextGatherer.get_ignore_patterns" href="#praisonai.ui.context.ContextGatherer.get_ignore_patterns">get_ignore_patterns</a></code></li>
+<li><code><a title="praisonai.ui.context.ContextGatherer.get_include_paths" href="#praisonai.ui.context.ContextGatherer.get_include_paths">get_include_paths</a></code></li>
+<li><code><a title="praisonai.ui.context.ContextGatherer.is_relevant_file" href="#praisonai.ui.context.ContextGatherer.is_relevant_file">is_relevant_file</a></code></li>
+<li><code><a title="praisonai.ui.context.ContextGatherer.run" href="#praisonai.ui.context.ContextGatherer.run">run</a></code></li>
+<li><code><a title="praisonai.ui.context.ContextGatherer.save_context" href="#praisonai.ui.context.ContextGatherer.save_context">save_context</a></code></li>
+<li><code><a title="praisonai.ui.context.ContextGatherer.should_ignore" href="#praisonai.ui.context.ContextGatherer.should_ignore">should_ignore</a></code></li>
+<li><code><a title="praisonai.ui.context.ContextGatherer.truncate_context" href="#praisonai.ui.context.ContextGatherer.truncate_context">truncate_context</a></code></li>
 </ul>
 </li>
 </ul>

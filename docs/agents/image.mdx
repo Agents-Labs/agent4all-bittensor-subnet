@@ -25,7 +25,7 @@ A workflow demonstrating how the Image Analysis Agent can process and analyze vi
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -41,7 +41,7 @@ A workflow demonstrating how the Image Analysis Agent can process and analyze vi
     <Step title="Create Script">
         Create a new file `image_analysis.py`:
         ```python
-        from praisonaiagents import Agent, Task, Agent4ALLAgents
+        from praisonaiagents import Agent, Task, PraisonAIAgents
 
         # Create Image Analysis Agent
         image_agent = Agent(
@@ -71,8 +71,8 @@ A workflow demonstrating how the Image Analysis Agent can process and analyze vi
             images=["local_image.jpg"]
         )
 
-        # Create Agent4ALLAgents instance
-        agents = Agent4ALLAgents(
+        # Create PraisonAIAgents instance
+        agents = PraisonAIAgents(
             agents=[image_agent],
             tasks=[task1, task2],
             process="sequential",
@@ -124,7 +124,7 @@ landmark_task = Task(
 )
 
 # Run single task
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[image_agent],
     tasks=[landmark_task],
     process="sequential"

@@ -50,7 +50,7 @@ Climate Impact Analysis is a systematic process of collecting environmental data
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -66,7 +66,7 @@ Climate Impact Analysis is a systematic process of collecting environmental data
     <Step title="Create a file">
         Create a new file `app.py` with the basic setup:
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import time
 from typing import Dict, List
 import asyncio
@@ -254,7 +254,7 @@ strategy_task = Task(
 )
 
 # Create workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[environmental_monitor, urban_analyzer, climate_modeler,
             impact_predictor, strategy_generator],
     tasks=[monitoring_task, urban_task, modeling_task,
@@ -289,9 +289,9 @@ if __name__ == "__main__":
 
 <CardGroup>
   <Card title="Introduction" icon="book" href="/introduction">
-    Learn more about Agent4ALL and its core concepts
+    Learn more about PraisonAI and its core concepts
   </Card>
   <Card title="Quick Start" icon="bolt" href="/quickstart">
-    Get started with the basics of Agent4ALL
+    Get started with the basics of PraisonAI
   </Card>
 </CardGroup>

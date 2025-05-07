@@ -1,7 +1,7 @@
 {
-  "name": "agent4all",
+  "name": "praisonai",
   "version": "1.0.19",
-  "description": "Agent4ALL TypeScript AI Agents Framework - Node.js, npm, and Javascript AI Agents Framework",
+  "description": "PraisonAI TypeScript AI Agents Framework - Node.js, npm, and Javascript AI Agents Framework",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -29,7 +29,7 @@
     "npm ai agents framework",
     "node ai agent framework",
     "node ai agents framework",
-    "agent4all",
+    "praisonai",
     "ai agents framework",
     "typescript ai agents framework",
     "javascript ai agents framework",
@@ -62,7 +62,7 @@
     "fast-xml-parser": "^4.5.1",
     "node-fetch": "^2.6.9",
     "openai": "^4.81.0",
-    "agent4all": "^1.0.19"
+    "praisonai": "^1.0.19"
   },
   "optionalDependencies": {
     "boxen": "^7.1.1",

@@ -1,6 +1,6 @@
 ---
 title: "Multimodal Agents"
-description: "Guide for creating and using multimodal AI agents in Agent4ALL for processing images, videos, and other media types"
+description: "Guide for creating and using multimodal AI agents in PraisonAI for processing images, videos, and other media types"
 icon: "images"
 ---
 
@@ -10,7 +10,7 @@ icon: "images"
   <Tab title="Code">
     <Steps>
         <Step title="Install Package">
-            First, install the Agent4ALL Agents package:
+            First, install the PraisonAI Agents package:
             ```bash
             pip install praisonaiagents opencv-python moviepy
             ```
@@ -24,7 +24,7 @@ icon: "images"
         <Step title="Create a file">
             Create a new file `app.py` with the basic setup:
             ```python
-            from praisonaiagents import Agent, Task, Agent4ALLAgents
+            from praisonaiagents import Agent, Task, PraisonAIAgents
 
             # Create Vision Analysis Agent
             vision_agent = Agent(
@@ -47,7 +47,7 @@ icon: "images"
             )
 
             # Run the agents
-            agents = Agent4ALLAgents(
+            agents = PraisonAIAgents(
                 agents=[vision_agent],
                 tasks=[task],
                 process="sequential",
@@ -69,9 +69,9 @@ icon: "images"
   <Tab title="No Code">
     <Steps>
         <Step title="Install Package">
-            Install the Agent4ALL package:
+            Install the PraisonAI package:
             ```bash
-            pip install agent4all opencv-python moviepy
+            pip install praisonai opencv-python moviepy
             ```
         </Step>
         <Step title="Set API Key">
@@ -83,7 +83,7 @@ icon: "images"
         <Step title="Create a file">
             Create a new file `agents.yaml` with the basic setup:
 ```yaml
-framework: agent4all
+framework: praisonai
 process: sequential
 topic: analyze landmark image
 roles:
@@ -107,7 +107,7 @@ roles:
         <Step title="Start Agents">
             Type this in your terminal to run your agents:
 ```bash
-agent4all agents.yaml
+praisonai agents.yaml
 ```
         </Step>
     </Steps>
@@ -163,7 +163,7 @@ agent4all agents.yaml
 <Tabs>
   <Tab title="Code">
     ```python
-    from praisonaiagents import Agent, Task, Agent4ALLAgents
+    from praisonaiagents import Agent, Task, PraisonAIAgents
 
     # Create first agent for image analysis
     vision_agent = Agent(
@@ -197,7 +197,7 @@ agent4all agents.yaml
     )
 
     # Create and start the agents
-    agents = Agent4ALLAgents(
+    agents = PraisonAIAgents(
         agents=[vision_agent, writer_agent],
         tasks=[document_task, writing_task],
         process="sequential"
@@ -208,7 +208,7 @@ agent4all agents.yaml
   </Tab>
   <Tab title="No Code">
     ```yaml
-    framework: agent4all
+    framework: praisonai
     process: sequential
     topic: document analysis and content creation
     roles:

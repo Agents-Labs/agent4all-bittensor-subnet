@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 from praisonaiagents.tools import wiki_search, wiki_summary, wiki_page, wiki_random, wiki_language
 
 agent = Agent(

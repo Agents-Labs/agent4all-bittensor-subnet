@@ -1,6 +1,6 @@
 from praisonaiagents.agent import Agent
 from praisonaiagents.task import Task
-from praisonaiagents.agents import Agent4ALLAgents
+from praisonaiagents.agents import PraisonAIAgents
 import time
 
 def get_time_check():
@@ -61,7 +61,7 @@ final_task = Task(
 )
 
 # Create and run workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[router, processor1, processor2],
     tasks=[routing_task, processing_task, final_task],
     process="workflow",

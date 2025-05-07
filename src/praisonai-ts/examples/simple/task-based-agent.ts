@@ -1,4 +1,4 @@
-import { Agent, Agent4ALLAgents } from 'agent4all';
+import { Agent, PraisonAIAgents } from 'praisonai';
 
 const recipeAgent = new Agent({
   instructions: `You are a professional chef and nutritionist. Create 1 healthy food recipes that are both nutritious and delicious.`,
@@ -10,7 +10,7 @@ const blogAgent = new Agent({
   name: "BlogAgent"
 });
 
-const agents = new Agent4ALLAgents({
+const agents = new PraisonAIAgents({
   agents: [recipeAgent, blogAgent],
   tasks: [
     "Create 1 healthy and delicious recipes in 5 lines with emojis",

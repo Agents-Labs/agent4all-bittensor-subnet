@@ -1,7 +1,7 @@
 {
-    "name": "agent4all-docs",
+    "name": "praisonai-docs",
     "version": "1.0.0",
-    "description": "Agent4ALL Documentation",
+    "description": "PraisonAI Documentation",
     "scripts": {
       "dev": "mintlify dev",
       "start": "mintlify dev",

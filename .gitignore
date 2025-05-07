@@ -11,7 +11,7 @@ assets
 .idea
 .DS_Store
 .pytest_cache
-agent4all.egg-info
+praisonAI.egg-info
 flagged
 test.yaml
 db
@@ -26,7 +26,7 @@ threads.db
 threads.db-journal
 
 .chainlit
-!agent4all/ui/config/.chainlit
+!praisonai/ui/config/.chainlit
 
 site
 # Ignore Sphinx build directory
@@ -44,7 +44,7 @@ docs/_build/.buildinfo
 docs/_build/.buildinfo/*
 docs/_build/.buildinfo/.buildinfo
 
-agent4all/doc
+praisonai/doc
 
 # agentops
 trained_agents_data.pkl

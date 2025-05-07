@@ -1,19 +1,19 @@
-# Agent4ALL TypeScript Node.js AI Agents Framework
+# PraisonAI TypeScript Node.js AI Agents Framework
 
-Agent4ALL is a production-ready Multi AI Agents framework, designed to create AI Agents to automate and solve problems ranging from simple tasks to complex challenges. It provides a low-code solution to streamline the building and management of multi-agent LLM systems, emphasising simplicity, customisation, and effective human-agent collaboration.
+PraisonAI is a production-ready Multi AI Agents framework, designed to create AI Agents to automate and solve problems ranging from simple tasks to complex challenges. It provides a low-code solution to streamline the building and management of multi-agent LLM systems, emphasising simplicity, customisation, and effective human-agent collaboration.
 
 ## Installation
 
 ```bash
-npm install agent4all
+npm install praisonai
 ```
 
 ## Development Setup
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/MervinPraison/Agent4ALL.git
-cd src/agent4all-ts
+git clone https://github.com/MervinPraison/PraisonAI.git
+cd src/praisonai-ts
 ```
 
 2. Install dependencies:
@@ -28,12 +28,12 @@ npm run build
 
 ## Usage
 
-Here are examples of different ways to use Agent4ALL:
+Here are examples of different ways to use PraisonAI:
 
 ### 1. Single Agent Example
 
 ```typescript
-import { Agent, Agent4ALLAgents } from 'agent4all';
+import { Agent, PraisonAIAgents } from 'praisonai';
 
 async function main() {
     // Create a simple agent (no task specified)
@@ -44,7 +44,7 @@ async function main() {
     });
 
     // Run the agent
-    const agent4all = new Agent4ALLAgents({
+    const praisonAI = new PraisonAIAgents({
         agents: [agent],
         tasks: ["Explain the process of photosynthesis in detail."],
         verbose: true
@@ -52,7 +52,7 @@ async function main() {
 
     try {
         console.log('Starting single agent example...');
-        const results = await agent4all.start();
+        const results = await praisonAI.start();
         console.log('\nFinal Results:', results);
     } catch (error) {
         console.error('Error:', error);
@@ -65,7 +65,7 @@ main();
 ### 2. Multi-Agent Example
 
 ```typescript
-import { Agent, Agent4ALLAgents } from 'agent4all';
+import { Agent, PraisonAIAgents } from 'praisonai';
 
 async function main() {
     // Create multiple agents with different roles
@@ -88,7 +88,7 @@ async function main() {
     });
 
     // Run the agents in sequence
-    const agent4all = new Agent4ALLAgents({
+    const praisonAI = new PraisonAIAgents({
         agents: [researchAgent, summaryAgent, recommendationAgent],
         tasks: [
             "Research and analyze current renewable energy technologies and their implementation.",
@@ -100,7 +100,7 @@ async function main() {
 
     try {
         console.log('Starting multi-agent example...');
-        const results = await agent4all.start();
+        const results = await praisonAI.start();
         console.log('\nFinal Results:', results);
     } catch (error) {
         console.error('Error:', error);
@@ -113,7 +113,7 @@ main();
 ### 3. Task-Based Agent Example
 
 ```typescript
-import { Agent, Task, Agent4ALLAgents } from 'agent4all';
+import { Agent, Task, PraisonAIAgents } from 'praisonai';
 
 async function main() {
     // Create agents first
@@ -161,14 +161,14 @@ The blog post should:
     });
 
     // Run the tasks
-    const agent4all = new Agent4ALLAgents({
+    const praisonAI = new PraisonAIAgents({
         tasks: [createRecipesTask, writeBlogTask],
         verbose: true
     });
 
     try {
         console.log('Starting task-based example...');
-        const results = await agent4all.start();
+        const results = await praisonAI.start();
         console.log('\nFinal Results:', results);
     } catch (error) {
         console.error('Error:', error);

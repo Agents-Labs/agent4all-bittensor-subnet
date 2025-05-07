@@ -25,7 +25,7 @@ A workflow demonstrating how the Image-to-Text Agent can extract text from image
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -41,7 +41,7 @@ A workflow demonstrating how the Image-to-Text Agent can extract text from image
     <Step title="Create Script">
         Create a new file `image_to_text.py`:
         ```python
-        from praisonaiagents import Agent, Task, Agent4ALLAgents
+        from praisonaiagents import Agent, Task, PraisonAIAgents
 
         # Create Image-to-Text Agent
         image_text_agent = Agent(
@@ -72,8 +72,8 @@ A workflow demonstrating how the Image-to-Text Agent can extract text from image
             images=["scene.jpg"]
         )
 
-        # Create Agent4ALLAgents instance
-        agents = Agent4ALLAgents(
+        # Create PraisonAIAgents instance
+        agents = PraisonAIAgents(
             agents=[image_text_agent],
             tasks=[extraction_task, description_task],
             process="sequential",
@@ -125,7 +125,7 @@ document_task = Task(
 )
 
 # Run single task
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[image_text_agent],
     tasks=[document_task],
     process="sequential"

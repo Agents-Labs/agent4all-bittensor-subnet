@@ -127,7 +127,7 @@ Based on these results, please complete your task.`;
     }
 }
 
-export interface TaskAgent4ALLAgentsConfig {
+export interface TaskPraisonAIAgentsConfig {
     agents: Agent[];
     tasks: Task[];
     verbose?: boolean;
@@ -135,24 +135,24 @@ export interface TaskAgent4ALLAgentsConfig {
     manager_llm?: string;
 }
 
-export class Agent4ALLAgents {
+export class PraisonAIAgents {
     private agents: Agent[];
     private tasks: Task[];
     private verbose: boolean;
     private process: 'sequential' | 'parallel' | 'hierarchical';
     private manager_llm: string;
 
-    constructor(config: TaskAgent4ALLAgentsConfig) {
+    constructor(config: TaskPraisonAIAgentsConfig) {
         this.agents = config.agents;
         this.tasks = config.tasks;
         this.verbose = config.verbose || false;
         this.process = config.process || 'sequential';
         this.manager_llm = config.manager_llm || 'gpt-4o-mini';
-        Logger.debug('Agent4ALLAgents initialized', { config });
+        Logger.debug('PraisonAIAgents initialized', { config });
     }
 
     async start(): Promise<any[]> {
-        Logger.debug('Starting Agent4ALL Agents execution...');
+        Logger.debug('Starting PraisonAI Agents execution...');
         Logger.debug('Starting with process mode:', this.process);
 
         let results: any[];
@@ -175,7 +175,7 @@ export class Agent4ALLAgents {
         }
 
         if (this.verbose) {
-            Logger.info('\nAgent4ALL Agents execution completed.');
+            Logger.info('\nPraisonAI Agents execution completed.');
             results.forEach((result, index) => {
                 Logger.info(`\nFinal Result from Task ${index + 1}:`);
                 console.log(result);

@@ -38,7 +38,7 @@ class SpiderTools:
             import requests
             self._session = requests.Session()
             self._session.headers.update({
-                'User-Agent': 'Mozilla/5.0 (compatible; Agent4ALL/1.0; +http://agent4all.com/bot)',
+                'User-Agent': 'Mozilla/5.0 (compatible; PraisonAI/1.0; +http://praisonai.com/bot)',
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                 'Accept-Language': 'en-US,en;q=0.5',
                 'Accept-Encoding': 'gzip, deflate, br',

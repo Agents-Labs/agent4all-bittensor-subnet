@@ -1,12 +1,12 @@
-# Agent4ALL Concept Examples
+# PraisonAI Concept Examples
 
-This directory contains examples demonstrating core concepts of the Agent4ALL package.
+This directory contains examples demonstrating core concepts of the PraisonAI package.
 
 ## Getting Started
 
 1. Install the package:
 ```bash
-npm install agent4all
+npm install praisonai
 ```
 
 2. Run any example using ts-node:
@@ -21,7 +21,7 @@ npx ts-node examples/concepts/multi-agent.ts
 npx ts-node examples/concepts/task-based-agent.ts
 ```
 
-> **Note**: These examples assume you have installed the `agent4all` package from npm. If you're running these examples from within the package source code, the imports will automatically use the local package code.
+> **Note**: These examples assume you have installed the `praisonai` package from npm. If you're running these examples from within the package source code, the imports will automatically use the local package code.
 
 ## Examples
 
@@ -39,7 +39,7 @@ Shows how to create and execute dependent tasks using multiple agents.
 You can use these concepts in your own code:
 
 ```typescript
-import { Agent, Task, Agent4ALLAgents } from 'agent4all';
+import { Agent, Task, PraisonAIAgents } from 'praisonai';
 
 // Create an agent
 const agent = new Agent({
@@ -59,7 +59,7 @@ const task = new Task({
 });
 
 // Run the agent
-const system = new Agent4ALLAgents({
+const system = new PraisonAIAgents({
     agents: [agent],
     tasks: [task],
     verbose: true

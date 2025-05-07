@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import time
 from typing import Dict, List
 import asyncio
@@ -151,7 +151,7 @@ scheduling_task = Task(
 )
 
 # Create workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[sensor_monitor, performance_analyzer, anomaly_detector,
             failure_predictor, maintenance_scheduler],
     tasks=[sensor_task, performance_task, anomaly_task,

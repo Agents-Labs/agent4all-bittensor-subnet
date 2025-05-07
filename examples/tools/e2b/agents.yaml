@@ -1,4 +1,4 @@
-framework: agent4all
+framework: praisonai
 topic: crawl and extract all data from each url from this page https://news.ycombinator.com/
 roles:
   web_scraper:

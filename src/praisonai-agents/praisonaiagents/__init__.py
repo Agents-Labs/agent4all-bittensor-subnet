@@ -4,7 +4,7 @@ Praison AI Agents - A package for hierarchical AI agent task execution
 
 from .agent.agent import Agent
 from .agent.image_agent import ImageAgent
-from .agents.agents import Agent4ALLAgents
+from .agents.agents import PraisonAIAgents
 from .task.task import Task
 from .tools.tools import Tools
 from .agents.autoagents import AutoAgents
@@ -27,13 +27,13 @@ from .main import (
     async_display_callbacks,
 )
 
-# Add Agents as an alias for Agent4ALLAgents
-Agents = Agent4ALLAgents
+# Add Agents as an alias for PraisonAIAgents
+Agents = PraisonAIAgents
 
 __all__ = [
     'Agent',
     'ImageAgent',
-    'Agent4ALLAgents',
+    'PraisonAIAgents',
     'Agents',
     'Tools',
     'Task',

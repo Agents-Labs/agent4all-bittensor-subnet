@@ -1,4 +1,4 @@
-from agent4all import Agent4ALL
+from praisonai import PraisonAI
 from duckduckgo_search import DDGS
 from praisonai_tools import BaseTool
 
@@ -29,11 +29,11 @@ roles:
       - "InternetSearchTool"
 """
 
-# Create a Agent4ALL instance with the agent_yaml content
-agent4all = Agent4ALL(agent_yaml=agent_yaml)
+# Create a PraisonAI instance with the agent_yaml content
+praisonai = PraisonAI(agent_yaml=agent_yaml)
 
-# Run Agent4ALL
-result = agent4all.run()
+# Run PraisonAI
+result = praisonai.run()
 
 # Print the result
 print(result)

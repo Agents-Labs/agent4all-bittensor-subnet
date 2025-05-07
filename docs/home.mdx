@@ -1,7 +1,7 @@
 ---
 title: "Praison AI"
 sidebarTitle: "Home"
-description: "Comprehensive guide to Agent4ALL - an AI Agents Framework with Self Reflection, combining Agent4ALL Agents, AG2 (Formerly AutoGen), and CrewAI for building multi-agent LLM systems"
+description: "Comprehensive guide to PraisonAI - an AI Agents Framework with Self Reflection, combining PraisonAI Agents, AG2 (Formerly AutoGen), and CrewAI for building multi-agent LLM systems"
 icon: "house"
 openGraph:
   url: "/"
@@ -9,19 +9,19 @@ seo:
   canonical: "/"
 ---
 <Note>
-  Welcome to Agent4ALL - Your comprehensive solution for building and managing multi-agent LLM systems with self-reflection capabilities.
+  Welcome to PraisonAI - Your comprehensive solution for building and managing multi-agent LLM systems with self-reflection capabilities.
 </Note>
 <div className="flex justify-start w-full max-w-xs sm:max-w-sm md:max-w-md">
   <img 
-    src="images/agent4all-logo-black.png"
-    alt="Agent4ALL Logo"
+    src="images/praisonai-logo-black.png"
+    alt="PraisonAI Logo"
     className="w-full h-auto rounded-lg shadow-md block dark:hidden"
     width="400"
     height="100"
   />
   <img 
-    src="images/agent4all-logo-light.png"
-    alt="Agent4ALL Logo"
+    src="images/praisonai-logo-light.png"
+    alt="PraisonAI Logo"
     className="w-full h-auto rounded-lg shadow-md hidden dark:block"
     width="400"
     height="100"
@@ -29,24 +29,24 @@ seo:
 </div>
 <div className="flex flex-wrap gap-4 my-8">
   <div className="hover:opacity-80 transition-opacity">
-    <img src="https://static.pepy.tech/badge/Agent4ALL" alt="Total Downloads" />
+    <img src="https://static.pepy.tech/badge/PraisonAI" alt="Total Downloads" />
   </div>
   <div className="hover:opacity-80 transition-opacity">
-    <img src="https://img.shields.io/github/v/release/MervinPraison/Agent4ALL" alt="Latest Stable Version" />
+    <img src="https://img.shields.io/github/v/release/MervinPraison/PraisonAI" alt="Latest Stable Version" />
   </div>
   <div className="hover:opacity-80 transition-opacity">
     <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License" />
   </div>
   <div className="hover:opacity-80 transition-opacity">
-    <img src="https://img.shields.io/github/stars/MervinPraison/Agent4ALL?style=social" alt="GitHub Stars" />
+    <img src="https://img.shields.io/github/stars/MervinPraison/PraisonAI?style=social" alt="GitHub Stars" />
   </div>
   <div className="hover:opacity-80 transition-opacity">
-    <img src="https://img.shields.io/github/forks/MervinPraison/Agent4ALL?style=social" alt="GitHub Forks" />
+    <img src="https://img.shields.io/github/forks/MervinPraison/PraisonAI?style=social" alt="GitHub Forks" />
   </div>
 </div>
 
 <Tip>
-  Agent4ALL combines Agent4ALL Agents, AG2 (Formerly AutoGen), and CrewAI into a low-code solution for building and managing multi-agent LLM systems, focusing on simplicity, customization, and efficient human-agent collaboration.
+  PraisonAI combines PraisonAI Agents, AG2 (Formerly AutoGen), and CrewAI into a low-code solution for building and managing multi-agent LLM systems, focusing on simplicity, customization, and efficient human-agent collaboration.
 </Tip>
 
 ## Key Features
@@ -99,7 +99,7 @@ seo:
     <Steps>
       <Step title="Install Package">
         ```bash
-        pip install agent4all
+        pip install praisonai
         ```
       </Step>
       <Step title="Set API Key">
@@ -109,7 +109,7 @@ seo:
       </Step>
       <Step title="Auto Mode">
         ```bash
-        agent4all --auto create a movie script about Robots in Mars
+        praisonai --auto create a movie script about Robots in Mars
         ```
 
         This will automatically create required agents and complete the task
@@ -136,7 +136,7 @@ seo:
 
 <CodeGroup>
   ```python Basic
-  from praisonaiagents import Agent, Task, Agent4ALLAgents
+  from praisonaiagents import Agent, Task, PraisonAIAgents
 
   # Create an agent
   researcher = Agent(
@@ -157,7 +157,7 @@ seo:
   )
 
   # Run the agents
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[researcher],
       tasks=[task],
       verbose=False
@@ -167,7 +167,7 @@ seo:
   ```
 
   ```python Advanced
-  from praisonaiagents import Agent, Task, Agent4ALLAgents
+  from praisonaiagents import Agent, Task, PraisonAIAgents
 
   # Create multiple agents
   researcher = Agent(
@@ -205,7 +205,7 @@ seo:
   )
 
   # Run with hierarchical process
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[researcher, writer],
       tasks=[task1, task2],
       verbose=False,
@@ -270,18 +270,18 @@ seo:
 
 ## Praison AI Package Overall Features
 
-<Frame caption="Agent4ALL Features Overview">
+<Frame caption="PraisonAI Features Overview">
   <div className="w-full max-w-4xl mx-auto">
     <img 
       src="images/architecture-light.png"
-      alt="Agent4ALL Features"
+      alt="PraisonAI Features"
       className="w-full h-auto rounded-lg shadow-lg block dark:hidden"
       width="1200"
       height="800"
     />
     <img 
       src="images/architecture-dark.png"
-      alt="Agent4ALL Features"
+      alt="PraisonAI Features"
       className="w-full h-auto rounded-lg shadow-lg hidden dark:block"
       width="1200"
       height="800"

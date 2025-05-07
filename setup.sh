@@ -85,13 +85,13 @@ run_ui_interface() {
     if [[ $QUICK == true ]]; then
         print_message "Quick starting UI interface with chainlit..."
         setup_chainlit
-        agent4all ui
+        praisonai ui
     else
         print_message "Starting UI interface..."
         read -p "Use chainlit interface? (y/N): " use_chainlit
         if [[ $use_chainlit =~ ^[Yy]$ ]]; then
             setup_chainlit
-            agent4all ui
+            praisonai ui
         else
             read -p "Enter your initial prompt (or press enter for default): " prompt
             if [ -z "$prompt" ]; then
@@ -99,9 +99,9 @@ run_ui_interface() {
             fi
             read -p "Use AG2 (Formerly AutoGen) framework? (y/N): " use_ag2
             if [[ $use_ag2 =~ ^[Yy]$ ]]; then
-                agent4all --framework autogen --init "$prompt"
+                praisonai --framework autogen --init "$prompt"
             else
-                agent4all --init "$prompt"
+                praisonai --init "$prompt"
             fi
         fi
     fi
@@ -112,7 +112,7 @@ run_chat_interface() {
     check_openai_key
     setup_model_config
     print_message "Starting Chat interface..."
-    python3 -m agent4all chat
+    python3 -m praisonai chat
 }
 
 # Function to run Code interface
@@ -120,7 +120,7 @@ run_code_interface() {
     check_openai_key
     setup_model_config
     print_message "Starting Code interface..."
-    agent4all code
+    praisonai code
 }
 
 # Function to run Realtime interface
@@ -128,7 +128,7 @@ run_realtime_interface() {
     check_openai_key
     setup_model_config
     print_message "Starting Realtime voice interaction..."
-    python3 -m agent4all realtime
+    python3 -m praisonai realtime
 }
 
 # Function to check system dependencies
@@ -355,13 +355,13 @@ done
 
 # Clone repository and checkout tag if not in CICD mode
 if [[ $CICD == false ]]; then
-    print_message "Cloning Agent4ALL repository and checking out ${TAG}..."
-    if [ ! -d "Agent4ALL" ]; then
-        git clone https://github.com/MervinPraison/Agent4ALL.git
-        cd Agent4ALL
+    print_message "Cloning PraisonAI repository and checking out ${TAG}..."
+    if [ ! -d "PraisonAI" ]; then
+        git clone https://github.com/MervinPraison/PraisonAI.git
+        cd PraisonAI
         git checkout ${TAG}
     else
-        cd Agent4ALL
+        cd PraisonAI
         git checkout ${TAG}
     fi
 fi
@@ -395,10 +395,10 @@ if [[ $UI == true || $CHAT == true || $CODE == true || $REALTIME == true ]]; the
         install_interface_deps "realtime"
     fi
 
-    # Check if agent4all is already installed
-    if ! pip show agent4all &> /dev/null; then
-        print_message "Installing Agent4ALL components..."
-        pip install agent4all
+    # Check if praisonai is already installed
+    if ! pip show praisonai &> /dev/null; then
+        print_message "Installing PraisonAI components..."
+        pip install praisonai
         pip install praisonaiagents
         
         # Install only the required components based on selected interfaces
@@ -410,10 +410,10 @@ if [[ $UI == true || $CHAT == true || $CODE == true || $REALTIME == true ]]; the
         
         # Install selected components
         for component in "${components[@]}"; do
-            pip install "agent4all[$component]"
+            pip install "praisonai[$component]"
         done
     else
-        print_message "Agent4ALL is already installed. Skipping installation."
+        print_message "PraisonAI is already installed. Skipping installation."
     fi
 
     print_message "Setup completed successfully!"

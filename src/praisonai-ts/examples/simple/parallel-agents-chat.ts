@@ -1,4 +1,4 @@
-import { Agent, Agent4ALLAgents } from 'agent4all';
+import { Agent, PraisonAIAgents } from 'praisonai';
 
 // Create two independent agents
 const weatherAgent = new Agent({
@@ -13,8 +13,8 @@ const foodAgent = new Agent({
   verbose: true
 });
 
-// Create Agent4ALLAgents instance with parallel processing
-const agents = new Agent4ALLAgents({
+// Create PraisonAIAgents instance with parallel processing
+const agents = new PraisonAIAgents({
   agents: [weatherAgent, foodAgent],
   tasks: ["What is the weather like in Paris?", "What are some famous dishes in Paris?"],
   verbose: true,

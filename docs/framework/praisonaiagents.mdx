@@ -1,6 +1,6 @@
 ---
-title: "Agent4ALL Agents"
-description: "Guide for using Agent4ALL Agents framework, a lightweight package for creating and managing AI agents with advanced capabilities"
+title: "PraisonAI Agents"
+description: "Guide for using PraisonAI Agents framework, a lightweight package for creating and managing AI agents with advanced capabilities"
 icon: "users-gear"
 ---
 
@@ -18,7 +18,7 @@ export OPENAI_API_KEY=xxxxxxxxxxxxxxxxxxxxxx
 Create `app.py` and add the following code:
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 
 # Create agents
 researcher = Agent(
@@ -57,7 +57,7 @@ writing_task = Task(
 )
 
 # Create and run the agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[researcher, writer],
     tasks=[research_task, writing_task],
     verbose=True

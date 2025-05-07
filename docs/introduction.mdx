@@ -1,14 +1,14 @@
 ---
 title: "Introduction"
-description: "Welcome to Agent4ALL - The Next Generation AI Agent Framework"
+description: "Welcome to PraisonAI - The Next Generation AI Agent Framework"
 icon: "book-open"
 ---
 
-## What is Agent4ALL?
+## What is PraisonAI?
 
-Agent4ALL is a powerful Multi-Agent Framework for building and deploying AI agents that can understand, reason, and execute complex tasks autonomously.
+PraisonAI is a powerful Multi-Agent Framework for building and deploying AI agents that can understand, reason, and execute complex tasks autonomously.
 <CardGroup cols={1}>
-  <Card title="Welcome to Agent4ALL" icon="wand-magic-sparkles">
+  <Card title="Welcome to PraisonAI" icon="wand-magic-sparkles">
     Build powerful autonomous agents that understand, decide, and execute with unprecedented capability.
   </Card>
 </CardGroup>
@@ -91,7 +91,7 @@ graph LR
   <Tab title="Code">
     <Steps>
       <Step title="Install Package">
-        Install the Agent4ALL Agents package:
+        Install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -109,18 +109,18 @@ graph LR
         Create `app.py`:
     <CodeGroup>
       ```python Single Agent
-      from praisonaiagents import Agent, Agent4ALLAgents
+      from praisonaiagents import Agent, PraisonAIAgents
 
       # Create a simple agent
       summarise_agent = Agent(instructions="Summarise Photosynthesis")
 
       # Run the agent
-      agents = Agent4ALLAgents(agents=[summarise_agent])
+      agents = PraisonAIAgents(agents=[summarise_agent])
       agents.start()
       ```
 
       ```python Multiple Agents
-      from praisonaiagents import Agent, Agent4ALLAgents
+      from praisonaiagents import Agent, PraisonAIAgents
 
       # Create agents with specific roles
       diet_agent = Agent(
@@ -132,7 +132,7 @@ graph LR
       )
 
       # Run multiple agents
-      agents = Agent4ALLAgents(agents=[diet_agent, blog_agent])
+      agents = PraisonAIAgents(agents=[diet_agent, blog_agent])
       agents.start()
       ```
     </CodeGroup>
@@ -158,7 +158,7 @@ graph LR
   <Tab title="No Code">
     <Steps>
       <Step title="Install Package">
-        Install the No Code Agent4ALL Package:
+        Install the No Code PraisonAI Package:
         ```bash
         pip install praisonaiagents
         ```
@@ -192,7 +192,7 @@ graph LR
 <Note>
 You can automatically create `agents.yaml` using:
 ```bash
-agent4all --init "your task description"
+praisonai --init "your task description"
 ```
 </Note>
 
@@ -201,7 +201,7 @@ agent4all --init "your task description"
       <Step title="Run Agents">
         Execute your config:
         ```bash
-        agent4all agents.yaml
+        praisonai agents.yaml
         ```
       </Step>
     </Steps>
@@ -210,7 +210,7 @@ agent4all --init "your task description"
     <Steps>
       <Step title="Install Package">
         ```bash
-        npm install agent4all
+        npm install praisonai
         ```
       </Step>
       <Step title="Set API Key">
@@ -225,18 +225,18 @@ agent4all --init "your task description"
 
 <CodeGroup>
 ```javascript Single Agent
-const { Agent } = require('agent4all');
+const { Agent } = require('praisonai');
 const agent = new Agent({ instructions: 'You are a helpful AI assistant' });
 agent.start('Write a movie script about a robot in Mars');
 ```
 
 ```javascript Multi Agents
-const { Agent, Agent4ALLAgents } = require('agent4all');
+const { Agent, PraisonAIAgents } = require('praisonai');
 
 const researchAgent = new Agent({ instructions: 'Research about AI' });
 const summariseAgent = new Agent({ instructions: 'Summarise research agent\'s findings' });
 
-const agents = new Agent4ALLAgents({ agents: [researchAgent, summariseAgent] });
+const agents = new PraisonAIAgents({ agents: [researchAgent, summariseAgent] });
 agents.start();
 ```
 </CodeGroup>
@@ -253,10 +253,10 @@ agents.start();
       <Step title="Install Package">
         <CodeGroup>
         ```bash npm
-        npm install agent4all
+        npm install praisonai
         ```
         ```bash yarn
-        yarn add agent4all
+        yarn add praisonai
         ```
         </CodeGroup>
       </Step>
@@ -272,7 +272,7 @@ agents.start();
 
 <CodeGroup>
 ```javascript Single Agent
-import { Agent } from 'agent4all';
+import { Agent } from 'praisonai';
 
 const agent = new Agent({ 
   instructions: `You are a creative writer who writes short stories with emojis.`,
@@ -283,7 +283,7 @@ agent.start("Write a story about a time traveler")
 ```
 
 ```javascript Multi Agents
-import { Agent, Agent4ALLAgents } from 'agent4all';
+import { Agent, PraisonAIAgents } from 'praisonai';
 
 const storyAgent = new Agent({
   instructions: "Generate a very short story (2-3 sentences) about artificial intelligence with emojis.",
@@ -295,7 +295,7 @@ const summaryAgent = new Agent({
   name: "SummaryAgent"
 });
 
-const agents = new Agent4ALLAgents({
+const agents = new PraisonAIAgents({
   agents: [storyAgent, summaryAgent]
 });
 
@@ -316,7 +316,7 @@ agents.start()
 
 <iframe 
   id="codeExecutionFrame"
-  src="https://code-execution-server-agent4all.replit.app/?code=import%20openai%0A%0Aclient%20%3D%20openai.OpenAI()%0Aresult%20%3D%20client.chat.completions.create(%0A%20%20%20%20model%3D%22gpt-3.5-turbo%22%2C%0A%20%20%20%20messages%3D%5B%0A%20%20%20%20%20%20%20%20%7B%22role%22%3A%20%22user%22%2C%20%22content%22%3A%20%22Hello%20World%22%7D%0A%20%20%20%20%5D%0A)%0A%0Aprint(result.choices%5B0%5D.message.content)" 
+  src="https://code-execution-server-praisonai.replit.app/?code=import%20openai%0A%0Aclient%20%3D%20openai.OpenAI()%0Aresult%20%3D%20client.chat.completions.create(%0A%20%20%20%20model%3D%22gpt-3.5-turbo%22%2C%0A%20%20%20%20messages%3D%5B%0A%20%20%20%20%20%20%20%20%7B%22role%22%3A%20%22user%22%2C%20%22content%22%3A%20%22Hello%20World%22%7D%0A%20%20%20%20%5D%0A)%0A%0Aprint(result.choices%5B0%5D.message.content)" 
   width="100%" 
   height="600px" 
   frameborder="0"
@@ -354,7 +354,7 @@ agents.start()
 </CardGroup>
 
 
-  <Card title="Why Choose Agent4ALL?" icon="stars">
+  <Card title="Why Choose PraisonAI?" icon="stars">
     <CardGroup cols={2}>
 ## Developer First
 Build with modern tools and frameworks you already love. Our SDK is designed to be intuitive and powerful.
@@ -363,10 +363,10 @@ Build with modern tools and frameworks you already love. Our SDK is designed to 
 Enterprise-grade reliability with built-in security features and scalable architecture.
 
 ## Open Source
-Agent4ALL is open source and available on [GitHub](https://github.com/MervinPraison/Agent4ALL).
+PraisonAI is open source and available on [GitHub](https://github.com/MervinPraison/PraisonAI).
 
 ## Low Code User Friendly
-Agent4ALL is designed to be easy to learn and use for non technical users.
+PraisonAI is designed to be easy to learn and use for non technical users.
     </CardGroup>
   </Card>
 
@@ -375,7 +375,7 @@ Agent4ALL is designed to be easy to learn and use for non technical users.
 <Tabs>
 <Tab title="Basic Agent">
 <Steps>
-  <Step title="Install Agent4ALL">
+  <Step title="Install PraisonAI">
     Get started with a simple pip install:
     ```bash
     pip install praisonaiagents
@@ -397,7 +397,7 @@ Agent4ALL is designed to be easy to learn and use for non technical users.
 
 <Tab title="Agent with Tools">
 <Steps>
-  <Step title="Install Agent4ALL">
+  <Step title="Install PraisonAI">
     Get started with a simple pip install:
     ```bash
     pip install praisonaiagents duckduckgo_search

@@ -30,7 +30,7 @@ Learn how to implement a predictive maintenance system using AI agents for real-
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -46,7 +46,7 @@ Learn how to implement a predictive maintenance system using AI agents for real-
     <Step title="Create a file">
         Create a new file `predictive_maintenance.py` with the basic setup:
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import time
 from typing import Dict, List
 import asyncio
@@ -199,7 +199,7 @@ scheduling_task = Task(
 )
 
 # Create workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[sensor_monitor, performance_analyzer, anomaly_detector,
             failure_predictor, maintenance_scheduler],
     tasks=[sensor_task, performance_task, anomaly_task,

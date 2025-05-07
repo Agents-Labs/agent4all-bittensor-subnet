@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import time
 from typing import Dict, List
 import asyncio
@@ -204,7 +204,7 @@ compliance_task = Task(
 )
 
 # Create workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[crypto_analyzer, attack_simulator, performance_benchmarker,
             implementation_assessor, compliance_validator],
     tasks=[analysis_task, attack_task, benchmark_task,

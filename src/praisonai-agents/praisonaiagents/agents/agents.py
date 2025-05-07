@@ -44,7 +44,7 @@ def process_video(video_path: str, seconds_per_frame=2):
     video.release()
     return base64_frames
 
-class Agent4ALLAgents:
+class PraisonAIAgents:
     def __init__(self, agents, tasks=None, verbose=0, completion_checker=None, max_retries=5, process="sequential", manager_llm=None, memory=False, memory_config=None, embedder=None, user_id=None, max_iter=10, stream=True):
         # Add check at the start if memory is requested
         if memory:
@@ -126,7 +126,7 @@ class Agent4ALLAgents:
                 tasks[i + 1].context.append(tasks[i])
             logger.info("Set up sequential flow with automatic context passing")
         
-        self._state = {}  # Add state storage at Agent4ALLAgents level
+        self._state = {}  # Add state storage at PraisonAIAgents level
         
         # Initialize memory system
         self.shared_memory = None
@@ -165,7 +165,7 @@ class Agent4ALLAgents:
                     # Pass verbose level to Memory
                     self.shared_memory = Memory(config=mem_cfg, verbose=verbose)
                     if verbose >= 5:
-                        logger.info("Initialized shared memory for Agent4ALLAgents")
+                        logger.info("Initialized shared memory for PraisonAIAgents")
                     
                     # Distribute memory to tasks
                     for task in tasks:

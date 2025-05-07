@@ -45,7 +45,7 @@ flowchart LR
 
 <Steps>
   <Step title="Install Package">
-    Install Agent4ALL Agents with knowledge support:
+    Install PraisonAI Agents with knowledge support:
     ```bash
     pip install "praisonaiagents[knowledge]"
     ```
@@ -122,7 +122,7 @@ agent.start("What is KAG in one line?")
 For more complex scenarios, you can create a knowledge-based system with multiple agents:
 
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import logging
 import os
 
@@ -161,7 +161,7 @@ knowledge_task = Task(
 )
 
 # Create and start the agents
-agents = Agent4ALLAgents(
+agents = PraisonAIAgents(
     agents=[knowledge_agent],
     tasks=[knowledge_task],
     process="sequential",

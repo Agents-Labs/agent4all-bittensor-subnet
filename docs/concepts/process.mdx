@@ -1,12 +1,12 @@
 ---
 title: "Process"
-description: "Understanding Process Types in Agent4ALL"
+description: "Understanding Process Types in PraisonAI"
 icon: "diagram-project"
 ---
 
 # Understanding Process Types
 
-Process types in Agent4ALL define how tasks are executed and how agents collaborate. Each process type offers different patterns for task execution and agent coordination.
+Process types in PraisonAI define how tasks are executed and how agents collaborate. Each process type offers different patterns for task execution and agent coordination.
 
 ## Process Types Overview
 
@@ -65,7 +65,7 @@ The simplest form of task execution where tasks are performed one after another.
 
   ### Usage
   ```python
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[agent1, agent2],
       tasks=[task1, task2, task3],
       process="sequential"
@@ -119,7 +119,7 @@ Uses a manager agent to coordinate task execution and agent assignments.
 
   ### Configuration
   ```python
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[manager_agent, worker_agent1, worker_agent2],
       tasks=[task1, task2],
       process="hierarchical",
@@ -188,7 +188,7 @@ Advanced process type supporting complex task relationships and conditional exec
 ## Getting Started
 
 <Steps>
-  <Step title="Install Agent4ALL">
+  <Step title="Install PraisonAI">
     Install the core package:
     ```bash Terminal
     pip install praisonaiagents
@@ -207,7 +207,7 @@ Advanced process type supporting complex task relationships and conditional exec
     Create `app.py`:
 <CodeGroup>
   ```python Single Agent Sequential Process
-  from praisonaiagents import Agent, Task, Agent4ALLAgents
+  from praisonaiagents import Agent, Task, PraisonAIAgents
 
   # Create an agent
   researcher = Agent(
@@ -228,7 +228,7 @@ Advanced process type supporting complex task relationships and conditional exec
   )
 
   # Run the agents
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[researcher],
       tasks=[task],
       verbose=False,
@@ -239,7 +239,7 @@ Advanced process type supporting complex task relationships and conditional exec
   ```
 
   ```python Multiple Agents Hierarchical Process
-  from praisonaiagents import Agent, Task, Agent4ALLAgents
+  from praisonaiagents import Agent, Task, PraisonAIAgents
 
   # Create multiple agents 
   researcher = Agent(
@@ -277,7 +277,7 @@ Advanced process type supporting complex task relationships and conditional exec
   )
 
   # Run with hierarchical process
-  agents = Agent4ALLAgents(
+  agents = PraisonAIAgents(
       agents=[researcher, writer],
       tasks=[task1, task2],
       verbose=False,
@@ -392,7 +392,7 @@ All process types support asynchronous execution through async generators, enabl
       - Perfect for I/O-heavy tasks
       ```python
       async def main():
-          agents = Agent4ALLAgents(
+          agents = PraisonAIAgents(
               process="sequential",
               async_mode=True
           )
@@ -408,7 +408,7 @@ All process types support asynchronous execution through async generators, enabl
       - Dynamic task scheduling based on conditions
       ```python
       async def main():
-          agents = Agent4ALLAgents(
+          agents = PraisonAIAgents(
               process="workflow",
               async_mode=True,
               parallel_tasks=True
@@ -425,7 +425,7 @@ All process types support asynchronous execution through async generators, enabl
       - Dynamic worker assignment
       ```python
       async def main():
-          agents = Agent4ALLAgents(
+          agents = PraisonAIAgents(
               process="hierarchical",
               async_mode=True,
               dynamic_assignment=True

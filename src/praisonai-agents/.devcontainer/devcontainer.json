@@ -1,5 +1,5 @@
 {
-    "name": "Agent4ALL Development",
+    "name": "PraisonAI Development",
     "dockerFile": "Dockerfile",
     "context": "..",
     "runArgs": [

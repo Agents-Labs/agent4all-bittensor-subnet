@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.1">
-<title>agent4all.ui.sql_alchemy API documentation</title>
+<title>praisonai.ui.sql_alchemy API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
@@ -22,7 +22,7 @@ hljs.highlightAll();
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>agent4all.ui.sql_alchemy</code></h1>
+<h1 class="title">Module <code>praisonai.ui.sql_alchemy</code></h1>
 </header>
 <section id="section-intro">
 </section>
@@ -35,7 +35,7 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer"><code class="flex name class">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer"><code class="flex name class">
 <span>class <span class="ident">SQLAlchemyDataLayer</span></span>
 <span>(</span><span>conninfo: str, ssl_require: bool = False, storage_provider: Optional[chainlit.data.base.BaseStorageClient] = None, user_thread_limit: Optional[int] = 1000, show_logger: Optional[bool] = False)</span>
 </code></dt>
@@ -724,121 +724,121 @@ hljs.highlightAll();
 </ul>
 <h3>Methods</h3>
 <dl>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.build_debug_url"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.build_debug_url"><code class="name flex">
 <span>async def <span class="ident">build_debug_url</span></span>(<span>self) ‑> str</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.clean_result"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.clean_result"><code class="name flex">
 <span>def <span class="ident">clean_result</span></span>(<span>self, obj)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Recursively change UUID -&gt; str and serialize dictionaries</p></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.create_element"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.create_element"><code class="name flex">
 <span>async def <span class="ident">create_element</span></span>(<span>self, element: Element)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.create_step"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.create_step"><code class="name flex">
 <span>async def <span class="ident">create_step</span></span>(<span>self, step_dict: StepDict)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.create_user"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.create_user"><code class="name flex">
 <span>async def <span class="ident">create_user</span></span>(<span>self, user: chainlit.user.User) ‑> Optional[chainlit.user.PersistedUser]</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.delete_element"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.delete_element"><code class="name flex">
 <span>async def <span class="ident">delete_element</span></span>(<span>self, element_id: str, thread_id: Optional[str] = None)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.delete_feedback"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.delete_feedback"><code class="name flex">
 <span>async def <span class="ident">delete_feedback</span></span>(<span>self, feedback_id: str) ‑> bool</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.delete_step"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.delete_step"><code class="name flex">
 <span>async def <span class="ident">delete_step</span></span>(<span>self, step_id: str)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.delete_thread"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.delete_thread"><code class="name flex">
 <span>async def <span class="ident">delete_thread</span></span>(<span>self, thread_id: str)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.execute_sql"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.execute_sql"><code class="name flex">
 <span>async def <span class="ident">execute_sql</span></span>(<span>self, query: str, parameters: dict) ‑> Union[List[Dict[str, Any]], int, ForwardRef(None)]</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_all_user_threads"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_all_user_threads"><code class="name flex">
 <span>async def <span class="ident">get_all_user_threads</span></span>(<span>self, user_id: Optional[str] = None, thread_id: Optional[str] = None) ‑> Optional[List[chainlit.types.ThreadDict]]</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Fetch all user threads up to self.user_thread_limit, or one thread by id if thread_id is provided.</p></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_current_timestamp"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_current_timestamp"><code class="name flex">
 <span>async def <span class="ident">get_current_timestamp</span></span>(<span>self) ‑> str</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_element"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_element"><code class="name flex">
 <span>async def <span class="ident">get_element</span></span>(<span>self, thread_id: str, element_id: str) ‑> Optional[chainlit.element.ElementDict]</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_thread"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_thread"><code class="name flex">
 <span>async def <span class="ident">get_thread</span></span>(<span>self, thread_id: str) ‑> Optional[chainlit.types.ThreadDict]</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_thread_author"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_thread_author"><code class="name flex">
 <span>async def <span class="ident">get_thread_author</span></span>(<span>self, thread_id: str) ‑> str</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_user"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_user"><code class="name flex">
 <span>async def <span class="ident">get_user</span></span>(<span>self, identifier: str) ‑> Optional[chainlit.user.PersistedUser]</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.list_threads"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.list_threads"><code class="name flex">
 <span>async def <span class="ident">list_threads</span></span>(<span>self, pagination: chainlit.types.Pagination, filters: chainlit.types.ThreadFilter) ‑> chainlit.types.PaginatedResponse</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.update_step"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.update_step"><code class="name flex">
 <span>async def <span class="ident">update_step</span></span>(<span>self, step_dict: StepDict)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.update_thread"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.update_thread"><code class="name flex">
 <span>async def <span class="ident">update_thread</span></span>(<span>self, thread_id: str, name: Optional[str] = None, user_id: Optional[str] = None, metadata: Optional[Dict] = None, tags: Optional[List[str]] = None)</span>
 </code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
-<dt id="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.upsert_feedback"><code class="name flex">
+<dt id="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.upsert_feedback"><code class="name flex">
 <span>async def <span class="ident">upsert_feedback</span></span>(<span>self, feedback: chainlit.types.Feedback) ‑> str</span>
 </code></dt>
 <dd>
@@ -856,34 +856,34 @@ hljs.highlightAll();
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="agent4all.ui" href="index.html">agent4all.ui</a></code></li>
+<li><code><a title="praisonai.ui" href="index.html">praisonai.ui</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer">SQLAlchemyDataLayer</a></code></h4>
+<h4><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer">SQLAlchemyDataLayer</a></code></h4>
 <ul class="">
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.build_debug_url" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.build_debug_url">build_debug_url</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.clean_result" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.clean_result">clean_result</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.create_element" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.create_element">create_element</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.create_step" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.create_step">create_step</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.create_user" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.create_user">create_user</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.delete_element" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.delete_element">delete_element</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.delete_feedback" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.delete_feedback">delete_feedback</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.delete_step" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.delete_step">delete_step</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.delete_thread" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.delete_thread">delete_thread</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.execute_sql" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.execute_sql">execute_sql</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_all_user_threads" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_all_user_threads">get_all_user_threads</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_current_timestamp" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_current_timestamp">get_current_timestamp</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_element" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_element">get_element</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_thread" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_thread">get_thread</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_thread_author" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_thread_author">get_thread_author</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_user" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.get_user">get_user</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.list_threads" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.list_threads">list_threads</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.update_step" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.update_step">update_step</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.update_thread" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.update_thread">update_thread</a></code></li>
-<li><code><a title="agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.upsert_feedback" href="#agent4all.ui.sql_alchemy.SQLAlchemyDataLayer.upsert_feedback">upsert_feedback</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.build_debug_url" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.build_debug_url">build_debug_url</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.clean_result" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.clean_result">clean_result</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.create_element" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.create_element">create_element</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.create_step" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.create_step">create_step</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.create_user" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.create_user">create_user</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.delete_element" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.delete_element">delete_element</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.delete_feedback" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.delete_feedback">delete_feedback</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.delete_step" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.delete_step">delete_step</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.delete_thread" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.delete_thread">delete_thread</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.execute_sql" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.execute_sql">execute_sql</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_all_user_threads" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_all_user_threads">get_all_user_threads</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_current_timestamp" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_current_timestamp">get_current_timestamp</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_element" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_element">get_element</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_thread" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_thread">get_thread</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_thread_author" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_thread_author">get_thread_author</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_user" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.get_user">get_user</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.list_threads" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.list_threads">list_threads</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.update_step" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.update_step">update_step</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.update_thread" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.update_thread">update_thread</a></code></li>
+<li><code><a title="praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.upsert_feedback" href="#praisonai.ui.sql_alchemy.SQLAlchemyDataLayer.upsert_feedback">upsert_feedback</a></code></li>
 </ul>
 </li>
 </ul>

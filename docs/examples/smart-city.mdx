@@ -30,7 +30,7 @@ Learn how to implement a smart city resource management system using AI agents f
 
 <Steps>
     <Step title="Install Package">
-        First, install the Agent4ALL Agents package:
+        First, install the PraisonAI Agents package:
         ```bash
         pip install praisonaiagents
         ```
@@ -46,7 +46,7 @@ Learn how to implement a smart city resource management system using AI agents f
     <Step title="Create a file">
         Create a new file `app.py` with the basic setup:
 ```python
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 import time
 from typing import Dict, List
 
@@ -205,7 +205,7 @@ feedback_task = Task(
 )
 
 # Create workflow
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[utility_monitor, pattern_analyzer, resource_optimizer, 
             implementation_agent, feedback_monitor],
     tasks=[monitoring_task, pattern_task, optimization_task, 

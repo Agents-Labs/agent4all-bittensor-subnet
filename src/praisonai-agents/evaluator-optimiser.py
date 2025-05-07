@@ -1,4 +1,4 @@
-from praisonaiagents import Agent, Task, Agent4ALLAgents
+from praisonaiagents import Agent, Task, PraisonAIAgents
 
 # Create generator and evaluator agents
 generator = Agent(
@@ -52,7 +52,7 @@ evaluate_task = Task(
 )
 
 # Create workflow manager
-workflow = Agent4ALLAgents(
+workflow = PraisonAIAgents(
     agents=[generator, evaluator],
     tasks=[generate_task, evaluate_task],
     process="workflow",
