@@ -41,11 +41,10 @@ class Validator(BaseValidatorNeuron):
 
     def __init__(self, config=None):
         super(Validator, self).__init__(config=config)
-
         bt.logging.info("load_state()")
         self.load_state()
-
         # TODO(developer): Anything specific to your use case you can do here
+        self.supported_categories = config.categories if config and hasattr(config, 'categories') else ["default"]
 
     async def forward(self):
         """
@@ -57,7 +56,25 @@ class Validator(BaseValidatorNeuron):
         - Updating the scores
         """
         # TODO(developer): Rewrite this function based on your protocol definition.
-        return await forward(self)
+        # Filter miners by supported categories
+        miner_uids = get_random_uids(self, k=self.config.neuron.sample_size)
+        filtered_uids = []
+        for uid in miner_uids:
+            if self.metagraph.axons[uid].category in self.supported_categories:
+                filtered_uids.append(uid)
+        if not filtered_uids:
+            bt.logging.warning("No miners found in supported categories.")
+            return
+        responses = await self.dendrite(
+            axons=[self.metagraph.axons[uid] for uid in filtered_uids],
+            synapse=Dummy(dummy_input=self.step, agent_name="validator_agent", agent_type="validator", agent_description="Validator agent for scoring"),
+            deserialize=True,
+        )
+        bt.logging.info(f"Received responses: {responses}")
+        rewards = get_rewards(self, query=self.step, responses=responses)
+        bt.logging.info(f"Scored responses: {rewards}")
+        self.update_scores(rewards, filtered_uids)
+        time.sleep(5)
 
 
 # The main function parses the configuration and runs the validator.

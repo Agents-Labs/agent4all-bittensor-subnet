@@ -17,22 +17,33 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 # DEALINGS IN THE SOFTWARE.
 import numpy as np
-from typing import List
+from typing import List, Optional
 import bittensor as bt
 
 
-def reward(query: int, response: int) -> float:
+def reward(query: int, response: int, category: str = "default", user_feedback: Optional[float] = None) -> float:
     """
     Reward the miner response to the dummy request. This method returns a reward
     value for the miner, which is used to update the miner's score.
 
+    Args:
+        query (int): The query sent to the miner.
+        response (int): The response from the miner.
+        category (str): The category of the request.
+        user_feedback (float, optional): User feedback value.
+
     Returns:
-    - float: The reward value for the miner.
+        float: The reward value for the miner.
     """
-    bt.logging.info(
-        f"In rewards, query val: {query}, response val: {response}, rewards val: {1.0 if response == query * 2 else 0}"
-    )
-    return 1.0 if response == query * 2 else 0
+    # Base reward logic (simplified for demonstration)
+    base_reward = 1.0 if response == query * 2 else 0
+
+    # Adjust reward based on user feedback if present
+    if user_feedback is not None:
+        base_reward *= (0.5 + user_feedback)  # e.g., 1.5x for thumbs up, 0.5x for down
+
+    bt.logging.info(f"In rewards, query val: {query}, response val: {response}, category: {category}, user_feedback: {user_feedback}, rewards val: {base_reward}")
+    return base_reward
 
 
 def get_rewards(
@@ -51,5 +62,4 @@ def get_rewards(
     - np.ndarray: An array of rewards for the given query and responses.
     """
     # Get all the reward results by iteratively calling your reward() function.
-
     return np.array([reward(query, response) for response in responses])

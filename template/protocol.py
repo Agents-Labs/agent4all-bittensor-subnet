@@ -49,6 +49,11 @@ class Dummy(bt.Synapse):
     Attributes:
     - dummy_input: An integer value representing the input request sent by the validator.
     - dummy_output: An optional integer value which, when filled, represents the response from the miner.
+    - category: A string representing the category of the request.
+    - user_feedback: An optional float representing user feedback.
+    - agent_name: A string representing the name of the agent.
+    - agent_type: A string representing the type of the agent.
+    - agent_description: A string representing the description of the agent.
     """
 
     # Required request input, filled by sending dendrite caller.
@@ -56,6 +61,15 @@ class Dummy(bt.Synapse):
 
     # Optional request output, filled by receiving axon.
     dummy_output: typing.Optional[int] = None
+
+    # New fields for category and user feedback
+    category: str = "default"
+    user_feedback: typing.Optional[float] = None
+
+    # New fields for agent registration and discovery
+    agent_name: str = "default_agent"
+    agent_type: str = "default_type"
+    agent_description: str = "Default agent description"
 
     def deserialize(self) -> int:
         """

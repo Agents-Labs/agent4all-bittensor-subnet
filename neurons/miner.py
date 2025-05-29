@@ -4,14 +4,14 @@
 # Copyright © 2023 <your name>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-# documentation files (the “Software”), to deal in the Software without restriction, including without limitation
+# documentation files (the "Software"), to deal in the Software without restriction, including without limitation
 # the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
 # and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 # The above copyright notice and this permission notice shall be included in all copies or substantial portions of
 # the Software.
 
-# THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
 # THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
 # THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
@@ -39,8 +39,8 @@ class Miner(BaseMinerNeuron):
 
     def __init__(self, config=None):
         super(Miner, self).__init__(config=config)
-
         # TODO(developer): Anything specific to your use case you can do here
+        self.category = config.category if config and hasattr(config, 'category') else "default"
 
     async def forward(
         self, synapse: template.protocol.Dummy
@@ -60,6 +60,12 @@ class Miner(BaseMinerNeuron):
         """
         # TODO(developer): Replace with actual implementation logic.
         synapse.dummy_output = synapse.dummy_input * 2
+        synapse.category = self.category
+        synapse.agent_name = self.agent_name
+        synapse.agent_type = self.agent_type
+        synapse.agent_description = self.agent_description
+        if synapse.user_feedback is not None:
+            bt.logging.info(f"Received user feedback: {synapse.user_feedback}")
         return synapse
 
     async def blacklist(
