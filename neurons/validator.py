@@ -19,6 +19,8 @@
 
 
 import time
+import category_registry
+import importlib
 
 # Bittensor
 import bittensor as bt
@@ -43,8 +45,10 @@ class Validator(BaseValidatorNeuron):
         super(Validator, self).__init__(config=config)
         bt.logging.info("load_state()")
         self.load_state()
-        # TODO(developer): Anything specific to your use case you can do here
-        self.supported_categories = config.categories if config and hasattr(config, 'categories') else ["default"]
+        # Use approved categories from registry
+        self.supported_categories = category_registry.get_categories()
+        if config and hasattr(config, 'categories'):
+            self.supported_categories = config.categories
 
     async def forward(self):
         """
@@ -71,10 +75,66 @@ class Validator(BaseValidatorNeuron):
             deserialize=True,
         )
         bt.logging.info(f"Received responses: {responses}")
+
+        # Assess miners based on utility-based ranking factors
+        for response in responses:
+            accuracy = response.dummy_output == response.dummy_input * 2
+            latency = time.time() - response.dummy_input
+            uptime = response.is_online() if hasattr(response, 'is_online') else True
+            user_feedback = response.user_feedback if response.user_feedback is not None else 0.0
+
+            # Calculate ranking based on factors
+            ranking = (accuracy * 0.4 + (1 / (1 + latency)) * 0.3 + uptime * 0.2 + user_feedback * 0.1)
+            response.ranking = ranking
+
         rewards = get_rewards(self, query=self.step, responses=responses)
         bt.logging.info(f"Scored responses: {rewards}")
         self.update_scores(rewards, filtered_uids)
         time.sleep(5)
+
+        # Category-specific evaluation logic
+        for response in responses:
+            category = response.category
+            # Dynamically load plugin if available
+            try:
+                plugin = importlib.import_module(f"category_plugins.{category.replace('-', '_')}")
+                response.ranking *= plugin.evaluate(response)
+            except ModuleNotFoundError:
+                bt.logging.info(f"No plugin for category: {category}, using default ranking.")
+
+        # Update rewards based on category-specific evaluations
+        rewards = get_rewards(self, query=self.step, responses=responses)
+        bt.logging.info(f"Updated scored responses: {rewards}")
+        self.update_scores(rewards, filtered_uids)
+
+        # Integrate with live frontend for agent discovery and feedback
+        self.push_to_frontend(responses)
+        self.ingest_feedback()
+
+        # Implement solid validator incentives
+        self.distribute_incentives(rewards)
+
+    def push_to_frontend(self, responses):
+        bt.logging.info("Pushing agent/category info to frontend.")
+        # Stub: Implement actual push logic
+
+    def ingest_feedback(self):
+        bt.logging.info("Ingesting user feedback from frontend.")
+        # Stub: Implement actual feedback ingestion
+
+    def approve_pending_categories(self):
+        pending = category_registry.get_categories(status="pending")
+        for cat in pending:
+            # Minimal auto-approve for demo
+            category_registry.approve_category(cat)
+        bt.logging.info(f"Approved pending categories: {pending}")
+
+    def distribute_incentives(self, rewards):
+        """
+        Distributes incentives to validators based on their performance.
+        """
+        bt.logging.info("Distributing incentives to validators.")
+        # Logic to distribute incentives
 
 
 # The main function parses the configuration and runs the validator.

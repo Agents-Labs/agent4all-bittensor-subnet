@@ -40,7 +40,8 @@ def reward(query: int, response: int, category: str = "default", user_feedback: 
 
     # Adjust reward based on user feedback if present
     if user_feedback is not None:
-        base_reward *= (0.5 + user_feedback)  # e.g., 1.5x for thumbs up, 0.5x for down
+        feedback_weight = 0.5  # Example feedback weight
+        base_reward *= (1 + feedback_weight * user_feedback)  # e.g., 1.5x for thumbs up, 0.5x for down
 
     bt.logging.info(f"In rewards, query val: {query}, response val: {response}, category: {category}, user_feedback: {user_feedback}, rewards val: {base_reward}")
     return base_reward

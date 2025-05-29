@@ -20,6 +20,7 @@
 import time
 import typing
 import bittensor as bt
+import category_registry
 
 # Bittensor Miner Template:
 import template
@@ -39,8 +40,24 @@ class Miner(BaseMinerNeuron):
 
     def __init__(self, config=None):
         super(Miner, self).__init__(config=config)
-        # TODO(developer): Anything specific to your use case you can do here
-        self.category = config.category if config and hasattr(config, 'category') else "default"
+        self.available_categories = category_registry.get_categories()
+        if config and hasattr(config, 'category') and config.category in self.available_categories:
+            self.category = config.category
+        else:
+            # If not in approved, propose as pending
+            if config and hasattr(config, 'category') and config.category:
+                self.category = config.category
+                if self.category not in self.available_categories:
+                    # Propose with minimal metadata
+                    category_registry.propose_category(
+                        self.category,
+                        description=f"Proposed by miner: {self.category}",
+                        benchmark="TBD",
+                        io_format="TBD",
+                        validation_strategy="TBD"
+                    )
+            else:
+                self.category = "data-analyst"
 
     async def forward(
         self, synapse: template.protocol.Dummy
@@ -64,9 +81,34 @@ class Miner(BaseMinerNeuron):
         synapse.agent_name = self.agent_name
         synapse.agent_type = self.agent_type
         synapse.agent_description = self.agent_description
+
+        # Log utility-based ranking factors
+        bt.logging.info(f"Response accuracy: {synapse.dummy_output == synapse.dummy_input * 2}")
+        bt.logging.info(f"Latency: {time.time() - synapse.dummy_input}")
+        bt.logging.info(f"Uptime & reliability: {self.is_online()}")
         if synapse.user_feedback is not None:
-            bt.logging.info(f"Received user feedback: {synapse.user_feedback}")
+            bt.logging.info(f"User feedback: {synapse.user_feedback}")
+
+        # Apply decay factor for agent ranking
+        decay_factor = 0.9  # Example decay factor
+        synapse.ranking = synapse.ranking * decay_factor if hasattr(synapse, 'ranking') else 1.0
+
+        # Register new agent category if applicable
+        if synapse.category not in self.registered_categories:
+            self.register_new_category(synapse.category)
+
         return synapse
+
+    def register_new_category(self, category: str):
+        """
+        Registers a new agent category for review and potential addition to the category registry.
+
+        Args:
+            category (str): The new category to register.
+        """
+        bt.logging.info(f"Registering new category: {category}")
+        # Logic to submit the new category for review
+        # This could involve sending a proposal to the community for review
 
     async def blacklist(
         self, synapse: template.protocol.Dummy
