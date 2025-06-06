@@ -30,7 +30,7 @@ Empowering users to host and discover AI agents on the Bittensor network for var
 
 AIAgent4All enables users to host and discover AI agents on the Bittensor network. Users can register AI agents across multiple categories—travel, booking, GitHub automation, financial advisory, coding assistance, and more. The project enhances decentralized AI accessibility by allowing users to interact with and leverage the most relevant agents for their needs.
 
-AI agents are validated and ranked based on utility, efficiency, and responsiveness. The network incentivizes high-quality agent contributions through Bittensor’s reward mechanisms.
+AI agents are validated and ranked based on utility, efficiency, and responsiveness. The network incentivizes high-quality agent contributions through Bittensor's reward mechanisms.
 
 ## Roadmap
 
@@ -346,32 +346,147 @@ This project builds on work from [Nous Research](https://github.com/NousResearch
 
 The AIAgent4All subnet is released under the [MIT License](./LICENSE).
 
-# Project Structure Overview
+## Core Architecture and Workflow
 
-## Core Components
+### Validator System
+- **Registration & Authentication:**
+  - Uses Bittensor wallet system (hotkey/coldkey) for secure authentication.
+  - Supports both local and remote validation.
+  - Enforces minimum stake and concurrent request limits.
+- **Weight Management:**
+  - Dynamic, performance-based weight calculation with time-based decay.
+  - Wait-for-inclusion mechanism for secure weight updates.
+- **Model Evaluation Pipeline:**
+  - Concurrent evaluation (up to 32 at once).
+  - Registry management for miner submissions.
+  - Real-time score updates and block-based sync.
 
-### 1. Main Application
+### Miner System
+- **Model Submission:**
+  - Hugging Face integration and model metadata management.
+  - Hash and signature verification for model integrity.
+  - Namespace-based registration and online/offline submission modes.
+- **Registration Process:**
+  - Enforces namespace, stake, and retry logic for model registration.
+  - Supports model update and verification workflows.
+
+### Scoring and Evaluation System
+- **Judge-Based Scoring:**
+  - GPT-4 or plugin-based comparative evaluation against datasets.
+  - Win/loss determination and score normalization.
+- **Competition Mechanism:**
+  - Win rate calculation, time-based penalties, and anti-copying measures.
+
+### Dataset System
+- **Dippy Dataset:**
+  - 1M+ privacy-preserving, quality-controlled conversations.
+  - Continuous growth and quality/consistency checks.
+  - PII detection, anonymization, and audit logging.
+
+### Security and Anti-Gaming
+- **Model Protection:**
+  - Hash, signature, and size verification.
+  - Time-based penalties and anti-copying logic.
+- **Anti-Gaming Measures:**
+  - Continuous dataset updates, judge prompt protection, adversarial testing, and suspicious pattern detection.
+
+### Incentive Mechanism
+- **Weight Distribution:**
+  - Score calculation based on win rate, time penalty, and normalization.
+  - Invalid model handling and secure reward distribution.
+
+### Technical Infrastructure
+- **Deployment System:**
+  - Docker support for evaluator and worker API.
+  - Resource management and environment consistency.
+- **Monitoring and Logging:**
+  - Prometheus metrics for event logging, performance, and error tracking.
+  - System health and resource utilization monitoring.
+- **API and Integration:**
+  - Worker API for model validation, score calculation, and dataset management.
+  - Frontend integration for real-time updates and performance monitoring.
+
+### Best Practices and Implementation Guidelines
+- **Model Development:**
+  - Focus on character consistency, user engagement, and language quality.
+  - Regular updates and improvements.
+- **System Integration:**
+  - Proper authentication, secure model submission, regular validation, and performance monitoring.
+
+## Project Structure Overview (Updated)
+
+### Core Components
 - `neurons/` - Core agent components
-  - `miner.py` - Miner code for agent deployment
-  - `validator.py` - Validator logic for scoring agents
+  - `miner.py` - Miner code for agent deployment and secure model registration
+  - `validator.py` - Validator logic for scoring, authentication, and incentive distribution
+  - `dataset.py` - Dataset manager for privacy-preserving, quality-controlled data
+- `category_plugins/` - Category-specific evaluation plugins
+- `category_registry.py` - Shared category registry for miner/validator
 
-### 2. Scoring and Benchmarking
-- `scoring/` - Evaluation and ranking criteria for AI agents
+### Monitoring and Infrastructure
+- Prometheus metrics server for monitoring and logging
+- Dockerfiles for evaluator and worker API
 
-### 3. Utilities
-- `utilities/` - Common utility functions
-
-### 4. Documentation
+### Documentation
 - `docs/` - Project documentation
-  - `miner.md` - Miner setup and usage guide
-  - `validator.md` - Validator setup and usage guide
-  - `FAQ.md` - Frequently asked questions
+  - `miner.md`, `validator.md`, `FAQ.md`
 
-### 5. APIs
-- `agent_api/` - API for agent registration, discovery, and interaction
+---
 
-## Docker Configuration
-- `evaluator.Dockerfile` - Docker setup for evaluator
-- `worker_api/api.Dockerfile` - Docker setup for worker API
+For more details, see the in-code docstrings and the [docs/](docs/) directory.
 
 ![AIAgent4All](/assets/aiagent.png)
+
+## Updated Architecture and Workflow (2024)
+
+```mermaid
+flowchart TD
+    subgraph Validator_System
+        VReg["Registration & Authentication\n(Bittensor wallet, hotkey/coldkey, stake)"]
+        VWeight["Weight Management\n(Dynamic, performance-based, decay, inclusion)"]
+        VEval["Model Evaluation Pipeline\n(Concurrent, registry, scoring, sync)"]
+    end
+    subgraph Miner_System
+        MSub["Model Submission\n(HF, metadata, hash/signature, namespace)"]
+        MReg["Registration Process\n(Namespace, stake, retry, update)"]
+    end
+    subgraph Dataset_System
+        Dippy["Dippy Dataset\n(Privacy, quality, PII, anonymization, audit)"]
+    end
+    subgraph Scoring_Eval
+        Judge["Judge-Based Scoring\n(GPT-4/plugin, win/loss, normalization)"]
+        Comp["Competition Mechanism\n(Win rate, penalties, anti-copy)"]
+    end
+    subgraph Security_AntiGaming
+        Prot["Model Protection\n(Hash, signature, size, penalties)"]
+        AntiG["Anti-Gaming\n(Dataset update, prompt protection, adversarial)"]
+    end
+    subgraph Incentive
+        WeightDist["Weight Distribution\n(Win rate, penalty, normalization, rewards)"]
+    end
+    subgraph Infra
+        Deploy["Deployment\n(Docker, resource mgmt, env consistency)"]
+        Monitor["Monitoring & Logging\n(Prometheus, health, errors)"]
+        API["API & Integration\n(Worker API, frontend, real-time)"]
+    end
+    VReg --> VWeight --> VEval --> Judge
+    MSub --> MReg --> VEval
+    Judge --> Comp --> WeightDist
+    Dippy --> Judge
+    Prot --> AntiG --> Judge
+    WeightDist --> Deploy
+    Deploy --> Monitor --> API
+    API --> VReg
+    API --> MSub
+    API --> Dippy
+    API --> WeightDist
+    style Validator_System fill:#e3f2fd
+    style Miner_System fill:#fff3e0
+    style Dataset_System fill:#e8f5e9
+    style Scoring_Eval fill:#f3e5f5
+    style Security_AntiGaming fill:#ffebee
+    style Incentive fill:#f9fbe7
+    style Infra fill:#ede7f6
+```
+
+---

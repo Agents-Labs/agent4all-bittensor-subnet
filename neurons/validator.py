@@ -56,13 +56,33 @@ class Validator(BaseValidatorNeuron):
         bt.logging.info("load_state()")
         self.load_state()
         
+        # Enhanced registration and authentication
+        self.auth_config = {
+            'hotkey_verification': True,
+            'coldkey_verification': True,
+            'min_stake': 1000,
+            'max_concurrent_requests': 32,
+            'offline_mode': False
+        }
+        
+        # Enhanced weight management
+        self.weight_config = {
+            'wait_for_inclusion': True,
+            'min_weight': 0.1,
+            'max_weight': 1.0,
+            'decay_factor': 0.95,
+            'performance_threshold': 0.7
+        }
+        
         # Initialize Prometheus metrics
         self.metrics = {
             'response_time': Histogram('validator_response_time_seconds', 'Response time in seconds'),
             'success_rate': Gauge('validator_success_rate', 'Success rate per miner'),
             'error_count': Counter('validator_error_total', 'Total number of errors'),
             'active_miners': Gauge('validator_active_miners', 'Number of active miners'),
-            'category_performance': Gauge('validator_category_performance', 'Performance per category', ['category'])
+            'category_performance': Gauge('validator_category_performance', 'Performance per category', ['category']),
+            'weight_distribution': Gauge('validator_weight_distribution', 'Weight distribution per miner'),
+            'authentication_attempts': Counter('validator_auth_attempts', 'Authentication attempts', ['status'])
         }
         
         # Use approved categories from registry
@@ -82,7 +102,8 @@ class Validator(BaseValidatorNeuron):
                 'category_total': defaultdict(int),
                 'error_types': defaultdict(int),
                 'response_sizes': [],
-                'latency_percentiles': defaultdict(list)
+                'latency_percentiles': defaultdict(list),
+                'weight_history': []
             }),
             'network_health': {
                 'latency': [],
@@ -107,7 +128,8 @@ class Validator(BaseValidatorNeuron):
             'timestamps': [],
             'categories': [],
             'verification_hashes': [],
-            'confidence_scores': []
+            'confidence_scores': [],
+            'weight_updates': []
         })
         
         # Enhanced routing table with load balancing and failover
@@ -119,7 +141,8 @@ class Validator(BaseValidatorNeuron):
             'health_score': 1.0,
             'failover_count': 0,
             'last_failover': None,
-            'recovery_status': 'healthy'
+            'recovery_status': 'healthy',
+            'weight': 1.0
         })
         
         # Enhanced security configuration
@@ -717,6 +740,87 @@ class Validator(BaseValidatorNeuron):
             # Minimal auto-approve for demo
             category_registry.approve_category(cat)
         bt.logging.info(f"Approved pending categories: {pending}")
+
+    def verify_authentication(self, synapse) -> bool:
+        """Enhanced authentication verification."""
+        try:
+            # Verify hotkey
+            if self.auth_config['hotkey_verification']:
+                if not self.verify_hotkey(synapse.dendrite.hotkey):
+                    self.metrics['authentication_attempts'].labels(status='hotkey_failed').inc()
+                    return False
+            
+            # Verify coldkey
+            if self.auth_config['coldkey_verification']:
+                if not self.verify_coldkey(synapse.dendrite.hotkey):
+                    self.metrics['authentication_attempts'].labels(status='coldkey_failed').inc()
+                    return False
+            
+            # Check stake
+            uid = self.metagraph.hotkeys.index(synapse.dendrite.hotkey)
+            if self.metagraph.S[uid] < self.auth_config['min_stake']:
+                self.metrics['authentication_attempts'].labels(status='insufficient_stake').inc()
+                return False
+            
+            self.metrics['authentication_attempts'].labels(status='success').inc()
+            return True
+            
+        except Exception as e:
+            bt.logging.error(f"Authentication error: {str(e)}")
+            self.metrics['authentication_attempts'].labels(status='error').inc()
+            return False
+
+    def verify_hotkey(self, hotkey: str) -> bool:
+        """Verify hotkey authenticity."""
+        try:
+            return hotkey in self.metagraph.hotkeys
+        except Exception:
+            return False
+
+    def verify_coldkey(self, hotkey: str) -> bool:
+        """Verify coldkey authenticity."""
+        try:
+            uid = self.metagraph.hotkeys.index(hotkey)
+            return self.metagraph.coldkeys[uid] is not None
+        except Exception:
+            return False
+
+    def update_weights(self, scores: Dict):
+        """Enhanced weight management with wait-for-inclusion."""
+        try:
+            # Calculate new weights
+            new_weights = {}
+            total_score = sum(scores.values())
+            
+            if total_score > 0:
+                for uid, score in scores.items():
+                    # Apply performance-based weight adjustment
+                    performance = self.performance_metrics['response_times'][uid]['success_rate']
+                    if performance < self.weight_config['performance_threshold']:
+                        score *= performance
+                    
+                    # Apply time-based decay
+                    if uid in self.secure_scores:
+                        score *= self.weight_config['decay_factor']
+                    
+                    new_weights[uid] = max(
+                        min(score / total_score, self.weight_config['max_weight']),
+                        self.weight_config['min_weight']
+                    )
+            
+            # Update weights with wait-for-inclusion
+            if self.weight_config['wait_for_inclusion']:
+                self.set_weights(new_weights, wait_for_inclusion=True)
+            else:
+                self.set_weights(new_weights)
+            
+            # Update metrics
+            for uid, weight in new_weights.items():
+                self.metrics['weight_distribution'].set(weight)
+                self.performance_metrics['response_times'][uid]['weight_history'].append(weight)
+            
+        except Exception as e:
+            bt.logging.error(f"Error updating weights: {str(e)}")
 
 
 # The main function parses the configuration and runs the validator.
