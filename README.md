@@ -437,7 +437,7 @@ For more details, see the in-code docstrings and the [docs/](docs/) directory.
 
 ![AIAgent4All](/assets/aiagent.png)
 
-## Updated Architecture and Workflow (2024)
+## Updated Architecture and Workflow (2025-06-06)
 
 ```mermaid
 flowchart TD
