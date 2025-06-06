@@ -378,7 +378,7 @@ The AIAgent4All subnet is released under the [MIT License](./LICENSE).
   - Win rate calculation, time-based penalties, and anti-copying measures.
 
 ### Dataset System
-- **Dippy Dataset:**
+- **Agent4all Dataset:**
   - 1M+ privacy-preserving, quality-controlled conversations.
   - Continuous growth and quality/consistency checks.
   - PII detection, anonymization, and audit logging.
@@ -451,7 +451,7 @@ flowchart TD
         MReg["Registration Process\n(Namespace, stake, retry, update)"]
     end
     subgraph Dataset_System
-        Dippy["Dippy Dataset\n(Privacy, quality, PII, anonymization, audit)"]
+        Agent4all["Agent4all Dataset\n(Privacy, quality, PII, anonymization, audit)"]
     end
     subgraph Scoring_Eval
         Judge["Judge-Based Scoring\n(GPT-4/plugin, win/loss, normalization)"]
@@ -472,13 +472,13 @@ flowchart TD
     VReg --> VWeight --> VEval --> Judge
     MSub --> MReg --> VEval
     Judge --> Comp --> WeightDist
-    Dippy --> Judge
+    Agent4all --> Judge
     Prot --> AntiG --> Judge
     WeightDist --> Deploy
     Deploy --> Monitor --> API
     API --> VReg
     API --> MSub
-    API --> Dippy
+    API --> Agent4all
     API --> WeightDist
     style Validator_System fill:#e3f2fd
     style Miner_System fill:#fff3e0
