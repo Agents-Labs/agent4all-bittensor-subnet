@@ -433,10 +433,6 @@ The AIAgent4All subnet is released under the [MIT License](./LICENSE).
 
 ---
 
-For more details, see the in-code docstrings and the [docs/](docs/) directory.
-
-![AIAgent4All](/assets/aiagent.png)
-
 ## Updated Architecture and Workflow (2025-06-06)
 
 ```mermaid
@@ -490,3 +486,8 @@ flowchart TD
 ```
 
 ---
+
+
+For more details, see the in-code docstrings and the [docs/](docs/) directory.
+
+![AIAgent4All](/assets/aiagent.png)
