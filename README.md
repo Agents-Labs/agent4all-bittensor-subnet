@@ -2,6 +2,10 @@
 
 A specialized Bittensor subnet for AI agents across 14 different categories, providing decentralized AI services with category-specific optimization.
 
+[![GitHub stars](https://img.shields.io/github/stars/Agents-Labs/agent4all-bittensor-subnet)](https://github.com/Agents-Labs/agent4all-bittensor-subnet/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Agents-Labs/agent4all-bittensor-subnet)](https://github.com/Agents-Labs/agent4all-bittensor-subnet/network)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -11,7 +15,7 @@ A specialized Bittensor subnet for AI agents across 14 different categories, pro
 
 ### Installation
 ```bash
-git clone <repository-url>
+git clone https://github.com/Agents-Labs/agent4all-bittensor-subnet.git
 cd agent4all-bittensor-subnet
 pip install -r requirements.txt
 ```
@@ -168,6 +172,7 @@ All scripts support configurable logging:
 - [Scripts Documentation](scripts/README.md) - Detailed script usage
 - [Technical Whitepaper](AGENT4ALL_TECHNICAL_WHITEPAPER.md) - Technical details
 - [Setup Guide](SETUP_GUIDE.md) - Complete setup instructions
+- [Project Summary](PROJECT_SUMMARY.md) - Cleanup and structure overview
 
 ## 🤝 Contributing
 
@@ -177,16 +182,37 @@ All scripts support configurable logging:
 4. Test thoroughly
 5. Submit a pull request
 
+### Development Setup
+```bash
+# Clone the repository
+git clone https://github.com/Agents-Labs/agent4all-bittensor-subnet.git
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run tests (if available)
+python -m pytest tests/
+
+# Make your changes and submit a PR
+```
+
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- Bittensor Foundation for the protocol
+- [Bittensor Foundation](https://bittensor.com/) for the protocol
+- [Agents-Labs](https://github.com/Agents-Labs) for the project
 - Community contributors
 - AI research community
+
+## 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Agents-Labs/agent4all-bittensor-subnet&type=Date)](https://star-history.com/#Agents-Labs/agent4all-bittensor-subnet&Date)
 
 ---
 
 **Agent4All Bittensor Subnet** - Decentralized AI for everyone, specialized for every domain.
+
+**Repository**: [https://github.com/Agents-Labs/agent4all-bittensor-subnet](https://github.com/Agents-Labs/agent4all-bittensor-subnet)
