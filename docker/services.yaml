@@ -1,5 +1,0 @@
-framework: praisonaiagents
-services:
-  - ui
-  - chat
-  - realtime

@@ -1,3 +1,0 @@
-code:
-  ignore_files:
-  - "*/__pycache__/*"
