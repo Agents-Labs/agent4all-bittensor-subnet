@@ -1,10 +1,69 @@
+# Core Bittensor dependencies
+bittensor>=9.0.0
 rich>=13.7
 markdown>=3.5
 pyparsing>=3.0.0
 python-dotenv>=1.0.1
 instructor>=0.4.8
 PyYAML>=6.0
-praisonaiagents>=0.0.4
-duckduckgo_search
-praisonai_tools
+duckduckgo_search>=4.1.0
 flask>=2.0.0
+
+# Data processing and ML
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+transformers>=4.30.0
+torch>=2.0.0
+torchvision>=0.15.0
+openai>=1.0.0
+anthropic>=0.7.0
+
+# Web and networking
+requests>=2.31.0
+aiohttp>=3.8.0
+websockets>=11.0.0
+urllib3>=2.0.0
+
+# Monitoring and metrics
+prometheus-client>=0.17.0
+psutil>=5.9.0
+
+# Security and authentication
+PyJWT>=2.8.0
+cryptography>=41.0.0
+
+# Image and video processing
+Pillow>=10.0.0
+opencv-python>=4.8.0
+moviepy>=1.0.3
+
+# Data visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.15.0
+
+# Web scraping and search
+beautifulsoup4>=4.12.0
+selenium>=4.15.0
+wikipedia-api>=0.6.0
+
+# Database and storage
+
+redis>=4.6.0
+
+# Utilities
+tqdm>=4.65.0
+click>=8.1.0
+colorama>=0.4.6
+tabulate>=0.9.0
+
+# Development and testing
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.5.0
+
+# Optional: GPU support
+# cuda-python>=12.0.0  # Uncomment if using CUDA
+# cupy-cuda12x>=12.0.0  # Uncomment if using CUDA 12.x

@@ -57,7 +57,7 @@ class Dummy(bt.Synapse):
     """
 
     # Required request input, filled by sending dendrite caller.
-    dummy_input: int
+    dummy_input: typing.Union[int, str]
 
     # Optional request output, filled by receiving axon.
     dummy_output: typing.Optional[int] = None
@@ -70,6 +70,9 @@ class Dummy(bt.Synapse):
     agent_name: str = "default_agent"
     agent_type: str = "default_type"
     agent_description: str = "Default agent description"
+    
+    # Optional ranking field for agent scoring
+    ranking: typing.Optional[float] = None
 
     def deserialize(self) -> int:
         """

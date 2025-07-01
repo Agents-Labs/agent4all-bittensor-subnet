@@ -35,11 +35,30 @@ import websockets
 import jwt
 from prometheus_client import Counter, Gauge, Histogram, start_http_server
 
+# Define custom exception classes
+class ValidationError(Exception):
+    """Custom validation error for miner responses."""
+    def __init__(self, message: str, miner_uid: Optional[int] = None):
+        super().__init__(message)
+        self.miner_uid = miner_uid
+
+class ConnectionError(Exception):
+    """Custom connection error."""
+    pass
+
+class TimeoutError(Exception):
+    """Custom timeout error."""
+    pass
+
 # import base validator class which takes care of most of the boilerplate
 from template.base.validator import BaseValidatorNeuron
 
 # Bittensor Validator Template:
 from template.validator import forward
+
+# Import utility functions
+from template.utils.uids import get_random_uids
+from template.protocol import Dummy
 
 
 class Validator(BaseValidatorNeuron):
@@ -257,23 +276,26 @@ class Validator(BaseValidatorNeuron):
         """Handle connection errors with retry logic."""
         if hasattr(error, 'miner_uid'):
             uid = error.miner_uid
-            self.routing_table[self.metagraph.axons[uid].category]['failover_count'] += 1
-            self.routing_table[self.metagraph.axons[uid].category]['recovery_status'] = 'recovering'
+            # Use default category since AxonInfo doesn't have category attribute
+            category = "data-analyst"  # Default category
+            self.routing_table[category]['failover_count'] += 1
+            self.routing_table[category]['recovery_status'] = 'recovering'
             
             # Implement exponential backoff
-            await asyncio.sleep(min(2 ** self.routing_table[self.metagraph.axons[uid].category]['failover_count'], 300))
+            await asyncio.sleep(min(2 ** self.routing_table[category]['failover_count'], 300))
             
             # Attempt recovery
             if await self.attempt_recovery(uid):
-                self.routing_table[self.metagraph.axons[uid].category]['recovery_status'] = 'healthy'
+                self.routing_table[category]['recovery_status'] = 'healthy'
             else:
-                self.routing_table[self.metagraph.axons[uid].category]['recovery_status'] = 'failed'
+                self.routing_table[category]['recovery_status'] = 'failed'
 
     async def handle_timeout_error(self, error: TimeoutError):
         """Handle timeout errors with circuit breaker pattern."""
         if hasattr(error, 'miner_uid'):
             uid = error.miner_uid
-            category = self.metagraph.axons[uid].category
+            # Use default category since AxonInfo doesn't have category attribute
+            category = "data-analyst"  # Default category
             
             # Update metrics
             self.performance_metrics['response_times'][uid]['consecutive_failures'] += 1
@@ -308,7 +330,8 @@ class Validator(BaseValidatorNeuron):
 
     async def open_circuit(self, uid: int):
         """Open circuit breaker for a problematic miner."""
-        category = self.metagraph.axons[uid].category
+        # Use default category since AxonInfo doesn't have category attribute
+        category = "data-analyst"  # Default category
         if uid in self.routing_table[category]['primary_miners']:
             self.routing_table[category]['primary_miners'].remove(uid)
         if uid in self.routing_table[category]['backup_miners']:
@@ -340,12 +363,13 @@ class Validator(BaseValidatorNeuron):
                 'responses': [
                     {
                         'miner_id': response.dendrite.hotkey,
-                        'category': response.category,
+                        'category': getattr(response, 'category', 'data-analyst'),  # Default category
                         'score': self.secure_scores.get(self.metagraph.hotkeys.index(response.dendrite.hotkey), 0),
                         'performance': self.performance_metrics['response_times'][self.metagraph.hotkeys.index(response.dendrite.hotkey)],
-                        'health_score': self.routing_table[response.category]['health_score']
+                        'health_score': self.routing_table[getattr(response, 'category', 'data-analyst')]['health_score']
                     }
                     for response in responses
+                    if response is not None and hasattr(response, 'dendrite') and response.dendrite is not None
                 ],
                 'network_health': self.performance_metrics['network_health'],
                 'category_performance': dict(self.performance_metrics['category_performance'])
@@ -497,7 +521,8 @@ class Validator(BaseValidatorNeuron):
 
             # Update load for selected miners
             for uid in filtered_uids:
-                category = self.metagraph.axons[uid].category
+                # Use default category since AxonInfo doesn't have category attribute
+                category = "data-analyst"  # Default category
                 self.routing_table[category]['load'] += 1
 
             responses = await self.dendrite(
@@ -505,6 +530,15 @@ class Validator(BaseValidatorNeuron):
                 synapse=Dummy(dummy_input=self.step, agent_name="validator_agent", agent_type="validator", agent_description="Validator agent for scoring"),
                 deserialize=True,
             )
+
+            # Check if responses is None or empty
+            if responses is None:
+                bt.logging.warning("Received None responses from dendrite")
+                return
+                
+            if not responses:
+                bt.logging.warning("Received empty responses from dendrite")
+                return
 
             # Process and validate responses with enhanced security
             validated_responses = self.validate_responses(responses)
@@ -537,7 +571,8 @@ class Validator(BaseValidatorNeuron):
         """
         routed_uids = []
         for uid in miner_uids:
-            category = self.metagraph.axons[uid].category
+            # Use default category since AxonInfo doesn't have category attribute
+            category = "data-analyst"  # Default category
             if category in self.routing_table:
                 if self.is_miner_available(uid, category):
                     routed_uids.append(uid)
@@ -560,7 +595,17 @@ class Validator(BaseValidatorNeuron):
         """Enhanced response validation with multiple security checks."""
         validated = []
         for response in responses:
+            # Check if response is None
+            if response is None:
+                bt.logging.warning("Received None response from miner")
+                continue
+                
             if not self.verify_response(response):
+                continue
+                
+            # Check if response has dendrite attribute
+            if not hasattr(response, 'dendrite') or response.dendrite is None:
+                bt.logging.warning("Response missing dendrite attribute")
                 continue
                 
             # Check rate limiting
@@ -590,7 +635,15 @@ class Validator(BaseValidatorNeuron):
         """
         scores = {}
         for response in responses:
-            uid = self.metagraph.hotkeys.index(response.dendrite.hotkey)
+            # Check if response is None or missing dendrite
+            if response is None or not hasattr(response, 'dendrite') or response.dendrite is None:
+                continue
+                
+            try:
+                uid = self.metagraph.hotkeys.index(response.dendrite.hotkey)
+            except (ValueError, AttributeError):
+                bt.logging.warning(f"Could not find hotkey in metagraph: {getattr(response.dendrite, 'hotkey', 'unknown')}")
+                continue
             
             # Calculate base score
             base_score = self.calculate_base_score(response)
@@ -609,7 +662,7 @@ class Validator(BaseValidatorNeuron):
         """
         Calculates base score for a response.
         """
-        category = response.category
+        category = getattr(response, 'category', 'data-analyst')  # Default category
         try:
             plugin = importlib.import_module(f"category_plugins.{category.replace('-', '_')}")
             return plugin.evaluate(response)
@@ -666,8 +719,17 @@ class Validator(BaseValidatorNeuron):
         Updates performance metrics for miners.
         """
         for response in responses:
-            uid = self.metagraph.hotkeys.index(response.dendrite.hotkey)
-            category = response.category
+            # Check if response is None or missing dendrite
+            if response is None or not hasattr(response, 'dendrite') or response.dendrite is None:
+                continue
+                
+            try:
+                uid = self.metagraph.hotkeys.index(response.dendrite.hotkey)
+            except (ValueError, AttributeError):
+                bt.logging.warning(f"Could not find hotkey in metagraph: {getattr(response.dendrite, 'hotkey', 'unknown')}")
+                continue
+                
+            category = getattr(response, 'category', 'data-analyst')  # Default category
             
             if uid not in self.performance_metrics['response_times']:
                 self.performance_metrics['response_times'][uid] = {

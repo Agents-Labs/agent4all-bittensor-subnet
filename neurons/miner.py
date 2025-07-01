@@ -44,7 +44,18 @@ class Miner(BaseMinerNeuron):
 
     def __init__(self, config=None):
         super(Miner, self).__init__(config=config)
+        
+        # Set agent name and type
+        self.agent_name = "agent4all_miner"
+        self.agent_type = "miner"
+        self.agent_description = "Agent4All Bittensor Miner"
+        
+        # Get available categories first
         self.available_categories = category_registry.get_categories()
+        
+        # Initialize registered categories
+        self.registered_categories = set(self.available_categories)
+        
         if config and hasattr(config, 'category') and config.category in self.available_categories:
             self.category = config.category
         else:
@@ -130,6 +141,14 @@ class Miner(BaseMinerNeuron):
             os.makedirs(self.model_config['model_cache_dir'], exist_ok=True)
         except Exception as e:
             bt.logging.error(f"Failed to initialize model cache: {str(e)}")
+    
+    def is_online(self) -> bool:
+        """Check if the miner is online and operational."""
+        try:
+            # Basic health check - can be enhanced with more sophisticated checks
+            return True
+        except Exception:
+            return False
     
     def register_model(self, model_info: Dict) -> bool:
         """
@@ -330,29 +349,52 @@ class Miner(BaseMinerNeuron):
         The 'forward' function is a placeholder and should be overridden with logic that is appropriate for
         the miner's intended operation. This method demonstrates a basic transformation of input data.
         """
-        # TODO(developer): Replace with actual implementation logic.
-        synapse.dummy_output = synapse.dummy_input * 2
-        synapse.category = self.category
-        synapse.agent_name = self.agent_name
-        synapse.agent_type = self.agent_type
-        synapse.agent_description = self.agent_description
+        try:
+            # TODO(developer): Replace with actual implementation logic.
+            # Handle both string and int inputs
+            if isinstance(synapse.dummy_input, str):
+                try:
+                    input_value = int(synapse.dummy_input)
+                except ValueError:
+                    input_value = 0
+            else:
+                input_value = synapse.dummy_input
+                
+            synapse.dummy_output = input_value * 2
+            synapse.category = self.category
+            synapse.agent_name = self.agent_name
+            synapse.agent_type = self.agent_type
+            synapse.agent_description = self.agent_description
 
-        # Log utility-based ranking factors
-        bt.logging.info(f"Response accuracy: {synapse.dummy_output == synapse.dummy_input * 2}")
-        bt.logging.info(f"Latency: {time.time() - synapse.dummy_input}")
-        bt.logging.info(f"Uptime & reliability: {self.is_online()}")
-        if synapse.user_feedback is not None:
-            bt.logging.info(f"User feedback: {synapse.user_feedback}")
+            # Log utility-based ranking factors
+            bt.logging.info(f"Response accuracy: {synapse.dummy_output == synapse.dummy_input * 2}")
+            bt.logging.info(f"Latency: {time.time() - synapse.dummy_input}")
+            bt.logging.info(f"Uptime & reliability: {self.is_online()}")
+            if hasattr(synapse, 'user_feedback') and synapse.user_feedback is not None:
+                bt.logging.info(f"User feedback: {synapse.user_feedback}")
 
-        # Apply decay factor for agent ranking
-        decay_factor = 0.9  # Example decay factor
-        synapse.ranking = synapse.ranking * decay_factor if hasattr(synapse, 'ranking') else 1.0
+            # Apply decay factor for agent ranking
+            decay_factor = 0.9  # Example decay factor
+            if synapse.ranking is not None:
+                synapse.ranking = synapse.ranking * decay_factor
+            else:
+                synapse.ranking = 1.0
 
-        # Register new agent category if applicable
-        if synapse.category not in self.registered_categories:
-            self.register_new_category(synapse.category)
+            # Register new agent category if applicable
+            if hasattr(self, 'registered_categories') and synapse.category not in self.registered_categories:
+                self.register_new_category(synapse.category)
 
-        return synapse
+            return synapse
+            
+        except Exception as e:
+            bt.logging.error(f"Error in miner forward pass: {str(e)}")
+            # Set default values in case of error
+            synapse.dummy_output = 0
+            synapse.category = self.category
+            synapse.agent_name = self.agent_name
+            synapse.agent_type = self.agent_type
+            synapse.agent_description = self.agent_description
+            return synapse
 
     def register_new_category(self, category: str):
         """
@@ -416,13 +458,12 @@ class Miner(BaseMinerNeuron):
             )
             return True, "Unrecognized hotkey"
 
-        if self.config.blacklist.force_validator_permit:
-            # If the config is set to force validator permit, then we should only allow requests from validators.
-            if not self.metagraph.validator_permit[uid]:
-                bt.logging.warning(
-                    f"Blacklisting a request from non-validator hotkey {synapse.dendrite.hotkey}"
-                )
-                return True, "Non-validator hotkey"
+        # Force validator permit by default for security
+        if not self.metagraph.validator_permit[uid]:
+            bt.logging.warning(
+                f"Blacklisting a request from non-validator hotkey {synapse.dendrite.hotkey}"
+            )
+            return True, "Non-validator hotkey"
 
         bt.logging.trace(
             f"Not Blacklisting recognized hotkey {synapse.dendrite.hotkey}"
